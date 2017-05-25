@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Size : Rule() {
+class Size(parameters: Array<String>) : Rule(parameters) {
     override val name = "size"
 
     override fun hasParameter() = true
@@ -20,6 +20,6 @@ class Size : Rule() {
     }
 
     override fun validate(data: String): Boolean {
-        return data.length == parameters.size
+        return data.length == parameters.first().toInt()
     }
 }

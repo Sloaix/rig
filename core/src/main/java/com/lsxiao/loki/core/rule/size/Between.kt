@@ -10,8 +10,8 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Between : Rule() {
-    override val name = "min"
+class Between(parameters: Array<String>) : Rule(parameters) {
+    override val name = "between"
 
     override fun hasParameter() = true
 
