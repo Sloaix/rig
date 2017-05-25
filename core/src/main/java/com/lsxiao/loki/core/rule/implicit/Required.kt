@@ -12,9 +12,9 @@ import com.lsxiao.loki.core.rule.Rule
 
 class Required : Rule() {
     override val name = "required"
-    override fun hasParameter() = false
+    override fun hasParameters() = false
 
-    override fun isParameterValid() = false
+    override fun validateParameters() = false
 
     override fun validate(data: String): Boolean {
         return data.isNotEmpty()

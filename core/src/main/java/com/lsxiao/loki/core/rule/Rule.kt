@@ -10,9 +10,9 @@ package com.lsxiao.loki.core.rule
 abstract class Rule(val parameters: Array<String> = emptyArray()) {
     abstract val name: String
 
-    abstract fun hasParameter(): Boolean
+    abstract fun hasParameters(): Boolean
 
-    abstract fun isParameterValid(): Boolean
+    abstract fun validateParameters(): Boolean
 
     abstract fun validate(data: String): Boolean
 }

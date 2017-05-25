@@ -20,13 +20,13 @@ public class SizeTest extends TestCase {
         assertTrue(size.getParameters().length == 1);
         assertSame(size.getParameters()[0], "3");
         assertNotNull(size.getParameters());
-        assertTrue(size.hasParameter());
-        assertTrue(size.isParameterValid());
+        assertTrue(size.hasParameters());
+        assertTrue(size.validateParameters());
 
-        assertFalse(new Size(new String[]{}).isParameterValid());
-        assertFalse(new Size(new String[]{""}).isParameterValid());
-        assertFalse(new Size(new String[]{"ab"}).isParameterValid());
-        assertFalse(new Size(new String[]{"abcd"}).isParameterValid());
+        assertFalse(new Size(new String[]{}).validateParameters());
+        assertFalse(new Size(new String[]{""}).validateParameters());
+        assertFalse(new Size(new String[]{"ab"}).validateParameters());
+        assertFalse(new Size(new String[]{"abcd"}).validateParameters());
     }
 
     public void testRule() throws Exception {

@@ -21,13 +21,13 @@ public class MaxTest extends TestCase {
         assertTrue(max.getParameters().length == 1);
         assertSame(max.getParameters()[0], "3");
         assertNotNull(max.getParameters());
-        assertTrue(max.hasParameter());
-        assertTrue(max.isParameterValid());
+        assertTrue(max.hasParameters());
+        assertTrue(max.validateParameters());
 
 
-        assertFalse(new Min(new String[]{}).isParameterValid());
-        assertFalse(new Min(new String[]{""}).isParameterValid());
-        assertFalse(new Min(new String[]{"abc"}).isParameterValid());
+        assertFalse(new Min(new String[]{}).validateParameters());
+        assertFalse(new Min(new String[]{""}).validateParameters());
+        assertFalse(new Min(new String[]{"abc"}).validateParameters());
     }
 
     public void testRule() throws Exception {

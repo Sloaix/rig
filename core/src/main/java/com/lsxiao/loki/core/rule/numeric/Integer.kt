@@ -13,9 +13,9 @@ import com.lsxiao.loki.core.rule.Rule
 class Integer : Rule() {
     override val name = "integer"
 
-    override fun hasParameter() = false
+    override fun hasParameters() = false
 
-    override fun isParameterValid(): Boolean = false
+    override fun validateParameters(): Boolean = false
 
     override fun validate(data: String) = data.toIntOrNull() != null
 }

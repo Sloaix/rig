@@ -21,15 +21,15 @@ public class BetweenTest extends TestCase {
         assertSame(between.getParameters()[0], "1");
         assertSame(between.getParameters()[1], "3");
         assertNotNull(between.getParameters());
-        assertTrue(between.hasParameter());
-        assertTrue(between.isParameterValid());
+        assertTrue(between.hasParameters());
+        assertTrue(between.validateParameters());
 
-        assertFalse(new Between(new String[]{}).isParameterValid());
-        assertFalse(new Between(new String[]{""}).isParameterValid());
-        assertFalse(new Between(new String[]{"ab"}).isParameterValid());
-        assertFalse(new Between(new String[]{"abcd"}).isParameterValid());
-        assertFalse(new Between(new String[]{"a", "a", "abcd"}).isParameterValid());
-        assertFalse(new Between(new String[]{"a", "b"}).isParameterValid());
+        assertFalse(new Between(new String[]{}).validateParameters());
+        assertFalse(new Between(new String[]{""}).validateParameters());
+        assertFalse(new Between(new String[]{"ab"}).validateParameters());
+        assertFalse(new Between(new String[]{"abcd"}).validateParameters());
+        assertFalse(new Between(new String[]{"a", "a", "abcd"}).validateParameters());
+        assertFalse(new Between(new String[]{"a", "b"}).validateParameters());
     }
 
     public void testRule() throws Exception {

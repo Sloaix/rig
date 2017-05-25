@@ -13,9 +13,9 @@ import com.lsxiao.loki.core.rule.Rule
 class RequiredExcept : Rule() {
     override val name = "requiredExcept"
 
-    override fun hasParameter() = true
+    override fun hasParameters() = true
 
-    override fun isParameterValid(): Boolean {
+    override fun validateParameters(): Boolean {
         return parameters.size == 2
     }
 

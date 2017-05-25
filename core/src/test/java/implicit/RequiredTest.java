@@ -19,8 +19,8 @@ public class RequiredTest extends TestCase {
     public void testNoParameters() throws Exception {
         assertNotNull(required.getParameters());
         assertTrue(required.getParameters().length == 0);
-        assertFalse(required.hasParameter());
-        assertFalse(required.isParameterValid());
+        assertFalse(required.hasParameters());
+        assertFalse(required.validateParameters());
     }
 
     public void testRule() throws Exception {

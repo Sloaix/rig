@@ -13,9 +13,9 @@ import com.lsxiao.loki.core.rule.Rule
 class Between(parameters: Array<String>) : Rule(parameters) {
     override val name = "between"
 
-    override fun hasParameter() = true
+    override fun hasParameters() = true
 
-    override fun isParameterValid(): Boolean {
+    override fun validateParameters(): Boolean {
         return parameters.size == 2 && parameters.all { it.toIntOrNull() != null }
     }
 

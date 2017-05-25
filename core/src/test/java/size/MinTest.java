@@ -21,12 +21,12 @@ public class MinTest extends TestCase {
         assertTrue(min.getParameters().length == 1);
         assertSame(min.getParameters()[0], "3");
         assertNotNull(min.getParameters());
-        assertTrue(min.hasParameter());
-        assertTrue(min.isParameterValid());
+        assertTrue(min.hasParameters());
+        assertTrue(min.validateParameters());
 
-        assertFalse(new Max(new String[]{}).isParameterValid());
-        assertFalse(new Max(new String[]{""}).isParameterValid());
-        assertFalse(new Max(new String[]{"abc"}).isParameterValid());
+        assertFalse(new Max(new String[]{}).validateParameters());
+        assertFalse(new Max(new String[]{""}).validateParameters());
+        assertFalse(new Max(new String[]{"abc"}).validateParameters());
     }
 
     public void testRule() throws Exception {

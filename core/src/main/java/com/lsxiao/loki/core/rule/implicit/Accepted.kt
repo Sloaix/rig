@@ -14,9 +14,9 @@ class Accepted : Rule() {
     override val name = "accepted"
     val acceptable = listOf("yes", "on", "1", "true")
 
-    override fun hasParameter() = false
+    override fun hasParameters() = false
 
-    override fun isParameterValid() = false
+    override fun validateParameters() = false
 
     override fun validate(data: String): Boolean {
         return acceptable.contains(data)

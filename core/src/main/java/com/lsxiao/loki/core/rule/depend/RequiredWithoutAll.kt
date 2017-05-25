@@ -13,9 +13,9 @@ import com.lsxiao.loki.core.rule.Rule
 class RequiredWithoutAll : Rule() {
     override val name = "requiredWithoutAll"
 
-    override fun hasParameter() = true
+    override fun hasParameters() = true
 
-    override fun isParameterValid(): Boolean {
+    override fun validateParameters(): Boolean {
         return parameters.isNotEmpty()
     }
 

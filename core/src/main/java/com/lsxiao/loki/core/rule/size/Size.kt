@@ -13,9 +13,9 @@ import com.lsxiao.loki.core.rule.Rule
 class Size(parameters: Array<String>) : Rule(parameters) {
     override val name = "size"
 
-    override fun hasParameter() = true
+    override fun hasParameters() = true
 
-    override fun isParameterValid(): Boolean {
+    override fun validateParameters(): Boolean {
         return parameters.size == 1 && parameters.first().toIntOrNull() != null
     }
 
