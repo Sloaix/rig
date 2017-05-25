@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredExcept : Rule() {
+class RequiredExcept(parameters: Array<String>) : Rule(parameters) {
     override val name = "requiredExcept"
 
     override fun hasParameters() = true

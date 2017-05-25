@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWhen : Rule() {
+class RequiredWhen (parameters: Array<String>) : Rule(parameters) {
     override val name = "requiredWhen"
 
     override fun hasParameters() = true

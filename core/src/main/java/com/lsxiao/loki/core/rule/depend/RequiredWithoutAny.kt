@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWithoutAny : Rule() {
+class RequiredWithoutAny(parameters: Array<String>) : Rule(parameters) {
     override val name = "requiredWithoutAny"
 
     override fun hasParameters() = true
