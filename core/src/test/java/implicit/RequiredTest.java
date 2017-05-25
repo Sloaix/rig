@@ -1,3 +1,5 @@
+package implicit;
+
 import com.lsxiao.loki.core.rule.implicit.Required;
 
 import junit.framework.TestCase;
