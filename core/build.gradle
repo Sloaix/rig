@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'kotlin'
 
 group = 'com.lsxiao'
 sourceCompatibility = 1.7
@@ -8,7 +9,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     def test = parent.ext.test;
     testCompile test.junit
-
 
     def libs = parent.ext.libs;
     compile libs.kotlin

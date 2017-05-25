@@ -12,7 +12,7 @@ import com.lsxiao.loki.core.rule.Rule
 
 class Accepted : Rule() {
     override val name = "accepted"
-    val acceptable = listOf("yes", "on", "1", 1, true, "true")
+    val acceptable = listOf("yes", "on", "1", "true")
 
     override fun hasParameter() = false
 
