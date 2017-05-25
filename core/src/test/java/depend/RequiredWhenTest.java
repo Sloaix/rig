@@ -1,6 +1,5 @@
 package depend;
 
-import com.lsxiao.loki.core.rule.depend.RequiredExcept;
 import com.lsxiao.loki.core.rule.depend.RequiredWhen;
 
 import junit.framework.TestCase;
@@ -13,26 +12,26 @@ import junit.framework.TestCase;
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-public class RequiredExceptTest extends TestCase {
-    private RequiredExcept requiredExcept;
+public class RequiredWhenTest extends TestCase {
+    private RequiredWhen requiredWhen;
 
     @Override
     public void setUp() throws Exception {
-        requiredExcept = new RequiredExcept(new String[]{"value", "value"});
+        requiredWhen = new RequiredWhen(new String[]{"value", "value"});
     }
 
     public void testName() throws Exception {
-        assertEquals(requiredExcept.getName(), "requiredExcept");
+        assertEquals(requiredWhen.getName(), "requiredWhen");
     }
 
 
     public void testParameters() throws Exception {
-        assertTrue(requiredExcept.getParameters().length == 2);
-        assertSame(requiredExcept.getParameters()[0], "value");
-        assertSame(requiredExcept.getParameters()[1], "value");
-        assertNotNull(requiredExcept.getParameters());
-        assertTrue(requiredExcept.hasParameters());
-        assertTrue(requiredExcept.validateParameters());
+        assertTrue(requiredWhen.getParameters().length == 2);
+        assertSame(requiredWhen.getParameters()[0], "value");
+        assertSame(requiredWhen.getParameters()[1], "value");
+        assertNotNull(requiredWhen.getParameters());
+        assertTrue(requiredWhen.hasParameters());
+        assertTrue(requiredWhen.validateParameters());
 
         assertFalse(new RequiredWhen(new String[]{}).validateParameters());
         assertFalse(new RequiredWhen(new String[]{""}).validateParameters());
@@ -43,8 +42,8 @@ public class RequiredExceptTest extends TestCase {
     }
 
     public void testRule() throws Exception {
-        assertTrue(requiredExcept.validate(""));
-        assertTrue(requiredExcept.validate("a"));
+        assertFalse(requiredWhen.validate(""));
+        assertTrue(requiredWhen.validate("a"));
 
         assertTrue(new RequiredWhen(new String[]{"test", "d"}).validate(""));
         assertFalse(new RequiredWhen(new String[]{"test", "test"}).validate(""));
