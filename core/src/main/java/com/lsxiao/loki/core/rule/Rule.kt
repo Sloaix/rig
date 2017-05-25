@@ -7,7 +7,7 @@ package com.lsxiao.loki.core.rule
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
-abstract class Rule(val parameters: List<String> = emptyList()) {
+abstract class Rule(val parameters: Array<String> = emptyArray()) {
     abstract val name: String
 
     abstract fun hasParameter(): Boolean

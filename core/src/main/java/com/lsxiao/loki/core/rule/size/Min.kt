@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Min : Rule() {
+class Min(parameters: Array<String>) : Rule(parameters) {
     override val name = "min"
 
     override fun hasParameter() = true
@@ -20,6 +20,6 @@ class Min : Rule() {
     }
 
     override fun validate(data: String): Boolean {
-        return data.length >= parameters.size
+        return data.length >= parameters.first().toInt()
     }
 }

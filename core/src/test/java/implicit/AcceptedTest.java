@@ -25,6 +25,8 @@ public class AcceptedTest extends TestCase {
     }
 
     public void testNoParameters() throws Exception {
+        assertNotNull(accepted.getParameters());
+        assertTrue(accepted.getParameters().length == 0);
         assertFalse(accepted.hasParameter());
         assertFalse(accepted.isParameterValid());
     }
