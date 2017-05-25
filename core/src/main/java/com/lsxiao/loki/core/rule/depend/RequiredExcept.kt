@@ -15,11 +15,10 @@ class RequiredExcept(parameters: Array<String>) : Rule(parameters) {
 
     override fun hasParameters() = true
 
-    override fun validateParameters(): Boolean {
-        return parameters.size == 2
-    }
+    override fun validateParameters() = parameters.size == 2
 
-    override fun validate(data: String): Boolean {
-        return parameters.first() != parameters.last() && data.isNotEmpty()
+    override fun validate(data: String) = when {
+        parameters.first() != parameters.last() -> data.isNotEmpty()
+        else -> true
     }
 }

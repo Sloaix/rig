@@ -14,12 +14,11 @@ class RequiredWithoutAny(parameters: Array<String>) : Rule(parameters) {
     override val name = "requiredWithoutAny"
 
     override fun hasParameters() = true
+    
+    override fun validateParameters() = parameters.isNotEmpty()
 
-    override fun validateParameters(): Boolean {
-        return parameters.isNotEmpty()
-    }
-
-    override fun validate(data: String): Boolean {
-        return parameters.any { it.isEmpty() } && data.isNotEmpty()
+    override fun validate(data: String) = when {
+        parameters.any { it.isEmpty() } -> data.isNotEmpty()
+        else -> true
     }
 }

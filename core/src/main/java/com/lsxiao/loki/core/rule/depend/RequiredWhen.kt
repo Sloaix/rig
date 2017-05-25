@@ -10,16 +10,15 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWhen (parameters: Array<String>) : Rule(parameters) {
+class RequiredWhen(parameters: Array<String>) : Rule(parameters) {
     override val name = "requiredWhen"
 
     override fun hasParameters() = true
 
-    override fun validateParameters(): Boolean {
-        return parameters.size == 2
-    }
+    override fun validateParameters() = parameters.size == 2
 
-    override fun validate(data: String): Boolean {
-        return parameters.first() == parameters.last() && data.isNotEmpty()
+    override fun validate(data: String) = when {
+        parameters.first() == parameters.last() -> data.isNotEmpty()
+        else -> true
     }
 }

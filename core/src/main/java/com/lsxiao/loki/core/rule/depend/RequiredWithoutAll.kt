@@ -15,11 +15,10 @@ class RequiredWithoutAll(parameters: Array<String>) : Rule(parameters) {
 
     override fun hasParameters() = true
 
-    override fun validateParameters(): Boolean {
-        return parameters.isNotEmpty()
-    }
+    override fun validateParameters() = parameters.isNotEmpty()
 
-    override fun validate(data: String): Boolean {
-        return parameters.all { it.isEmpty() } && data.isNotEmpty()
+    override fun validate(data: String) = when {
+        parameters.all { it.isEmpty() } -> data.isNotEmpty()
+        else -> true
     }
 }

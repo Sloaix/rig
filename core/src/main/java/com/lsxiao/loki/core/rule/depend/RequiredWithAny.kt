@@ -10,16 +10,16 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWithAny (parameters: Array<String>) : Rule(parameters) {
+class RequiredWithAny(parameters: Array<String>) : Rule(parameters) {
     override val name = "requiredWithAny"
 
     override fun hasParameters() = true
 
-    override fun validateParameters(): Boolean {
-        return parameters.isNotEmpty()
-    }
 
-    override fun validate(data: String): Boolean {
-        return parameters.any { it.isNotEmpty() } && data.isNotEmpty()
+    override fun validateParameters() = parameters.isNotEmpty()
+
+    override fun validate(data: String) = when {
+        parameters.any { it.isNotEmpty() } -> data.isNotEmpty()
+        else -> true
     }
 }
