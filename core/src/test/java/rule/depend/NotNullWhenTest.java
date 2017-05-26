@@ -1,6 +1,6 @@
 package rule.depend;
 
-import com.lsxiao.loki.core.rule.depend.RequiredWhen;
+import com.lsxiao.loki.core.rule.depend.RequiredWhenTulr;
 
 import junit.framework.TestCase;
 
@@ -13,15 +13,15 @@ import junit.framework.TestCase;
  */
 
 public class NotNullWhenTest extends TestCase {
-    private RequiredWhen requiredWhen;
+    private RequiredWhenTulr requiredWhen;
 
     @Override
     public void setUp() throws Exception {
-        requiredWhen = new RequiredWhen(new String[]{"value", "value"});
+        requiredWhen = new RequiredWhenTulr(new String[]{"value", "value"});
     }
 
     public void testName() throws Exception {
-        assertEquals(RequiredWhen.Companion.getName(), "requiredWhen");
+        assertEquals(RequiredWhenTulr.Companion.getName(), "requiredWhen");
     }
 
 
@@ -33,22 +33,22 @@ public class NotNullWhenTest extends TestCase {
         assertTrue(requiredWhen.hasParameters());
         assertTrue(requiredWhen.validateParameters());
 
-        assertFalse(new RequiredWhen(new String[]{}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{""}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{"ab"}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{"abcd"}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{"a", "a", "abcd"}).validateParameters());
-        assertTrue(new RequiredWhen(new String[]{"a", "b"}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{""}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{"ab"}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{"abcd"}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{"a", "a", "abcd"}).validateParameters());
+        assertTrue(new RequiredWhenTulr(new String[]{"a", "b"}).validateParameters());
     }
 
     public void testRule() throws Exception {
         assertFalse(requiredWhen.validate(""));
         assertTrue(requiredWhen.validate("a"));
 
-        assertTrue(new RequiredWhen(new String[]{"test", "d"}).validate(""));
-        assertFalse(new RequiredWhen(new String[]{"test", "test"}).validate(""));
+        assertTrue(new RequiredWhenTulr(new String[]{"test", "d"}).validate(""));
+        assertFalse(new RequiredWhenTulr(new String[]{"test", "test"}).validate(""));
 
-        assertTrue(new RequiredWhen(new String[]{"test", "test"}).validate("required"));
-        assertFalse(new RequiredWhen(new String[]{"test", "test"}).validate(""));
+        assertTrue(new RequiredWhenTulr(new String[]{"test", "test"}).validate("required"));
+        assertFalse(new RequiredWhenTulr(new String[]{"test", "test"}).validate(""));
     }
 }

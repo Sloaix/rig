@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Accepted : LokiRule() {
+class AcceptedRule : LokiRule() {
     companion object {
         val name = "accepted"
     }

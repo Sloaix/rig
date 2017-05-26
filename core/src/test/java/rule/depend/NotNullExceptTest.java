@@ -1,7 +1,7 @@
 package rule.depend;
 
-import com.lsxiao.loki.core.rule.depend.RequiredExcept;
-import com.lsxiao.loki.core.rule.depend.RequiredWhen;
+import com.lsxiao.loki.core.rule.depend.RequiredExceptRule;
+import com.lsxiao.loki.core.rule.depend.RequiredWhenTulr;
 
 import junit.framework.TestCase;
 
@@ -14,15 +14,15 @@ import junit.framework.TestCase;
  */
 
 public class NotNullExceptTest extends TestCase {
-    private RequiredExcept requiredExcept;
+    private RequiredExceptRule requiredExcept;
 
     @Override
     public void setUp() throws Exception {
-        requiredExcept = new RequiredExcept(new String[]{"value", "value"});
+        requiredExcept = new RequiredExceptRule(new String[]{"value", "value"});
     }
 
     public void testName() throws Exception {
-        assertEquals(RequiredExcept.Companion.getName(), "requiredExcept");
+        assertEquals(RequiredExceptRule.Companion.getName(), "requiredExcept");
     }
 
 
@@ -34,22 +34,22 @@ public class NotNullExceptTest extends TestCase {
         assertTrue(requiredExcept.hasParameters());
         assertTrue(requiredExcept.validateParameters());
 
-        assertFalse(new RequiredWhen(new String[]{}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{""}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{"ab"}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{"abcd"}).validateParameters());
-        assertFalse(new RequiredWhen(new String[]{"a", "a", "abcd"}).validateParameters());
-        assertTrue(new RequiredWhen(new String[]{"a", "b"}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{""}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{"ab"}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{"abcd"}).validateParameters());
+        assertFalse(new RequiredWhenTulr(new String[]{"a", "a", "abcd"}).validateParameters());
+        assertTrue(new RequiredWhenTulr(new String[]{"a", "b"}).validateParameters());
     }
 
     public void testRule() throws Exception {
         assertTrue(requiredExcept.validate(""));
         assertTrue(requiredExcept.validate("a"));
 
-        assertTrue(new RequiredWhen(new String[]{"test", "d"}).validate(""));
-        assertFalse(new RequiredWhen(new String[]{"test", "test"}).validate(""));
+        assertTrue(new RequiredWhenTulr(new String[]{"test", "d"}).validate(""));
+        assertFalse(new RequiredWhenTulr(new String[]{"test", "test"}).validate(""));
 
-        assertTrue(new RequiredWhen(new String[]{"test", "test"}).validate("required"));
-        assertFalse(new RequiredWhen(new String[]{"test", "test"}).validate(""));
+        assertTrue(new RequiredWhenTulr(new String[]{"test", "test"}).validate("required"));
+        assertFalse(new RequiredWhenTulr(new String[]{"test", "test"}).validate(""));
     }
 }

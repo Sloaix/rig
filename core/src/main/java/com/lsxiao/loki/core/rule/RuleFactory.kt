@@ -1,6 +1,6 @@
 package com.lsxiao.loki.core.rule
 
-import com.lsxiao.loki.core.rule.implicit.Accepted
+import com.lsxiao.loki.core.rule.implicit.AcceptedRule
 import com.lsxiao.loki.core.rule.implicit.NotNullRule
 import com.lsxiao.loki.core.rule.size.BetweenRule
 import com.lsxiao.loki.core.rule.size.MaxRule
@@ -20,7 +20,7 @@ object RuleFactory {
         MinRule.name -> MinRule(parameters)
         MaxRule.name -> MaxRule(parameters)
         BetweenRule.name -> BetweenRule(parameters)
-        Accepted.name -> Accepted()
+        AcceptedRule.name -> AcceptedRule()
         NotNullRule.name -> NotNullRule()
         else -> null!!
     }

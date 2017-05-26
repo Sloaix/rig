@@ -1,6 +1,6 @@
 package rule.implicit;
 
-import com.lsxiao.loki.core.rule.implicit.Accepted;
+import com.lsxiao.loki.core.rule.implicit.AcceptedRule;
 
 import junit.framework.TestCase;
 
@@ -13,15 +13,15 @@ import junit.framework.TestCase;
  */
 
 public class AcceptedTest extends TestCase {
-    private Accepted accepted;
+    private AcceptedRule accepted;
 
     @Override
     public void setUp() throws Exception {
-        accepted = new Accepted();
+        accepted = new AcceptedRule();
     }
 
     public void testName() throws Exception {
-        assertEquals(Accepted.Companion.getName(), "accepted");
+        assertEquals(AcceptedRule.Companion.getName(), "accepted");
     }
 
     public void testNoParameters() throws Exception {

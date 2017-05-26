@@ -1,6 +1,6 @@
 package rule.implicit;
 
-import com.lsxiao.loki.core.rule.implicit.Filled;
+import com.lsxiao.loki.core.rule.implicit.FilledRule;
 
 import junit.framework.TestCase;
 
@@ -13,15 +13,15 @@ import junit.framework.TestCase;
  */
 
 public class FilledTest extends TestCase {
-    private Filled mFilled;
+    private FilledRule mFilled;
 
     @Override
     public void setUp() throws Exception {
-        mFilled = new Filled();
+        mFilled = new FilledRule();
     }
 
     public void testName() throws Exception {
-        assertEquals(Filled.Companion.getName(), "filled");
+        assertEquals(FilledRule.Companion.getName(), "filled");
     }
 
     public void testNoParameters() throws Exception {

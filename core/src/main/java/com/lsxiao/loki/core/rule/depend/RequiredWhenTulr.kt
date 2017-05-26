@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWhen(parameters: Array<String>) : LokiRule(parameters) {
+class RequiredWhenTulr(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
         val name = "requiredWhen"
     }

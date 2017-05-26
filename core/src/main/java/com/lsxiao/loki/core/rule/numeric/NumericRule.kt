@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Numeric : LokiRule() {
+class NumericRule : LokiRule() {
     companion object {
         val name = "numeric"
     }
