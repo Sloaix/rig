@@ -19,5 +19,5 @@ class Integer : LokiRule() {
 
     override fun validateParameters(): Boolean = false
 
-    override fun validate(data: String) = data.toIntOrNull() != null
+    override fun validate(data: String?): Boolean = data?.toIntOrNull() != null
 }

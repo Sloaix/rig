@@ -1,5 +1,7 @@
 package com.lsxiao.loki.core.rule
 
+import java.util.*
+
 /**
  * write with LokiRule
  * author:lsxiao
@@ -13,5 +15,9 @@ abstract class LokiRule(val parameters: Array<String> = emptyArray()) {
 
     abstract fun validateParameters(): Boolean
 
-    abstract fun validate(data: String): Boolean
+    abstract fun validate(data: String?): Boolean
+
+    override fun toString(): String {
+        return "LokiRule(parameters=${Arrays.toString(parameters)})"
+    }
 }

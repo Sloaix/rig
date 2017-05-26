@@ -1,4 +1,4 @@
-package size;
+package rule.size;
 
 import com.lsxiao.loki.core.rule.size.SizeRule;
 

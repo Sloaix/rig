@@ -14,14 +14,14 @@ class RequiredWithAny(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
         val name = "requiredWithAny"
     }
-    
+
     override fun hasParameters() = true
 
 
     override fun validateParameters() = parameters.isNotEmpty()
 
-    override fun validate(data: String) = when {
-        parameters.any { it.isNotEmpty() } -> data.isNotEmpty()
+    override fun validate(data: String?): Boolean = when {
+        parameters.any { it.isNotEmpty() } -> data != null && data.isNotEmpty()
         else -> true
     }
 }

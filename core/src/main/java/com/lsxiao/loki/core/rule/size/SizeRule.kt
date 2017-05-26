@@ -21,7 +21,7 @@ class SizeRule(parameters: Array<String>) : LokiRule(parameters) {
         return parameters.size == 1 && parameters.first().toIntOrNull() != null
     }
 
-    override fun validate(data: String): Boolean {
-        return data.length == parameters.first().toInt()
+    override fun validate(data: String?): Boolean {
+        return data != null && data.length == parameters.first().toInt()
     }
 }

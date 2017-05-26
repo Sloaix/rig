@@ -21,7 +21,7 @@ class BetweenRule(parameters: Array<String>) : LokiRule(parameters) {
         return parameters.size == 2 && parameters.all { it.toIntOrNull() != null }
     }
 
-    override fun validate(data: String): Boolean {
-        return data.length >= parameters.min()!!.toInt() && data.length <= parameters.max()!!.toInt()
+    override fun validate(data: String?): Boolean {
+        return data != null && data.length >= parameters.min()!!.toInt() && data.length <= parameters.max()!!.toInt()
     }
 }

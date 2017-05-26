@@ -10,16 +10,16 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Required : LokiRule() {
+class Filled : LokiRule() {
     companion object {
-        val name = "required"
+        val name = "filled"
     }
 
     override fun hasParameters() = false
 
     override fun validateParameters() = false
 
-    override fun validate(data: String): Boolean {
-        return data.isNotEmpty()
+    override fun validate(data: String?): Boolean {
+        return data != null && data.isNotEmpty()
     }
 }

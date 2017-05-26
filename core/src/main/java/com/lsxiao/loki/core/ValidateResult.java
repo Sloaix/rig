@@ -20,11 +20,11 @@ public class ValidateResult {
         this.errors = errors;
     }
 
-    private boolean isFail() {
+    public boolean isFail() {
         return !isPass();
     }
 
-    private boolean isPass() {
+    public boolean isPass() {
         return errors.isEmpty();
     }
 }

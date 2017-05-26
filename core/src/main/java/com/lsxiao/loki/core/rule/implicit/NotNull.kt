@@ -10,18 +10,16 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Accepted : LokiRule() {
+class NotNull : LokiRule() {
     companion object {
-        val name = "accepted"
+        val name = "notnull"
     }
-
-    val acceptable = listOf("yes", "on", "1", "true")
 
     override fun hasParameters() = false
 
     override fun validateParameters() = false
 
     override fun validate(data: String?): Boolean {
-        return acceptable.contains(data)
+        return data != null
     }
 }

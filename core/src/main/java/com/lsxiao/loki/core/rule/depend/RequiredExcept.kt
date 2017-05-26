@@ -19,8 +19,8 @@ class RequiredExcept(parameters: Array<String>) : LokiRule(parameters) {
 
     override fun validateParameters() = parameters.size == 2
 
-    override fun validate(data: String) = when {
-        parameters.first() != parameters.last() -> data.isNotEmpty()
+    override fun validate(data: String?): Boolean = when {
+        parameters.first() != parameters.last() -> data != null && data.isNotEmpty()
         else -> true
     }
 }

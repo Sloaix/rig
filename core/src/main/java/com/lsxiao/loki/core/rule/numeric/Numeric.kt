@@ -19,5 +19,5 @@ class Numeric : LokiRule() {
 
     override fun validateParameters(): Boolean = false
 
-    override fun validate(data: String) = data.toDoubleOrNull() != null
+    override fun validate(data: String?): Boolean = data?.toDoubleOrNull() != null
 }

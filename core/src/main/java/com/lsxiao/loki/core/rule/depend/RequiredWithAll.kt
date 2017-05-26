@@ -19,8 +19,8 @@ class RequiredWithAll(parameters: Array<String>) : LokiRule(parameters) {
 
     override fun validateParameters() = parameters.isNotEmpty()
 
-    override fun validate(data: String) = when {
-        parameters.all { it.isNotEmpty() } -> data.isNotEmpty()
+    override fun validate(data: String?): Boolean = when {
+        parameters.all { it.isNotEmpty() } -> data != null && data.isNotEmpty()
         else -> true
     }
 }

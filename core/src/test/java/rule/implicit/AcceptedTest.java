@@ -1,4 +1,4 @@
-package implicit;
+package rule.implicit;
 
 import com.lsxiao.loki.core.rule.implicit.Accepted;
 

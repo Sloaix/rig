@@ -10,4 +10,4 @@ package com.lsxiao.loki.core.annotation
 
 @Target(AnnotationTarget.FIELD)
 @Retention(AnnotationRetention.SOURCE)
-annotation class Rule(val value: String)
+annotation class Rule(val value: String, val name: String = "")
