@@ -5,7 +5,7 @@ import com.lsxiao.loki.core.rule.depend.RequiredWhen;
 import junit.framework.TestCase;
 
 /**
- * write with Loki
+ * write with LokiRule
  * author:lsxiao
  * date:2017-05-26 01:31
  * github:https://github.com/lsxiao

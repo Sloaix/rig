@@ -5,7 +5,7 @@ import com.lsxiao.loki.core.rule.implicit.Accepted;
 import junit.framework.TestCase;
 
 /**
- * write with Loki
+ * write with LokiRule
  * author:lsxiao
  * date:2017-05-26 00:54
  * github:https://github.com/lsxiao

@@ -1,16 +1,16 @@
 package com.lsxiao.loki.core.rule.implicit
 
-import com.lsxiao.loki.core.rule.Rule
+import com.lsxiao.loki.core.rule.LokiRule
 
 /**
- * write with Loki
+ * write with LokiRule
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Required : Rule() {
+class Required : LokiRule() {
     companion object {
         val name = "required"
     }
