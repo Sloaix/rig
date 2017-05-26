@@ -1,7 +1,7 @@
 package com.lsxiao.loki.core.rule
 
 import com.lsxiao.loki.core.rule.implicit.Accepted
-import com.lsxiao.loki.core.rule.implicit.NotNull
+import com.lsxiao.loki.core.rule.implicit.NotNullRule
 import com.lsxiao.loki.core.rule.size.BetweenRule
 import com.lsxiao.loki.core.rule.size.MaxRule
 import com.lsxiao.loki.core.rule.size.MinRule
@@ -18,10 +18,10 @@ object RuleFactory {
     fun create(name: String, parameters: Array<String> = emptyArray()): LokiRule = when (name) {
         SizeRule.name -> SizeRule(parameters)
         MinRule.name -> MinRule(parameters)
-        MaxRule.name -> MinRule(parameters)
+        MaxRule.name -> MaxRule(parameters)
         BetweenRule.name -> BetweenRule(parameters)
         Accepted.name -> Accepted()
-        NotNull.name -> NotNull()
+        NotNullRule.name -> NotNullRule()
         else -> null!!
     }
 }

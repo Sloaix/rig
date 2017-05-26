@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class NotNull : LokiRule() {
+class NotNullRule : LokiRule() {
     companion object {
         val name = "notnull"
     }

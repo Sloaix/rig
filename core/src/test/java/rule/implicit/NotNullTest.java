@@ -1,19 +1,19 @@
 package rule.implicit;
 
-import com.lsxiao.loki.core.rule.implicit.NotNull;
+import com.lsxiao.loki.core.rule.implicit.NotNullRule;
 
 import junit.framework.TestCase;
 
 public class NotNullTest extends TestCase {
-    private NotNull mNotNull;
+    private NotNullRule mNotNull;
 
     @Override
     public void setUp() throws Exception {
-        mNotNull = new NotNull();
+        mNotNull = new NotNullRule();
     }
 
     public void testName() throws Exception {
-        assertEquals(NotNull.Companion.getName(), "notnull");
+        assertEquals(NotNullRule.Companion.getName(), "notnull");
     }
 
     public void testNoParameters() throws Exception {
