@@ -11,7 +11,10 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class Required : Rule() {
-    override val name = "required"
+    companion object {
+        val name = "required"
+    }
+
     override fun hasParameters() = false
 
     override fun validateParameters() = false

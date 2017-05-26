@@ -22,7 +22,7 @@ public class RequiredExceptTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(requiredExcept.getName(), "requiredExcept");
+        assertEquals(RequiredExcept.Companion.getName(), "requiredExcept");
     }
 
 

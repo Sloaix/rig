@@ -11,8 +11,9 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class RequiredWhen(parameters: Array<String>) : Rule(parameters) {
-    override val name = "requiredWhen"
-
+    companion object {
+        val name = "requiredWhen"
+    }
     override fun hasParameters() = true
 
     override fun validateParameters() = parameters.size == 2

@@ -13,7 +13,7 @@ public class RequiredTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(required.getName(), "required");
+        assertEquals(Required.Companion.getName(), "required");
     }
 
     public void testNoParameters() throws Exception {

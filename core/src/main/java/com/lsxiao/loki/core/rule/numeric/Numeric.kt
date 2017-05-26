@@ -11,7 +11,9 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class Numeric : Rule() {
-    override val name = "numeric"
+    companion object {
+        val name = "numeric"
+    }
 
     override fun hasParameters() = false
 

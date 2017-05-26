@@ -11,8 +11,10 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class RequiredWithAny(parameters: Array<String>) : Rule(parameters) {
-    override val name = "requiredWithAny"
-
+    companion object {
+        val name = "requiredWithAny"
+    }
+    
     override fun hasParameters() = true
 
 

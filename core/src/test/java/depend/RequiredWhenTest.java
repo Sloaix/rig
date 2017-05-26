@@ -21,7 +21,7 @@ public class RequiredWhenTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(requiredWhen.getName(), "requiredWhen");
+        assertEquals(RequiredWhen.Companion.getName(), "requiredWhen");
     }
 
 

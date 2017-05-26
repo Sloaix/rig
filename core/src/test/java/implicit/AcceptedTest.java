@@ -21,7 +21,7 @@ public class AcceptedTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(accepted.getName(), "accepted");
+        assertEquals(Accepted.Companion.getName(), "accepted");
     }
 
     public void testNoParameters() throws Exception {

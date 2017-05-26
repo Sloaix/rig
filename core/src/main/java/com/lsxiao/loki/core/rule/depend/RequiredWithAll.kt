@@ -11,7 +11,9 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class RequiredWithAll(parameters: Array<String>) : Rule(parameters) {
-    override val name = "requiredWithAll"
+    companion object {
+        val name = "requiredWithAll"
+    }
 
     override fun hasParameters() = true
 

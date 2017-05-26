@@ -38,10 +38,10 @@ public class Validator {
             "Image",
             "Mimes",
             "Mimetypes",
-            "Min",
-            "Max",
-            "Size",
-            "Between",
+            "MinRule",
+            "MaxRule",
+            "SizeRule",
+            "BetweenRule",
             "Dimensions",
     };
 
@@ -64,7 +64,7 @@ public class Validator {
     /**
      * 大小相关的验证规则
      */
-    protected String[] $sizeRules = new String[]{"Size", "Between", "Min", "Max"};
+    protected String[] $sizeRules = new String[]{"SizeRule", "BetweenRule", "MinRule", "MaxRule"};
 
     /**
      * 数字相关的验证规则

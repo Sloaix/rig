@@ -11,7 +11,10 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class Accepted : Rule() {
-    override val name = "accepted"
+    companion object {
+        val name = "accepted"
+    }
+    
     val acceptable = listOf("yes", "on", "1", "true")
 
     override fun hasParameters() = false

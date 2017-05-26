@@ -11,7 +11,9 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class RequiredWithoutAll(parameters: Array<String>) : Rule(parameters) {
-    override val name = "requiredWithoutAll"
+    companion object {
+        val name = "requiredWithoutAll"
+    }
 
     override fun hasParameters() = true
 

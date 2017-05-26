@@ -11,10 +11,12 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class RequiredWithoutAny(parameters: Array<String>) : Rule(parameters) {
-    override val name = "requiredWithoutAny"
+    companion object {
+        val name = "requiredWithoutAny"
+    }
 
     override fun hasParameters() = true
-    
+
     override fun validateParameters() = parameters.isNotEmpty()
 
     override fun validate(data: String) = when {

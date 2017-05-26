@@ -8,11 +8,11 @@ package com.lsxiao.loki.core.rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 abstract class Rule(val parameters: Array<String> = emptyArray()) {
-    abstract val name: String
 
     abstract fun hasParameters(): Boolean
 
     abstract fun validateParameters(): Boolean
 
     abstract fun validate(data: String): Boolean
+
 }

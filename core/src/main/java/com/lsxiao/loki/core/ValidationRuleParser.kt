@@ -15,8 +15,12 @@ object ValidationRuleParser {
 
     fun splitRules(rules: String) {
 
-        //required|min:2|max:5
+        //required|min:2|max:5  分离规则
         val split = rules.split("|")
+        split.forEach {
+            //mix:2或者required
+            val rawRuleSplit = it.split(":")
+        }
     }
 
     fun parseStringRule(rules: String) {

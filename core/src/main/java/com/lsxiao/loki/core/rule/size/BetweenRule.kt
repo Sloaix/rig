@@ -10,16 +10,18 @@ import com.lsxiao.loki.core.rule.Rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class Size(parameters: Array<String>) : Rule(parameters) {
-    override val name = "size"
+class BetweenRule(parameters: Array<String>) : Rule(parameters) {
+    companion object {
+        val name = "between"
+    }
 
     override fun hasParameters() = true
 
     override fun validateParameters(): Boolean {
-        return parameters.size == 1 && parameters.first().toIntOrNull() != null
+        return parameters.size == 2 && parameters.all { it.toIntOrNull() != null }
     }
 
     override fun validate(data: String): Boolean {
-        return data.length == parameters.first().toInt()
+        return data.length >= parameters.min()!!.toInt() && data.length <= parameters.max()!!.toInt()
     }
 }

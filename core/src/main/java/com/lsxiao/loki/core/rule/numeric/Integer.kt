@@ -11,7 +11,9 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class Integer : Rule() {
-    override val name = "integer"
+    companion object {
+        val name = "integer"
+    }
 
     override fun hasParameters() = false
 

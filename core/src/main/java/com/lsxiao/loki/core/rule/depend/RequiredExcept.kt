@@ -11,7 +11,9 @@ import com.lsxiao.loki.core.rule.Rule
  */
 
 class RequiredExcept(parameters: Array<String>) : Rule(parameters) {
-    override val name = "requiredExcept"
+    companion object {
+        val name = "requiredExcept"
+    }
 
     override fun hasParameters() = true
 
