@@ -2,6 +2,7 @@ package com.lsxiao.loki.compiler
 
 import com.lsxiao.loki.core.rule.LokiRule
 import javax.lang.model.element.Element
+import kotlin.properties.Delegates
 
 /**
  * write with Loki
@@ -21,4 +22,5 @@ class UnitRuleDescriptor private constructor(val methodElement: Element) {
     var rules: List<LokiRule> = emptyList()
     var dependedName: String? = null
     var groupId: Int = 0
+    var className: String by Delegates.notNull()
 }

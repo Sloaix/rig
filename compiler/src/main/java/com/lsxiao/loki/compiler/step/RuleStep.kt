@@ -1,6 +1,7 @@
 package com.lsxiao.loki.compiler.step
 
 import com.google.auto.common.BasicAnnotationProcessor
+import com.google.auto.common.MoreElements
 import com.google.common.collect.SetMultimap
 import com.lsxiao.loki.compiler.LokiProcessor
 import com.lsxiao.loki.compiler.UnitRuleDescriptor
@@ -26,6 +27,7 @@ class RuleStep : BasicAnnotationProcessor.ProcessingStep {
                 val descriptor = UnitRuleDescriptor.newInstance(element)
                 descriptor.dependedName = element.getAnnotation(Rule::class.java).name
                 descriptor.rules = LokiRuleParser.parse(element.getAnnotation(Rule::class.java).value)
+                descriptor.className = MoreElements.asType(element.enclosingElement).qualifiedName.toString()
                 LokiProcessor.sDescriptorMap.put(element, descriptor)
             }
         }
