@@ -16,12 +16,12 @@ object LokiRuleParser {
     /**
      * 解析单行规则，返回一个lokiRule列表
      */
-    fun parse(rules: String) = rules.split("|").map(this::parseSingleRule).toList()
+    fun parse(rules: String) = rules.split("|").map(this::parseSingleRule).filterNotNull()
 
     /**
      * 解析一个单元规则between:1,2  包括规则名和参数,返回一个LokiRule对象
      */
-    private fun parseSingleRule(stringRule: String): LokiRule {
+    private fun parseSingleRule(stringRule: String): LokiRule? {
         val temp = stringRule.split(":")
         //分离出规则名称和参数列表 between:1,2
         val name = temp.first()
