@@ -51,13 +51,13 @@ class CodeGenerator private constructor(private val unitRuleDescriptors: ArrayLi
             .build()
 
     /**
-     * public void validate(final Object o) {
+     * public void check(final Object o) {
      *      ...
      *      return;
      * }
      */
     fun getValidateFunctionMethodSpec(): MethodSpec {
-        val builder = MethodSpec.methodBuilder("validate")
+        val builder = MethodSpec.methodBuilder("check")
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(Object::class.java, "o", Modifier.FINAL)
 

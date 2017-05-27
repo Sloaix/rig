@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     void afterCreate(Bundle savedInstanceState) {
-        Loki.validate(this);
+        Loki.check(this);
     }
 
     @Override
