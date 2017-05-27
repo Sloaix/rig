@@ -2,6 +2,7 @@ package com.lsxiao.apllo.processor
 
 import com.lsxiao.loki.compiler.UnitRuleDescriptor
 import com.squareup.javapoet.JavaFile
+import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.TypeSpec
 import java.io.IOException
 import java.util.*
@@ -46,5 +47,24 @@ class CodeGenerator private constructor(private val unitRuleDescriptors: ArrayLi
     fun getGeneratorTypeSpec(): TypeSpec = TypeSpec
             .classBuilder(GENERATE_CLASS_NAME)
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
+            .addMethod(getBroadcastEventFunctionMethodSpec())
             .build()
+
+    /**
+     * public void broadcastEvent(final Event event) {
+     *      if(com.lsxiao.apollo.core.Apollo.getContext()==null||!(com.lsxiao.apollo.core.Apollo.getContext() instanceof android.content.Context)) {
+     *      return;
+     *      }
+     *      ...
+     *      return;
+     * }
+     */
+    fun getBroadcastEventFunctionMethodSpec(): MethodSpec {
+        val builder = MethodSpec.methodBuilder("validate")
+                .addModifiers(Modifier.PUBLIC)
+                .addParameter(Object::class.java, "o", Modifier.FINAL)
+
+        return builder.addStatement("return").build()
+    }
+
 }
