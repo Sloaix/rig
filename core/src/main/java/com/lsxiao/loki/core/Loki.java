@@ -10,7 +10,7 @@ package com.lsxiao.loki.core;
 
 public class Loki {
     public static ValidateResult validate(Object object) {
-        return new ValidateResult(null);
+        return (ValidateResult) new Object();
     }
 
 }

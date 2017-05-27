@@ -12,7 +12,7 @@ import com.lsxiao.loki.core.rule.LokiRule
 
 class RequiredExceptRule(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
-        val name = "requiredExcept"
+        val name = "required_except"
     }
 
     override fun hasParameters() = true

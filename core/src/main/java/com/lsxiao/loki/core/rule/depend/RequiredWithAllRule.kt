@@ -12,7 +12,7 @@ import com.lsxiao.loki.core.rule.LokiRule
 
 class RequiredWithAllRule(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
-        val name = "requiredWithAll"
+        val name = "required_with_all"
     }
 
     override fun hasParameters() = true

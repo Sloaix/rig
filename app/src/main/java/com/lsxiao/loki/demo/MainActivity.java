@@ -1,10 +1,7 @@
 package com.lsxiao.loki.demo;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import com.lsxiao.loki.core.Loki;
-import com.lsxiao.loki.core.ValidateResult;
 import com.lsxiao.loki.core.annotation.Rule;
 
 public class MainActivity extends BaseActivity {
@@ -22,10 +19,10 @@ public class MainActivity extends BaseActivity {
     @Override
     void afterCreate(Bundle savedInstanceState) {
 
-        ValidateResult result = Loki.validate(this);
-        if (result.isFail()) {
-            Log.d("MainActivity", result.toString());
-        }
+//        ValidateResult result = Loki.validate(this);
+//        if (result.isFail()) {
+//            Log.d("MainActivity", result.toString());
+//        }
 
     }
 

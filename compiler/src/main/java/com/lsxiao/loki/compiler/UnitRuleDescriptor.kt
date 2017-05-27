@@ -1,7 +1,7 @@
 package com.lsxiao.loki.compiler
 
 import com.lsxiao.loki.core.rule.LokiRule
-import javax.lang.model.element.ExecutableElement
+import javax.lang.model.element.Element
 
 /**
  * write with Loki
@@ -11,14 +11,14 @@ import javax.lang.model.element.ExecutableElement
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class UnitRuleDescriptor private constructor(val methodElement: ExecutableElement) {
+class UnitRuleDescriptor private constructor(val methodElement: Element) {
     companion object {
-        fun newInstance(methodElement: ExecutableElement): UnitRuleDescriptor {
+        fun newInstance(methodElement: Element): UnitRuleDescriptor {
             return UnitRuleDescriptor(methodElement)
         }
     }
 
     var rules: List<LokiRule> = emptyList()
     var dependedName: String? = null
-
+    var groupId: Int = 0
 }
