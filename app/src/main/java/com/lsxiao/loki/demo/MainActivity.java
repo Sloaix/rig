@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.lsxiao.loki.core.annotation.Rule;
 
 public class MainActivity extends BaseActivity {
-    @Rule(value = "integer|between:10,30", name = "age")
+    @Rule(value = "int|between:10,30", name = "age")
     public String age;
 
     @Rule("notnull|min:3|when_eq:age,=,18")
