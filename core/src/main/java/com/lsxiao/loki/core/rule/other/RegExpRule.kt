@@ -1,4 +1,4 @@
-package com.lsxiao.loki.core.rule.implicit
+package com.lsxiao.loki.core.rule.other
 
 import com.lsxiao.loki.core.rule.LokiRule
 
@@ -10,9 +10,9 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class NotNullRule : LokiRule() {
+class RegExpRule : LokiRule() {
     companion object {
-        val name = "notnull"
+        val name = "reg"
     }
 
     override fun hasParameters() = false

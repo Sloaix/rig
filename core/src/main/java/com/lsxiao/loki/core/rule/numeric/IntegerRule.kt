@@ -12,7 +12,7 @@ import com.lsxiao.loki.core.rule.LokiRule
 
 class IntegerRule : LokiRule() {
     companion object {
-        val name = "integer"
+        val name = "int"
     }
 
     override fun hasParameters() = false

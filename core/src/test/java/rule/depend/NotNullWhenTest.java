@@ -1,6 +1,6 @@
 package rule.depend;
 
-import com.lsxiao.loki.core.rule.depend.RequiredWhenRule;
+import com.lsxiao.loki.core.rule.depend.WhenEqualRule;
 
 import junit.framework.TestCase;
 
@@ -13,15 +13,15 @@ import junit.framework.TestCase;
  */
 
 public class NotNullWhenTest extends TestCase {
-    private RequiredWhenRule requiredWhen;
+    private WhenEqualRule requiredWhen;
 
     @Override
     public void setUp() throws Exception {
-        requiredWhen = new RequiredWhenRule(new String[]{"value", "value"});
+        requiredWhen = new WhenEqualRule(new String[]{"value", "value"});
     }
 
     public void testName() throws Exception {
-        assertEquals(RequiredWhenRule.Companion.getName(), "requiredWhen");
+        assertEquals(WhenEqualRule.Companion.getName(), "requiredWhen");
     }
 
 
@@ -33,22 +33,22 @@ public class NotNullWhenTest extends TestCase {
         assertTrue(requiredWhen.hasParameters());
         assertTrue(requiredWhen.validateParameters());
 
-        assertFalse(new RequiredWhenRule(new String[]{}).validateParameters());
-        assertFalse(new RequiredWhenRule(new String[]{""}).validateParameters());
-        assertFalse(new RequiredWhenRule(new String[]{"ab"}).validateParameters());
-        assertFalse(new RequiredWhenRule(new String[]{"abcd"}).validateParameters());
-        assertFalse(new RequiredWhenRule(new String[]{"a", "a", "abcd"}).validateParameters());
-        assertTrue(new RequiredWhenRule(new String[]{"a", "b"}).validateParameters());
+        assertFalse(new WhenEqualRule(new String[]{}).validateParameters());
+        assertFalse(new WhenEqualRule(new String[]{""}).validateParameters());
+        assertFalse(new WhenEqualRule(new String[]{"ab"}).validateParameters());
+        assertFalse(new WhenEqualRule(new String[]{"abcd"}).validateParameters());
+        assertFalse(new WhenEqualRule(new String[]{"a", "a", "abcd"}).validateParameters());
+        assertTrue(new WhenEqualRule(new String[]{"a", "b"}).validateParameters());
     }
 
     public void testRule() throws Exception {
         assertFalse(requiredWhen.validate(""));
         assertTrue(requiredWhen.validate("a"));
 
-        assertTrue(new RequiredWhenRule(new String[]{"test", "d"}).validate(""));
-        assertFalse(new RequiredWhenRule(new String[]{"test", "test"}).validate(""));
+        assertTrue(new WhenEqualRule(new String[]{"test", "d"}).validate(""));
+        assertFalse(new WhenEqualRule(new String[]{"test", "test"}).validate(""));
 
-        assertTrue(new RequiredWhenRule(new String[]{"test", "test"}).validate("required"));
-        assertFalse(new RequiredWhenRule(new String[]{"test", "test"}).validate(""));
+        assertTrue(new WhenEqualRule(new String[]{"test", "test"}).validate("required"));
+        assertFalse(new WhenEqualRule(new String[]{"test", "test"}).validate(""));
     }
 }

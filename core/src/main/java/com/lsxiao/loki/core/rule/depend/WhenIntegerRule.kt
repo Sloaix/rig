@@ -10,9 +10,9 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredExceptRule(parameters: Array<String>) : LokiRule(parameters) {
+class WhenIntegerRule(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
-        val name = "required_except"
+        val name = "when_int"
     }
 
     override fun hasParameters() = true
@@ -20,7 +20,7 @@ class RequiredExceptRule(parameters: Array<String>) : LokiRule(parameters) {
     override fun validateParameters() = parameters.size == 2
 
     override fun validate(data: String?): Boolean = when {
-        parameters.first() != parameters.last() -> data != null && data.isNotEmpty()
+        parameters.first() == parameters.last() -> data != null && data.isNotEmpty()
         else -> true
     }
 }

@@ -1,5 +1,5 @@
 import com.lsxiao.loki.core.LokiRuleParser;
-import com.lsxiao.loki.core.rule.implicit.NotNullRule;
+import com.lsxiao.loki.core.rule.other.NotNullRule;
 import com.lsxiao.loki.core.rule.size.BetweenRule;
 import com.lsxiao.loki.core.rule.size.MaxRule;
 

@@ -10,9 +10,9 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWhenRule(parameters: Array<String>) : LokiRule(parameters) {
+class WhenRegExpRule(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
-        val name = "required_when"
+        val name = "when_reg"
     }
 
     override fun hasParameters() = true

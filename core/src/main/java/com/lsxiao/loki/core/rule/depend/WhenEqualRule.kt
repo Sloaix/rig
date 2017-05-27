@@ -10,17 +10,17 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RequiredWithoutAnyRule(parameters: Array<String>) : LokiRule(parameters) {
+class WhenEqualRule(parameters: Array<String>) : LokiRule(parameters) {
     companion object {
-        val name = "required_without_any"
+        val name = "when_eq"
     }
 
     override fun hasParameters() = true
 
-    override fun validateParameters() = parameters.isNotEmpty()
+    override fun validateParameters() = parameters.size == 2
 
     override fun validate(data: String?): Boolean = when {
-        parameters.any { it.isEmpty() } -> data != null && data.isNotEmpty()
+        parameters.first() == parameters.last() -> data != null && data.isNotEmpty()
         else -> true
     }
 }

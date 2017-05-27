@@ -1,9 +1,9 @@
 package com.lsxiao.loki.core.rule
 
-import com.lsxiao.loki.core.rule.depend.RequiredWhenRule
-import com.lsxiao.loki.core.rule.implicit.AcceptedRule
-import com.lsxiao.loki.core.rule.implicit.FilledRule
-import com.lsxiao.loki.core.rule.implicit.NotNullRule
+import com.lsxiao.loki.core.rule.depend.WhenEqualRule
+import com.lsxiao.loki.core.rule.other.AcceptedRule
+import com.lsxiao.loki.core.rule.other.FilledRule
+import com.lsxiao.loki.core.rule.other.NotNullRule
 import com.lsxiao.loki.core.rule.numeric.IntegerRule
 import com.lsxiao.loki.core.rule.size.BetweenRule
 import com.lsxiao.loki.core.rule.size.MaxRule
@@ -27,7 +27,7 @@ object RuleFactory {
         NotNullRule.name -> NotNullRule()
         FilledRule.name -> FilledRule()
         IntegerRule.name -> IntegerRule()
-        RequiredWhenRule.name -> RequiredWhenRule(parameters)
+        WhenEqualRule.name -> WhenEqualRule(parameters)
         else -> null!!
     }
 }

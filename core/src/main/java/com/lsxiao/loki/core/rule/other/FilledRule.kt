@@ -1,4 +1,4 @@
-package com.lsxiao.loki.core.rule.implicit
+package com.lsxiao.loki.core.rule.other
 
 import com.lsxiao.loki.core.rule.LokiRule
 
@@ -10,18 +10,16 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class AcceptedRule : LokiRule() {
+class FilledRule : LokiRule() {
     companion object {
-        val name = "accepted"
+        val name = "filled"
     }
-
-    val acceptable = listOf("yes", "on", "1", "true")
 
     override fun hasParameters() = false
 
     override fun validateParameters() = false
 
     override fun validate(data: String?): Boolean {
-        return acceptable.contains(data)
+        return data != null && data.isNotEmpty()
     }
 }

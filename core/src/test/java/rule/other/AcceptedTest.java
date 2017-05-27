@@ -1,6 +1,6 @@
-package rule.implicit;
+package rule.other;
 
-import com.lsxiao.loki.core.rule.implicit.AcceptedRule;
+import com.lsxiao.loki.core.rule.other.AcceptedRule;
 
 import junit.framework.TestCase;
 
