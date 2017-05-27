@@ -47,7 +47,7 @@ class CodeGenerator private constructor(private val unitRuleDescriptors: ArrayLi
     fun getGeneratorTypeSpec(): TypeSpec = TypeSpec
             .classBuilder(GENERATE_CLASS_NAME)
             .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-            .addMethod(getBroadcastEventFunctionMethodSpec())
+            .addMethod(getValidateFunctionMethodSpec())
             .build()
 
     /**
@@ -56,7 +56,7 @@ class CodeGenerator private constructor(private val unitRuleDescriptors: ArrayLi
      *      return;
      * }
      */
-    fun getBroadcastEventFunctionMethodSpec(): MethodSpec {
+    fun getValidateFunctionMethodSpec(): MethodSpec {
         val builder = MethodSpec.methodBuilder("validate")
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(Object::class.java, "o", Modifier.FINAL)
