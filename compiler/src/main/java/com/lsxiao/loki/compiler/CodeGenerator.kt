@@ -40,7 +40,7 @@ class CodeGenerator private constructor(private val unitRuleDescriptors: ArrayLi
             .build()
 
     /**
-     *   public final class ApolloBinderGeneratorImpl implements ApolloBinderGenerator {
+     *   public final class LokiValidator {
      *      ...
      *  }
      */
@@ -51,10 +51,7 @@ class CodeGenerator private constructor(private val unitRuleDescriptors: ArrayLi
             .build()
 
     /**
-     * public void broadcastEvent(final Event event) {
-     *      if(com.lsxiao.apollo.core.Apollo.getContext()==null||!(com.lsxiao.apollo.core.Apollo.getContext() instanceof android.content.Context)) {
-     *      return;
-     *      }
+     * public void validate(final Object o) {
      *      ...
      *      return;
      * }
