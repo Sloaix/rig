@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group =  parent.ext.group
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile parent.ext.test.junit
+    def libs = parent.ext.libs
+    compile libs.javapoet
+    compile libs.autoService
+    compile libs.autoCommon
+    compile libs.kotlin
+    compile project(':core')
+}

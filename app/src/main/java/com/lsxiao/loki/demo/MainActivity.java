@@ -8,12 +8,16 @@ import com.lsxiao.loki.core.ValidateResult;
 import com.lsxiao.loki.core.annotation.Rule;
 
 public class MainActivity extends BaseActivity {
-    @Rule(value = "notnull|filled|between:10,30", name = "age")
+    @Rule(value = "integer|between:10,30", name = "age")
     public String age;
 
     @Rule("notnull|min:3|required_when:age,=,18")
     public String name;
 
+    @Rule("filled")
+    public String getCity() {
+        return "NewYork";
+    }
 
     @Override
     void afterCreate(Bundle savedInstanceState) {
@@ -25,9 +29,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
     @Override
     int getLayoutId() {
         return R.layout.activity_main;
     }
+
 }

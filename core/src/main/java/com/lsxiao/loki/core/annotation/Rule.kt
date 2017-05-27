@@ -8,6 +8,6 @@ package com.lsxiao.loki.core.annotation
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-@Target(AnnotationTarget.FIELD)
+@Target(AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.SOURCE)
 annotation class Rule(val value: String, val name: String = "")
