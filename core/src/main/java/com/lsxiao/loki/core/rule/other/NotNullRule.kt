@@ -15,11 +15,11 @@ class NotNullRule : LokiRule() {
         val name = "notnull"
     }
 
-    override fun hasParameters() = false
+    override fun needParams() = false
 
-    override fun validateParameters() = false
+    override fun checkParams() = false
 
-    override fun validate(data: String?): Boolean {
+    override fun check(data: String?): Boolean {
         return data != null
     }
 }

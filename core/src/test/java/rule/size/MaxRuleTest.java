@@ -18,25 +18,25 @@ public class MaxRuleTest extends TestCase {
     }
 
     public void testParameters() throws Exception {
-        assertTrue(mMaxRule.getParameters().length == 1);
-        assertSame(mMaxRule.getParameters()[0], "3");
-        assertNotNull(mMaxRule.getParameters());
-        assertTrue(mMaxRule.hasParameters());
-        assertTrue(mMaxRule.validateParameters());
+        assertTrue(mMaxRule.getParams().length == 1);
+        assertSame(mMaxRule.getParams()[0], "3");
+        assertNotNull(mMaxRule.getParams());
+        assertTrue(mMaxRule.needParams());
+        assertTrue(mMaxRule.checkParams());
 
 
-        assertFalse(new MinRule(new String[]{}).validateParameters());
-        assertFalse(new MinRule(new String[]{""}).validateParameters());
-        assertFalse(new MinRule(new String[]{"abc"}).validateParameters());
+        assertFalse(new MinRule(new String[]{}).checkParams());
+        assertFalse(new MinRule(new String[]{""}).checkParams());
+        assertFalse(new MinRule(new String[]{"abc"}).checkParams());
     }
 
     public void testRule() throws Exception {
-        assertTrue(mMaxRule.validate(""));
-        assertTrue(mMaxRule.validate("a"));
-        assertTrue(mMaxRule.validate("ab"));
-        assertTrue(mMaxRule.validate("abc"));
-        assertFalse(mMaxRule.validate("abcd"));
-        assertFalse(mMaxRule.validate("abcde"));
-        assertFalse(mMaxRule.validate("abcdef"));
+        assertTrue(mMaxRule.check(""));
+        assertTrue(mMaxRule.check("a"));
+        assertTrue(mMaxRule.check("ab"));
+        assertTrue(mMaxRule.check("abc"));
+        assertFalse(mMaxRule.check("abcd"));
+        assertFalse(mMaxRule.check("abcde"));
+        assertFalse(mMaxRule.check("abcdef"));
     }
 }

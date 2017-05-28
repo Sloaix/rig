@@ -15,13 +15,13 @@ class BetweenRule(parameters: Array<String>) : LokiRule(parameters) {
         val name = "between"
     }
 
-    override fun hasParameters() = true
+    override fun needParams() = true
 
-    override fun validateParameters(): Boolean {
-        return parameters.size == 2 && parameters.all { it.toIntOrNull() != null }
+    override fun checkParams(): Boolean {
+        return params.size == 2 && params.all { it.toIntOrNull() != null }
     }
 
-    override fun validate(data: String?): Boolean {
-        return data != null && data.length >= parameters.min()!!.toInt() && data.length <= parameters.max()!!.toInt()
+    override fun check(data: String?): Boolean {
+        return data != null && data.length >= params.min()!!.toInt() && data.length <= params.max()!!.toInt()
     }
 }

@@ -9,15 +9,15 @@ import java.util.*
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
-abstract class LokiRule(val parameters: Array<String> = emptyArray()) {
+abstract class LokiRule(val params: Array<String> = emptyArray()) {
 
-    abstract fun hasParameters(): Boolean
+    abstract fun needParams(): Boolean
 
-    abstract fun validateParameters(): Boolean
+    abstract fun checkParams(): Boolean
 
-    abstract fun validate(data: String?): Boolean
+    abstract fun check(data: String?): Boolean
 
     override fun toString(): String {
-        return "LokiRule(parameters=${Arrays.toString(parameters)})"
+        return "LokiRule(params=${Arrays.toString(params)})"
     }
 }

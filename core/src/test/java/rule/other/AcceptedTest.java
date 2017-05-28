@@ -25,23 +25,23 @@ public class AcceptedTest extends TestCase {
     }
 
     public void testNoParameters() throws Exception {
-        assertNotNull(accepted.getParameters());
-        assertTrue(accepted.getParameters().length == 0);
-        assertFalse(accepted.hasParameters());
-        assertFalse(accepted.validateParameters());
+        assertNotNull(accepted.getParams());
+        assertTrue(accepted.getParams().length == 0);
+        assertFalse(accepted.needParams());
+        assertFalse(accepted.checkParams());
     }
 
     public void testRule() throws Exception {
-        assertTrue(accepted.validate("yes"));
-        assertTrue(accepted.validate("on"));
-        assertTrue(accepted.validate("1"));
-        assertTrue(accepted.validate("true"));
+        assertTrue(accepted.check("yes"));
+        assertTrue(accepted.check("on"));
+        assertTrue(accepted.check("1"));
+        assertTrue(accepted.check("true"));
 
-        assertFalse(accepted.validate("no"));
-        assertFalse(accepted.validate("off"));
-        assertFalse(accepted.validate("0"));
-        assertFalse(accepted.validate("2"));
-        assertFalse(accepted.validate("3"));
-        assertFalse(accepted.validate("false"));
+        assertFalse(accepted.check("no"));
+        assertFalse(accepted.check("off"));
+        assertFalse(accepted.check("0"));
+        assertFalse(accepted.check("2"));
+        assertFalse(accepted.check("3"));
+        assertFalse(accepted.check("false"));
     }
 }

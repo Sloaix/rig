@@ -15,9 +15,9 @@ class IntegerRule : LokiRule() {
         val name = "int"
     }
 
-    override fun hasParameters() = false
+    override fun needParams() = false
 
-    override fun validateParameters(): Boolean = false
+    override fun checkParams(): Boolean = false
 
-    override fun validate(data: String?): Boolean = data?.toIntOrNull() != null
+    override fun check(data: String?): Boolean = data?.toIntOrNull() != null
 }

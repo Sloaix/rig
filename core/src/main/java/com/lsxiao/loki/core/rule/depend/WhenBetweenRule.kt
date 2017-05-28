@@ -15,12 +15,12 @@ class WhenBetweenRule(parameters: Array<String>) : LokiRule(parameters) {
         val name = "when_eq"
     }
 
-    override fun hasParameters() = true
+    override fun needParams() = true
 
-    override fun validateParameters() = parameters.size == 2
+    override fun checkParams() = params.size == 2
 
-    override fun validate(data: String?): Boolean = when {
-        parameters.first() == parameters.last() -> data != null && data.isNotEmpty()
+    override fun check(data: String?): Boolean = when {
+        params.first() == params.last() -> data != null && data.isNotEmpty()
         else -> true
     }
 }

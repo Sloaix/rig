@@ -25,18 +25,18 @@ public class FilledTest extends TestCase {
     }
 
     public void testNoParameters() throws Exception {
-        assertNotNull(mFilled.getParameters());
-        assertTrue(mFilled.getParameters().length == 0);
-        assertFalse(mFilled.hasParameters());
-        assertFalse(mFilled.validateParameters());
+        assertNotNull(mFilled.getParams());
+        assertTrue(mFilled.getParams().length == 0);
+        assertFalse(mFilled.needParams());
+        assertFalse(mFilled.checkParams());
     }
 
     public void testRule() throws Exception {
-        assertFalse(mFilled.validate(null));
-        assertFalse(mFilled.validate(""));
-        assertTrue(mFilled.validate("abc"));
-        assertTrue(mFilled.validate("123"));
-        assertTrue(mFilled.validate("adc123"));
-        assertTrue(mFilled.validate("adc123,./"));
+        assertFalse(mFilled.check(null));
+        assertFalse(mFilled.check(""));
+        assertTrue(mFilled.check("abc"));
+        assertTrue(mFilled.check("123"));
+        assertTrue(mFilled.check("adc123"));
+        assertTrue(mFilled.check("adc123,./"));
     }
 }

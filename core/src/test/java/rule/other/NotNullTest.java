@@ -17,18 +17,18 @@ public class NotNullTest extends TestCase {
     }
 
     public void testNoParameters() throws Exception {
-        assertNotNull(mNotNull.getParameters());
-        assertTrue(mNotNull.getParameters().length == 0);
-        assertFalse(mNotNull.hasParameters());
-        assertFalse(mNotNull.validateParameters());
+        assertNotNull(mNotNull.getParams());
+        assertTrue(mNotNull.getParams().length == 0);
+        assertFalse(mNotNull.needParams());
+        assertFalse(mNotNull.checkParams());
     }
 
     public void testRule() throws Exception {
-        assertFalse(mNotNull.validate(null));
-        assertTrue(mNotNull.validate(""));
-        assertTrue(mNotNull.validate("abc"));
-        assertTrue(mNotNull.validate("123"));
-        assertTrue(mNotNull.validate("adc123"));
-        assertTrue(mNotNull.validate("adc123,./"));
+        assertFalse(mNotNull.check(null));
+        assertTrue(mNotNull.check(""));
+        assertTrue(mNotNull.check("abc"));
+        assertTrue(mNotNull.check("123"));
+        assertTrue(mNotNull.check("adc123"));
+        assertTrue(mNotNull.check("adc123,./"));
     }
 }

@@ -17,25 +17,25 @@ public class SizeRuleTest extends TestCase {
     }
 
     public void testParameters() throws Exception {
-        assertTrue(mSizeRule.getParameters().length == 1);
-        assertSame(mSizeRule.getParameters()[0], "3");
-        assertNotNull(mSizeRule.getParameters());
-        assertTrue(mSizeRule.hasParameters());
-        assertTrue(mSizeRule.validateParameters());
+        assertTrue(mSizeRule.getParams().length == 1);
+        assertSame(mSizeRule.getParams()[0], "3");
+        assertNotNull(mSizeRule.getParams());
+        assertTrue(mSizeRule.needParams());
+        assertTrue(mSizeRule.checkParams());
 
-        assertFalse(new SizeRule(new String[]{}).validateParameters());
-        assertFalse(new SizeRule(new String[]{""}).validateParameters());
-        assertFalse(new SizeRule(new String[]{"ab"}).validateParameters());
-        assertFalse(new SizeRule(new String[]{"abcd"}).validateParameters());
+        assertFalse(new SizeRule(new String[]{}).checkParams());
+        assertFalse(new SizeRule(new String[]{""}).checkParams());
+        assertFalse(new SizeRule(new String[]{"ab"}).checkParams());
+        assertFalse(new SizeRule(new String[]{"abcd"}).checkParams());
     }
 
     public void testRule() throws Exception {
-        assertFalse(mSizeRule.validate(""));
-        assertFalse(mSizeRule.validate("a"));
-        assertFalse(mSizeRule.validate("ab"));
-        assertTrue(mSizeRule.validate("abc"));
-        assertFalse(mSizeRule.validate("abcd"));
-        assertFalse(mSizeRule.validate("abcde"));
-        assertFalse(mSizeRule.validate("abcdef"));
+        assertFalse(mSizeRule.check(""));
+        assertFalse(mSizeRule.check("a"));
+        assertFalse(mSizeRule.check("ab"));
+        assertTrue(mSizeRule.check("abc"));
+        assertFalse(mSizeRule.check("abcd"));
+        assertFalse(mSizeRule.check("abcde"));
+        assertFalse(mSizeRule.check("abcdef"));
     }
 }

@@ -15,13 +15,13 @@ class MinRule(parameters: Array<String>) : LokiRule(parameters) {
         val name = "min"
     }
 
-    override fun hasParameters() = true
+    override fun needParams() = true
 
-    override fun validateParameters(): Boolean {
-        return parameters.size == 1 && parameters.first().toIntOrNull() != null
+    override fun checkParams(): Boolean {
+        return params.size == 1 && params.first().toIntOrNull() != null
     }
 
-    override fun validate(data: String?): Boolean {
-        return data != null && data.length >= parameters.first().toInt()
+    override fun check(data: String?): Boolean {
+        return data != null && data.length >= params.first().toInt()
     }
 }

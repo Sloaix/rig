@@ -15,9 +15,9 @@ class NumericRule : LokiRule() {
         val name = "numeric"
     }
 
-    override fun hasParameters() = false
+    override fun needParams() = false
 
-    override fun validateParameters(): Boolean = false
+    override fun checkParams(): Boolean = false
 
-    override fun validate(data: String?): Boolean = data?.toDoubleOrNull() != null
+    override fun check(data: String?): Boolean = data?.toDoubleOrNull() != null
 }

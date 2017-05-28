@@ -17,28 +17,28 @@ public class BetweenRuleTest extends TestCase {
     }
 
     public void testParameters() throws Exception {
-        assertTrue(mBetweenRule.getParameters().length == 2);
-        assertSame(mBetweenRule.getParameters()[0], "1");
-        assertSame(mBetweenRule.getParameters()[1], "3");
-        assertNotNull(mBetweenRule.getParameters());
-        assertTrue(mBetweenRule.hasParameters());
-        assertTrue(mBetweenRule.validateParameters());
+        assertTrue(mBetweenRule.getParams().length == 2);
+        assertSame(mBetweenRule.getParams()[0], "1");
+        assertSame(mBetweenRule.getParams()[1], "3");
+        assertNotNull(mBetweenRule.getParams());
+        assertTrue(mBetweenRule.needParams());
+        assertTrue(mBetweenRule.checkParams());
 
-        assertFalse(new BetweenRule(new String[]{}).validateParameters());
-        assertFalse(new BetweenRule(new String[]{""}).validateParameters());
-        assertFalse(new BetweenRule(new String[]{"ab"}).validateParameters());
-        assertFalse(new BetweenRule(new String[]{"abcd"}).validateParameters());
-        assertFalse(new BetweenRule(new String[]{"a", "a", "abcd"}).validateParameters());
-        assertFalse(new BetweenRule(new String[]{"a", "b"}).validateParameters());
+        assertFalse(new BetweenRule(new String[]{}).checkParams());
+        assertFalse(new BetweenRule(new String[]{""}).checkParams());
+        assertFalse(new BetweenRule(new String[]{"ab"}).checkParams());
+        assertFalse(new BetweenRule(new String[]{"abcd"}).checkParams());
+        assertFalse(new BetweenRule(new String[]{"a", "a", "abcd"}).checkParams());
+        assertFalse(new BetweenRule(new String[]{"a", "b"}).checkParams());
     }
 
     public void testRule() throws Exception {
-        assertFalse(mBetweenRule.validate(""));
-        assertTrue(mBetweenRule.validate("a"));
-        assertTrue(mBetweenRule.validate("ab"));
-        assertTrue(mBetweenRule.validate("abc"));
-        assertFalse(mBetweenRule.validate("abcd"));
-        assertFalse(mBetweenRule.validate("abcde"));
-        assertFalse(mBetweenRule.validate("abcdef"));
+        assertFalse(mBetweenRule.check(""));
+        assertTrue(mBetweenRule.check("a"));
+        assertTrue(mBetweenRule.check("ab"));
+        assertTrue(mBetweenRule.check("abc"));
+        assertFalse(mBetweenRule.check("abcd"));
+        assertFalse(mBetweenRule.check("abcde"));
+        assertFalse(mBetweenRule.check("abcdef"));
     }
 }

@@ -17,11 +17,11 @@ class AcceptedRule : LokiRule() {
 
     val acceptable = listOf("yes", "on", "1", "true")
 
-    override fun hasParameters() = false
+    override fun needParams() = false
 
-    override fun validateParameters() = false
+    override fun checkParams() = false
 
-    override fun validate(data: String?): Boolean {
+    override fun check(data: String?): Boolean {
         return acceptable.contains(data)
     }
 }
