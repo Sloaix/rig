@@ -1,6 +1,6 @@
 package rule.other;
 
-import com.lsxiao.loki.core.rule.other.AcceptedRule;
+import com.lsxiao.rig.core.rule.other.AcceptedRule;
 
 import junit.framework.TestCase;
 

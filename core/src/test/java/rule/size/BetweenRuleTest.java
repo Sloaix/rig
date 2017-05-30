@@ -1,6 +1,6 @@
 package rule.size;
 
-import com.lsxiao.loki.core.rule.size.BetweenRule;
+import com.lsxiao.rig.core.rule.size.BetweenRule;
 
 import junit.framework.TestCase;
 

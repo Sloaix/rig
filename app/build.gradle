@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.lsxiao.loki.demo"
+        applicationId "com.lsxiao.rig.demo"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1

@@ -1,7 +1,7 @@
 package rule.size;
 
-import com.lsxiao.loki.core.rule.size.MaxRule;
-import com.lsxiao.loki.core.rule.size.MinRule;
+import com.lsxiao.rig.core.rule.size.MaxRule;
+import com.lsxiao.rig.core.rule.size.MinRule;
 
 import junit.framework.TestCase;
 

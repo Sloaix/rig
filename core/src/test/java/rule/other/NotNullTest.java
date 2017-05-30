@@ -1,6 +1,6 @@
 package rule.other;
 
-import com.lsxiao.loki.core.rule.other.NotNullRule;
+import com.lsxiao.rig.core.rule.other.NotNullRule;
 
 import junit.framework.TestCase;
 

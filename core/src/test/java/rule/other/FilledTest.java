@@ -1,11 +1,11 @@
 package rule.other;
 
-import com.lsxiao.loki.core.rule.other.FilledRule;
+import com.lsxiao.rig.core.rule.other.FilledRule;
 
 import junit.framework.TestCase;
 
 /**
- * write with Loki
+ * write with Rig
  * author:lsxiao
  * date:2017-05-26 22:53
  * github:https://github.com/lsxiao

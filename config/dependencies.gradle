@@ -8,7 +8,7 @@ allprojects {
 }
 
 ext {
-    group = "com.lsxiao.loki"
+    group = "com.lsxiao.rig"
 
     //Official
     buildToolsVersion = "25.0.3"
