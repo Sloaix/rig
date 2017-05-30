@@ -3,6 +3,7 @@ package com.lsxiao.rig.core.rule
 import com.lsxiao.rig.core.rule.depend.WhenBetweenRule
 import com.lsxiao.rig.core.rule.depend.WhenEqualRule
 import com.lsxiao.rig.core.rule.depend.WhenFilledRule
+import com.lsxiao.rig.core.rule.depend.WhenGreaterThanRule
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.other.AcceptedRule
 import com.lsxiao.rig.core.rule.other.FilledRule
@@ -29,9 +30,10 @@ object RuleFactory {
         NotNullRule.name -> NotNullRule()
         FilledRule.name -> FilledRule()
         IntegerRule.name -> IntegerRule()
+        WhenBetweenRule.name -> WhenBetweenRule(parameters, dependValue)
         WhenEqualRule.name -> WhenEqualRule(parameters, dependValue)
         WhenFilledRule.name -> WhenFilledRule(parameters, dependValue)
-        WhenBetweenRule.name -> WhenBetweenRule(parameters, dependValue)
+        WhenGreaterThanRule.name -> WhenGreaterThanRule(parameters, dependValue)
         else -> null
     }
 }
