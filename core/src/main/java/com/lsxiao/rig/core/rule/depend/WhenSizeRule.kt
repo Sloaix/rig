@@ -10,7 +10,7 @@ import com.lsxiao.rig.core.rule.DependRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenSizeRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
+class WhenSizeRule(override val params: Array<String>, override val dependValue: String?) : DependRigRule {
     companion object {
         val name = "when_size"
     }

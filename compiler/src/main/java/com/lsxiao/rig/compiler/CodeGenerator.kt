@@ -43,7 +43,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
             .build()
 
     /**
-     *   public final class LokiValidator {
+     *   public final class RigValidator {
      *      ...
      *  }
      */
@@ -133,6 +133,8 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     fun variableOrMethod(element: Element): String {
         return if (element is ExecutableElement) {
             "${element.simpleName}()"
+        } else if (setOf("android.widget.EditText", "android.widget.TextView").contains(element.asType().toString())) {
+            "${element.simpleName}.getText().toString()"
         } else {
             "${element.simpleName}"
         }

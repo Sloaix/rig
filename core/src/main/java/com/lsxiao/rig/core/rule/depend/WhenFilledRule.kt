@@ -10,14 +10,12 @@ import com.lsxiao.rig.core.rule.DependRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenFilledRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
+class WhenFilledRule(override val params: Array<String>, override val dependValue: String?) : DependRigRule {
     companion object {
         val name = "when_filled"
     }
+
     override fun checkParams() = params.size == 2
 
-    override fun check(data: String?): Boolean = when {
-        params.first() == params.last() -> data != null && data.isNotEmpty()
-        else -> true
-    }
+    override fun check(data: String?): Boolean = dependValue != null && dependValue.isNotEmpty()
 }

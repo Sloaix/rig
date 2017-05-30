@@ -14,19 +14,19 @@ import com.lsxiao.rig.core.rule.RuleFactory
 object RuleParser {
 
     /**
-     * 解析单行规则，返回一个lokiRule列表
+     * 解析单行规则，返回一个RigRule列表
      */
     fun parse(rules: String) = rules.split("|").map(this::parseSingleRule)
 
     /**
-     * 解析一个单元规则between:1,2  包括规则名和参数,返回一个LokiRule对象
+     * 解析一个单元规则between:1,2  包括规则名和参数,返回一个RigRule对象
      */
     private fun parseSingleRule(stringRule: String): RigRule {
         val temp = stringRule.split(":")
         //分离出规则名称和参数列表 between:1,2
         val name = temp.first()
         val parameters = if (temp.size >= 2) temp.last() else ""
-        return RuleFactory.create(name, parseParameters(parameters)) ?: throw IllegalArgumentException("无法解析 $name 对应的Rule,请确保 $name 是loki已有的rule")
+        return RuleFactory.create(name, parseParameters(parameters)) ?: throw IllegalArgumentException("无法解析 $name 对应的Rule,请确保 $name 是Rig已有的rule")
     }
 
     /**

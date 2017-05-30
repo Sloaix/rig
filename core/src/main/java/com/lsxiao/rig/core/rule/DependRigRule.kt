@@ -8,5 +8,5 @@ package com.lsxiao.rig.core.rule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 interface DependRigRule : ParameterRigRule {
-    val dependValue: String
+    val dependValue: String?
 }

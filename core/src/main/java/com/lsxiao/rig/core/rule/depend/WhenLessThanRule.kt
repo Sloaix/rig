@@ -11,7 +11,7 @@ import com.lsxiao.rig.core.rule.ParameterRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenLessThanRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
+class WhenLessThanRule(override val params: Array<String>, override val dependValue: String?) : DependRigRule {
     companion object {
         val name = "when_lt"
     }
