@@ -12,14 +12,13 @@ import com.lsxiao.rig.core.rule.DependRigRule
 
 class WhenBetweenRule(override val params: Array<String>, override val dependValue: String?) : DependRigRule {
     companion object {
-        val name = "when_eq"
+        val name = "when_between"
     }
-
 
     override fun checkParams() = params.size == 2
 
     override fun check(data: String?): Boolean = when {
-        params.first() == params.last() -> data != null && data.isNotEmpty()
-        else -> true
+        dependValue?.toIntOrNull() == null -> false
+        else -> dependValue >= params.get(1) && dependValue <= params.last()
     }
 }
