@@ -15,7 +15,7 @@ class WhenBetweenRule(override val params: Array<String>, override val dependVal
         val name = "when_between"
     }
 
-    override fun checkParams() = params.size == 2
+    override fun checkParams() = params.size == 3
 
     override fun check(data: String?): Boolean = when {
         dependValue?.toIntOrNull() == null -> false

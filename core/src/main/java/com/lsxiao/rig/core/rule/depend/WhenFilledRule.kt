@@ -15,7 +15,7 @@ class WhenFilledRule(override val params: Array<String>, override val dependValu
         val name = "when_filled"
     }
 
-    override fun checkParams() = params.size == 2
+    override fun checkParams() = params.size == 1
 
     override fun check(data: String?): Boolean = dependValue != null && dependValue.isNotEmpty()
 }

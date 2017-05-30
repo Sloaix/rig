@@ -15,7 +15,7 @@ class WhenIntegerRule(override val params: Array<String>, override val dependVal
         val name = "when_int"
     }
 
-    override fun checkParams() = params.size == 2
+    override fun checkParams() = params.size == 1
 
     override fun check(data: String?): Boolean = dependValue?.toIntOrNull() != null
 }

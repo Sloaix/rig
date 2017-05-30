@@ -17,8 +17,5 @@ class WhenSizeRule(override val params: Array<String>, override val dependValue:
 
     override fun checkParams() = params.size == 2
 
-    override fun check(data: String?): Boolean = when {
-        params.first() == params.last() -> data != null && data.isNotEmpty()
-        else -> true
-    }
+    override fun check(data: String?): Boolean = dependValue?.length == params.last().toIntOrNull()
 }

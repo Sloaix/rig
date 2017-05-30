@@ -33,6 +33,9 @@ object RuleFactory {
         WhenGreaterThanRule.name -> WhenGreaterThanRule(parameters, dependValue)
         WhenIntegerRule.name -> WhenIntegerRule(parameters, dependValue)
         WhenLessThanRule.name -> WhenLessThanRule(parameters, dependValue)
+        WhenNotNullRule.name -> WhenNotNullRule(parameters, dependValue)
+        WhenNumericRule.name -> WhenNumericRule(parameters, dependValue)
+        WhenSizeRule.name -> WhenSizeRule(parameters, dependValue)
         else -> null
     }
 }
