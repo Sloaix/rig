@@ -5,7 +5,7 @@ import com.lsxiao.rig.core.rule.other.AcceptedRule;
 import junit.framework.TestCase;
 
 /**
- * write with LokiRule
+ * write with RigRule
  * author:lsxiao
  * date:2017-05-26 00:54
  * github:https://github.com/lsxiao

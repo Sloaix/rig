@@ -1,6 +1,6 @@
 package com.lsxiao.rig.compiler
 
-import com.lsxiao.rig.core.rule.LokiRule
+import com.lsxiao.rig.core.rule.RigRule
 import javax.lang.model.element.Element
 import kotlin.properties.Delegates
 
@@ -19,7 +19,7 @@ class RuleAnnotationDescriptor private constructor(val element: Element) {
         }
     }
 
-    var rules: List<LokiRule> = emptyList()
+    var mRules: List<RigRule> = emptyList()
     var dependedName: String? = null
     var groupId: Int = 0
     var className: String by Delegates.notNull()

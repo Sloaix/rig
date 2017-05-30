@@ -1,16 +1,16 @@
 package com.lsxiao.rig.core.rule.size
 
-import com.lsxiao.rig.core.rule.ParameterLokiRule
+import com.lsxiao.rig.core.rule.ParameterRigRule
 
 /**
- * write with LokiRule
+ * write with RigRule
  * author:lsxiao
  * date:2017-05-25 22:54
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class MaxRule(override val params: Array<String>) : ParameterLokiRule {
+class MaxRule(override val params: Array<String>) : ParameterRigRule {
     companion object {
         val name = "max"
     }

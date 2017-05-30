@@ -1,7 +1,7 @@
 package com.lsxiao.rig.core
 
 /**
- * write with LokiRule
+ * write with RigRule
  * author:lsxiao
  * date:2017-05-25 21:55
  * github:https://github.com/lsxiao

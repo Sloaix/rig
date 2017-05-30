@@ -3,8 +3,8 @@ package com.lsxiao.rig.compiler
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
-import com.lsxiao.rig.core.rule.LokiRule
-import com.lsxiao.rig.core.rule.ParameterLokiRule
+import com.lsxiao.rig.core.rule.RigRule
+import com.lsxiao.rig.core.rule.ParameterRigRule
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
@@ -66,34 +66,35 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                 .addModifiers(Modifier.PUBLIC)
                 .returns(ValidateResult::class.java)
                 .addParameter(Object::class.java, VAR_OBJECT_NAME, Modifier.FINAL)
-                .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, LokiRule::class.java, HashMap::class.java, List::class.java, LokiRule::class.java)
+                .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, RigRule::class.java, HashMap::class.java, List::class.java, RigRule::class.java)
 
         ruleAnnotationDescriptors.groupBy { it.className }.values.forEach {
-            wrapByIf(builder, it.first(), ruleCodeForOneInstance(it))
+            wrapByIf(builder, it.first(), ruleCodeForOneAnnotation(it))
         }
 
         return builder.addStatement("return new $CLASS($VAR_ERRORS_NAME)", ValidateResult::class.java).build()
     }
 
-    fun ruleCodeForOneInstance(ruleAnnotationDescriptors: List<RuleAnnotationDescriptor>): CodeBlock {
+    fun ruleCodeForOneAnnotation(ruleAnnotationDescriptors: List<RuleAnnotationDescriptor>): CodeBlock {
         val builder = CodeBlock.builder()
         ruleAnnotationDescriptors.forEach {
             val key = "\"${variableOrMethod(it.element)}\""
             builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                     ArrayList::class.java,
-                    LokiRule::class.java)
-                    .addStatement("$VAR_ERRORS_NAME.put($key,new $CLASS<$CLASS>())",
-                            ArrayList::class.java,
-                            LokiRule::class.java)
+                    RigRule::class.java)
 
-            it.rules.forEach {
+            it.mRules.forEach {
                 builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(${ruleInstance(it)})")
                         .build()
             }
 
-
-            builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", LokiRule::class.java)
+            builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", RigRule::class.java)
                     .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${variableOrMethod(it.element)}))")
+                    .beginControlFlow("if($VAR_ERRORS_NAME.get($key) == null)")
+                    .addStatement("$VAR_ERRORS_NAME.put($key,new $CLASS<$CLASS>())",
+                            ArrayList::class.java,
+                            RigRule::class.java)
+                    .endControlFlow()
                     .addStatement("$VAR_ERRORS_NAME.get($key).add(rule)")
                     .endControlFlow()
                     .endControlFlow()
@@ -102,7 +103,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
         return builder.build()
     }
 
-    fun ruleInstance(rule: LokiRule): CodeBlock {
+    fun ruleInstance(rule: RigRule): CodeBlock {
         return CodeBlock
                 .builder()
                 .add("new $CLASS(${params(rule)})",
@@ -110,9 +111,9 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                 .build()
     }
 
-    fun params(rule: LokiRule): CodeBlock? = CodeBlock
+    fun params(rule: RigRule): CodeBlock? = CodeBlock
             .builder()
-            .add(if (rule is ParameterLokiRule) {
+            .add(if (rule is ParameterRigRule) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}}"
             } else {
                 ""
@@ -131,7 +132,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     /**
      *  if (object.getClass().getCanonicalName().equals(...)) {
      *      MainActivity target = ((MainActivity) object);
-     *      Map<String, List<LokiRule>> ruleMap = new HashMap();
+     *      Map<String, List<RigRule>> ruleMap = new HashMap();
      *  ....
      *  }
      */
@@ -142,7 +143,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                         Map::class.java,
                         String::class.java,
                         List::class.java,
-                        LokiRule::class.java,
+                        RigRule::class.java,
                         HashMap::class.java)
                 .addCode(codeBlock)
                 .endControlFlow()

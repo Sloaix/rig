@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core
 
-import com.lsxiao.rig.core.rule.LokiRule
+import com.lsxiao.rig.core.rule.RigRule
 
 /**
  * write with Rig
@@ -10,7 +10,8 @@ import com.lsxiao.rig.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class ValidateResult(val errors: Map<String, List<LokiRule>> = emptyMap()) {
+class ValidateResult(val errors: Map<String, List<RigRule>> = emptyMap()) {
+
     val isFail: Boolean
         get() = !isPass
 

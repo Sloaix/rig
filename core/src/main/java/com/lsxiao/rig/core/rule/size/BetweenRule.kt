@@ -1,17 +1,17 @@
 package com.lsxiao.rig.core.rule.size
 
-import com.lsxiao.rig.core.rule.ParameterLokiRule
+import com.lsxiao.rig.core.rule.ParameterRigRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
 
 /**
- * write with LokiRule
+ * write with RigRule
  * author:lsxiao
  * date:2017-05-25 22:54
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class BetweenRule(override val params: Array<String>) : ParameterLokiRule {
+class BetweenRule(override val params: Array<String>) : ParameterRigRule {
     companion object {
         val name = "between"
     }
