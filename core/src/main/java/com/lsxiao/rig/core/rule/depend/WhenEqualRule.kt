@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core.rule.depend
 
-import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.DependRigRule
 
 /**
  * write with RigRule
@@ -10,15 +10,12 @@ import com.lsxiao.rig.core.rule.ParameterRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenEqualRule(override val params: Array<String>) : ParameterRigRule {
+class WhenEqualRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
     companion object {
         val name = "when_eq"
     }
 
     override fun checkParams() = params.size == 2
 
-    override fun check(data: String?): Boolean = when {
-        params.first() == params.last() -> data != null && data.isNotEmpty()
-        else -> true
-    }
+    override fun check(data: String?): Boolean = dependValue == params.last()
 }

@@ -7,6 +7,6 @@ package com.lsxiao.rig.core.rule
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
-interface DependLokiRule : ParameterRigRule {
-
+interface DependRigRule : ParameterRigRule {
+    val dependValue: String
 }

@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core.rule.depend
 
-import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.DependRigRule
 
 /**
  * write with RigRule
@@ -10,7 +10,7 @@ import com.lsxiao.rig.core.rule.ParameterRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenIntegerRule(override val params: Array<String>) : ParameterRigRule {
+class WhenIntegerRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
     companion object {
         val name = "when_int"
     }

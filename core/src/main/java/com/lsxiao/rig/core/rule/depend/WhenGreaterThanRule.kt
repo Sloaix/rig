@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core.rule.depend
 
-import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.DependRigRule
 
 /**
  * write with RigRule
@@ -10,10 +10,11 @@ import com.lsxiao.rig.core.rule.ParameterRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenGreaterThanRule(override val params: Array<String>) : ParameterRigRule {
+class WhenGreaterThanRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
     companion object {
         val name = "when_gt"
     }
+
     override fun checkParams() = params.size == 2
 
     override fun check(data: String?): Boolean = when {

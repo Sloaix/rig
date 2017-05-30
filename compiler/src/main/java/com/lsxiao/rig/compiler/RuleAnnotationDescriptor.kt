@@ -19,7 +19,7 @@ class RuleAnnotationDescriptor private constructor(val element: Element) {
         }
     }
 
-    var mRules: List<RigRule> = emptyList()
+    var rules: List<RigRule> = emptyList()
     var dependedName: String? = null
     var groupId: Int = 0
     var className: String by Delegates.notNull()

@@ -14,7 +14,7 @@ public class Test {
     @Rule(value = "int|between:20,40", name = "age")
     public String age;
 
-    @Rule("notnull|min:6|when_eq:age,=,50")
+    @Rule("notnull|min:6|when_eq:age,50")
     public String name;
 
     @Rule("filled")

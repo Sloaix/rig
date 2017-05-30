@@ -3,8 +3,9 @@ package com.lsxiao.rig.compiler
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
-import com.lsxiao.rig.core.rule.RigRule
+import com.lsxiao.rig.core.rule.DependRigRule
 import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.RigRule
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
@@ -77,19 +78,27 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
 
     fun ruleCodeForOneAnnotation(ruleAnnotationDescriptors: List<RuleAnnotationDescriptor>): CodeBlock {
         val builder = CodeBlock.builder()
-        ruleAnnotationDescriptors.forEach {
-            val key = "\"${variableOrMethod(it.element)}\""
+        ruleAnnotationDescriptors.forEach { descriptor ->
+            val key = "\"${variableOrMethod(descriptor.element)}\""
             builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                     ArrayList::class.java,
                     RigRule::class.java)
 
-            it.mRules.forEach {
-                builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(${ruleInstance(it)})")
-                        .build()
-            }
+            descriptor.rules
+                    //按照depend优先降序排列,depend优先级最高
+                    .sortedBy {
+                        it !is DependRigRule
+                    }
+                    .forEach {
+                        builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(new $CLASS(${params(it, ruleAnnotationDescriptors)}))",
+                                it.javaClass)
+                    }
 
             builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", RigRule::class.java)
-                    .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${variableOrMethod(it.element)}))")
+                    .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${variableOrMethod(descriptor.element)}))")
+                    .beginControlFlow("if(rule instanceof $CLASS)", DependRigRule::class.java)
+                    .addStatement("break")
+                    .endControlFlow()
                     .beginControlFlow("if($VAR_ERRORS_NAME.get($key) == null)")
                     .addStatement("$VAR_ERRORS_NAME.put($key,new $CLASS<$CLASS>())",
                             ArrayList::class.java,
@@ -103,22 +112,22 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
         return builder.build()
     }
 
-    fun ruleInstance(rule: RigRule): CodeBlock {
-        return CodeBlock
-                .builder()
-                .add("new $CLASS(${params(rule)})",
-                        rule.javaClass)
-                .build()
-    }
-
-    fun params(rule: RigRule): CodeBlock? = CodeBlock
+    fun params(rule: RigRule, collections: List<RuleAnnotationDescriptor>): CodeBlock = CodeBlock
             .builder()
-            .add(if (rule is ParameterRigRule) {
+            .add(if (rule is DependRigRule) {
+                "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}},$VAR_TARGET_NAME.${dependValue(rule.params.first(), collections)}"
+            } else if (rule is ParameterRigRule) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}}"
             } else {
                 ""
             })
             .build()
+
+    fun dependValue(name: String, collections: List<RuleAnnotationDescriptor>): String {
+        return collections.find {
+            it.dependedName == name
+        }?.element?.let { variableOrMethod(it) }.toString()
+    }
 
 
     fun variableOrMethod(element: Element): String {

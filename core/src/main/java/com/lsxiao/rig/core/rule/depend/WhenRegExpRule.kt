@@ -1,5 +1,6 @@
 package com.lsxiao.rig.core.rule.depend
 
+import com.lsxiao.rig.core.rule.DependRigRule
 import com.lsxiao.rig.core.rule.ParameterRigRule
 
 /**
@@ -10,7 +11,7 @@ import com.lsxiao.rig.core.rule.ParameterRigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenRegExpRule(override val params: Array<String>) : ParameterRigRule {
+class WhenRegExpRule(override val params: Array<String>, override val dependValue: String) : DependRigRule {
     companion object {
         val name = "when_reg"
     }

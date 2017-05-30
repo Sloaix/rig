@@ -18,7 +18,7 @@ import com.lsxiao.rig.core.rule.size.SizeRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 object RuleFactory {
-    fun create(name: String, parameters: Array<String> = emptyArray()): RigRule? = when (name) {
+    fun create(name: String, parameters: Array<String> = emptyArray(), dependedName: String = ""): RigRule? = when (name) {
         SizeRule.name -> SizeRule(parameters)
         MinRule.name -> MinRule(parameters)
         MaxRule.name -> MaxRule(parameters)
@@ -27,7 +27,7 @@ object RuleFactory {
         NotNullRule.name -> NotNullRule()
         FilledRule.name -> FilledRule()
         IntegerRule.name -> IntegerRule()
-        WhenEqualRule.name -> WhenEqualRule(parameters)
+        WhenEqualRule.name -> WhenEqualRule(parameters, dependedName)
         else -> null
     }
 }

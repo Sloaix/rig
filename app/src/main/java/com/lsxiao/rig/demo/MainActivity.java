@@ -9,10 +9,10 @@ import com.lsxiao.rig.core.annotation.Rule;
 
 public class MainActivity extends BaseActivity {
     @Rule(value = "int|between:10,30", name = "age")
-    public String age = "5";
+    public String age = "20";
 
-    @Rule("notnull|min:3|when_eq:age,18")
-    public String name = "abdc";
+    @Rule("notnull|min:3|when_eq:age,20")
+    public String name = "fdf";
 
     @Rule("filled")
     public String getCity() {
