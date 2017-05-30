@@ -19,6 +19,6 @@ class WhenGreaterThanRule(override val params: Array<String>, override val depen
 
     override fun check(data: String?): Boolean = when {
         dependValue?.toIntOrNull() == null -> false
-        else -> dependValue < params.last()
+        else -> dependValue > params.last()
     }
 }

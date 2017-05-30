@@ -1,7 +1,6 @@
 package com.lsxiao.rig.core.rule.depend
 
 import com.lsxiao.rig.core.rule.DependRigRule
-import com.lsxiao.rig.core.rule.ParameterRigRule
 
 /**
  * write with RigRule
@@ -19,7 +18,7 @@ class WhenLessThanRule(override val params: Array<String>, override val dependVa
     override fun checkParams() = params.size == 2
 
     override fun check(data: String?): Boolean = when {
-        params.first() == params.last() -> data != null && data.isNotEmpty()
-        else -> true
+        dependValue?.toIntOrNull() == null -> false
+        else -> dependValue < params.last()
     }
 }

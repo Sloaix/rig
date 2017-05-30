@@ -32,6 +32,7 @@ object RuleFactory {
         WhenFilledRule.name -> WhenFilledRule(parameters, dependValue)
         WhenGreaterThanRule.name -> WhenGreaterThanRule(parameters, dependValue)
         WhenIntegerRule.name -> WhenIntegerRule(parameters, dependValue)
+        WhenLessThanRule.name -> WhenLessThanRule(parameters, dependValue)
         else -> null
     }
 }
