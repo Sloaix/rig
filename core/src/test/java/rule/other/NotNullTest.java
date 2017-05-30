@@ -16,13 +16,6 @@ public class NotNullTest extends TestCase {
         assertEquals(NotNullRule.Companion.getName(), "notnull");
     }
 
-    public void testNoParameters() throws Exception {
-        assertNotNull(mNotNull.getParams());
-        assertTrue(mNotNull.getParams().length == 0);
-        assertFalse(mNotNull.needParams());
-        assertFalse(mNotNull.checkParams());
-    }
-
     public void testRule() throws Exception {
         assertFalse(mNotNull.check(null));
         assertTrue(mNotNull.check(""));

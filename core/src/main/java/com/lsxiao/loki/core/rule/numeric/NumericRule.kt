@@ -10,14 +10,10 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class NumericRule : LokiRule() {
+class NumericRule : LokiRule {
     companion object {
         val name = "numeric"
     }
-
-    override fun needParams() = false
-
-    override fun checkParams(): Boolean = false
 
     override fun check(data: String?): Boolean = data?.toDoubleOrNull() != null
 }

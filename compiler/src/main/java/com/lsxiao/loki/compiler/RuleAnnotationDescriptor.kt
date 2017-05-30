@@ -12,10 +12,10 @@ import kotlin.properties.Delegates
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class UnitRuleDescriptor private constructor(val methodElement: Element) {
+class RuleAnnotationDescriptor private constructor(val element: Element) {
     companion object {
-        fun newInstance(methodElement: Element): UnitRuleDescriptor {
-            return UnitRuleDescriptor(methodElement)
+        fun newInstance(methodElement: Element): RuleAnnotationDescriptor {
+            return RuleAnnotationDescriptor(methodElement)
         }
     }
 

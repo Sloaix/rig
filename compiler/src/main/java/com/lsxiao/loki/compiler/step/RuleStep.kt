@@ -4,7 +4,7 @@ import com.google.auto.common.BasicAnnotationProcessor
 import com.google.auto.common.MoreElements
 import com.google.common.collect.SetMultimap
 import com.lsxiao.loki.compiler.LokiProcessor
-import com.lsxiao.loki.compiler.UnitRuleDescriptor
+import com.lsxiao.loki.compiler.RuleAnnotationDescriptor
 import com.lsxiao.loki.core.LokiRuleParser
 import com.lsxiao.loki.core.annotation.Rule
 import java.util.*
@@ -24,7 +24,7 @@ class RuleStep : BasicAnnotationProcessor.ProcessingStep {
     override fun process(elementsByAnnotation: SetMultimap<Class<out Annotation>, Element>): Set<Element> {
         elementsByAnnotation.asMap().keys.forEach {
             elementsByAnnotation.asMap()[it]?.forEach { element ->
-                val descriptor = UnitRuleDescriptor.newInstance(element)
+                val descriptor = RuleAnnotationDescriptor.newInstance(element)
                 descriptor.dependedName = element.getAnnotation(Rule::class.java).name
                 descriptor.rules = LokiRuleParser.parse(element.getAnnotation(Rule::class.java).value)
                 descriptor.className = MoreElements.asType(element.enclosingElement).qualifiedName.toString()

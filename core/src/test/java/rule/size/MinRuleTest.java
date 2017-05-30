@@ -21,7 +21,6 @@ public class MinRuleTest extends TestCase {
         assertTrue(mMinRule.getParams().length == 1);
         assertSame(mMinRule.getParams()[0], "3");
         assertNotNull(mMinRule.getParams());
-        assertTrue(mMinRule.needParams());
         assertTrue(mMinRule.checkParams());
 
         assertFalse(new MaxRule(new String[]{}).checkParams());

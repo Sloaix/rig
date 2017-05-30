@@ -9,5 +9,5 @@ package com.lsxiao.loki.core;
  */
 
 public interface Validator {
-    void check(Object o);
+    ValidateResult check(Object o);
 }

@@ -1,6 +1,6 @@
 package com.lsxiao.loki.core.rule.depend
 
-import com.lsxiao.loki.core.rule.LokiRule
+import com.lsxiao.loki.core.rule.ParameterLokiRule
 
 /**
  * write with LokiRule
@@ -10,12 +10,10 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenEqualRule(parameters: Array<String>) : LokiRule(parameters) {
+class WhenEqualRule(override val params: Array<String>) : ParameterLokiRule {
     companion object {
         val name = "when_eq"
     }
-
-    override fun needParams() = true
 
     override fun checkParams() = params.size == 2
 

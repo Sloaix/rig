@@ -7,6 +7,9 @@ package com.lsxiao.loki.core.rule
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
-interface LokiRule {
-    fun check(data: String?): Boolean
+interface ParameterLokiRule : LokiRule {
+
+    fun checkParams(): Boolean
+
+    val params: Array<String>
 }

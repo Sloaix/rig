@@ -19,7 +19,7 @@ import javax.lang.model.element.Element;
 
 @AutoService(Processor.class)
 public class LokiProcessor extends BasicAnnotationProcessor {
-    public static Map<Element, UnitRuleDescriptor> sDescriptorMap = new HashMap<>();
+    public static Map<Element, RuleAnnotationDescriptor> sDescriptorMap = new HashMap<>();
     private boolean mGenerated = false;
 
     @Override

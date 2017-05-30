@@ -24,13 +24,6 @@ public class AcceptedTest extends TestCase {
         assertEquals(AcceptedRule.Companion.getName(), "accepted");
     }
 
-    public void testNoParameters() throws Exception {
-        assertNotNull(accepted.getParams());
-        assertTrue(accepted.getParams().length == 0);
-        assertFalse(accepted.needParams());
-        assertFalse(accepted.checkParams());
-    }
-
     public void testRule() throws Exception {
         assertTrue(accepted.check("yes"));
         assertTrue(accepted.check("on"));

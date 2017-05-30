@@ -10,14 +10,10 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class IntegerRule : LokiRule() {
+class IntegerRule : LokiRule {
     companion object {
         val name = "int"
+
     }
-
-    override fun needParams() = false
-
-    override fun checkParams(): Boolean = false
-
     override fun check(data: String?): Boolean = data?.toIntOrNull() != null
 }

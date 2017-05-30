@@ -21,7 +21,6 @@ public class BetweenRuleTest extends TestCase {
         assertSame(mBetweenRule.getParams()[0], "1");
         assertSame(mBetweenRule.getParams()[1], "3");
         assertNotNull(mBetweenRule.getParams());
-        assertTrue(mBetweenRule.needParams());
         assertTrue(mBetweenRule.checkParams());
 
         assertFalse(new BetweenRule(new String[]{}).checkParams());

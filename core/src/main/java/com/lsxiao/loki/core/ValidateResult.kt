@@ -10,7 +10,7 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class ValidateResult(val errors: Map<LokiRule, String> = emptyMap()) {
+class ValidateResult(val errors: Map<String, List<LokiRule>> = emptyMap()) {
     val isFail: Boolean
         get() = !isPass
 

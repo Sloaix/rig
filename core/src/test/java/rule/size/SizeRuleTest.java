@@ -20,7 +20,6 @@ public class SizeRuleTest extends TestCase {
         assertTrue(mSizeRule.getParams().length == 1);
         assertSame(mSizeRule.getParams()[0], "3");
         assertNotNull(mSizeRule.getParams());
-        assertTrue(mSizeRule.needParams());
         assertTrue(mSizeRule.checkParams());
 
         assertFalse(new SizeRule(new String[]{}).checkParams());

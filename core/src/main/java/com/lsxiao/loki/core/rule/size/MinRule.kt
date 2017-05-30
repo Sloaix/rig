@@ -1,6 +1,6 @@
 package com.lsxiao.loki.core.rule.size
 
-import com.lsxiao.loki.core.rule.LokiRule
+import com.lsxiao.loki.core.rule.ParameterLokiRule
 
 /**
  * write with LokiRule
@@ -10,12 +10,10 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class MinRule(parameters: Array<String>) : LokiRule(parameters) {
+class MinRule(override val params: Array<String>) : ParameterLokiRule {
     companion object {
         val name = "min"
     }
-
-    override fun needParams() = true
 
     override fun checkParams(): Boolean {
         return params.size == 1 && params.first().toIntOrNull() != null

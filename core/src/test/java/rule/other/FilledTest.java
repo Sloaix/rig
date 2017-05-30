@@ -24,13 +24,6 @@ public class FilledTest extends TestCase {
         assertEquals(FilledRule.Companion.getName(), "filled");
     }
 
-    public void testNoParameters() throws Exception {
-        assertNotNull(mFilled.getParams());
-        assertTrue(mFilled.getParams().length == 0);
-        assertFalse(mFilled.needParams());
-        assertFalse(mFilled.checkParams());
-    }
-
     public void testRule() throws Exception {
         assertFalse(mFilled.check(null));
         assertFalse(mFilled.check(""));

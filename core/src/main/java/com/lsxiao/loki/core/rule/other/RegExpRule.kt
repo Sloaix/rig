@@ -1,6 +1,6 @@
 package com.lsxiao.loki.core.rule.other
 
-import com.lsxiao.loki.core.rule.LokiRule
+import com.lsxiao.loki.core.rule.ParameterLokiRule
 
 /**
  * write with LokiRule
@@ -10,14 +10,14 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RegExpRule : LokiRule() {
+class RegExpRule(override val params: Array<String>) : ParameterLokiRule {
     companion object {
         val name = "reg"
     }
 
-    override fun needParams() = false
-
-    override fun checkParams() = false
+    override fun checkParams(): Boolean {
+        return params.size == 1
+    }
 
     override fun check(data: String?): Boolean {
         return data != null

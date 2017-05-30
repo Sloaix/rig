@@ -21,7 +21,6 @@ public class MaxRuleTest extends TestCase {
         assertTrue(mMaxRule.getParams().length == 1);
         assertSame(mMaxRule.getParams()[0], "3");
         assertNotNull(mMaxRule.getParams());
-        assertTrue(mMaxRule.needParams());
         assertTrue(mMaxRule.checkParams());
 
 

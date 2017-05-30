@@ -10,14 +10,10 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class NotNullRule : LokiRule() {
+class NotNullRule : LokiRule {
     companion object {
         val name = "notnull"
     }
-
-    override fun needParams() = false
-
-    override fun checkParams() = false
 
     override fun check(data: String?): Boolean {
         return data != null

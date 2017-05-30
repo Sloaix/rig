@@ -15,8 +15,6 @@ class Loki {
         }
 
         @JvmStatic
-        fun check(any: Any): Unit {
-            validator.check(any)
-        }
+        fun check(any: Any): ValidateResult = validator.check(any)
     }
 }

@@ -1,6 +1,6 @@
 package com.lsxiao.loki.core.rule.depend
 
-import com.lsxiao.loki.core.rule.LokiRule
+import com.lsxiao.loki.core.rule.ParameterLokiRule
 
 /**
  * write with LokiRule
@@ -10,13 +10,10 @@ import com.lsxiao.loki.core.rule.LokiRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class WhenFilledRule(parameters: Array<String>) : LokiRule(parameters) {
+class WhenFilledRule(override val params: Array<String>) : ParameterLokiRule {
     companion object {
         val name = "when_filled"
     }
-
-    override fun needParams() = true
-
     override fun checkParams() = params.size == 2
 
     override fun check(data: String?): Boolean = when {

@@ -21,7 +21,7 @@ class GroupStep : BasicAnnotationProcessor.ProcessingStep {
     override fun process(elementsByAnnotation: SetMultimap<Class<out Annotation>, Element>): Set<Element> {
         elementsByAnnotation.asMap().keys.forEach { clazz ->
             elementsByAnnotation.asMap()[clazz]?.mapNotNull { LokiProcessor.sDescriptorMap[it] }?.forEach {
-                it.groupId = MoreElements.asExecutable(it.methodElement).getAnnotation(Group::class.java).value
+                it.groupId = MoreElements.asExecutable(it.element).getAnnotation(Group::class.java).value
             }
         }
         return HashSet()
