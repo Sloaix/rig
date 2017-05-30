@@ -1,6 +1,4 @@
-package com.lsxiao.rig.core;
-
-import com.lsxiao.rig.core.ValidateResult;
+package com.lsxiao.rig.core
 
 /**
  * write with RigRule
@@ -10,6 +8,6 @@ import com.lsxiao.rig.core.ValidateResult;
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-public interface Validator {
-    ValidateResult check(Object o);
+interface Validator {
+    fun check(o: Any, group: Int = 0): ValidateResult
 }

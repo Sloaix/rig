@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lsxiao.rig.core.Rig;
+import com.lsxiao.rig.core.annotation.Group;
 import com.lsxiao.rig.core.annotation.Rule;
 
 import butterknife.BindView;
@@ -15,6 +16,7 @@ public class MainActivity extends BaseActivity {
     @Rule(value = "int|between:10,30", name = "age")
     public String age = "20";
 
+    @Group(5)
     @Rule("notnull|min:3|when_eq:age,20")
     public String name = "fdf";
 

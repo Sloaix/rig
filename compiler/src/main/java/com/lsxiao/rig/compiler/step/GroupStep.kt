@@ -1,7 +1,6 @@
 package com.lsxiao.rig.compiler.step
 
 import com.google.auto.common.BasicAnnotationProcessor
-import com.google.auto.common.MoreElements.asExecutable
 import com.google.common.collect.SetMultimap
 import com.lsxiao.rig.compiler.RigProcessor
 import com.lsxiao.rig.core.annotation.Group
@@ -20,7 +19,7 @@ class GroupStep : BasicAnnotationProcessor.ProcessingStep {
     override fun process(elementsByAnnotation: SetMultimap<Class<out Annotation>, Element>): Set<Element> {
         elementsByAnnotation.asMap().keys.forEach { clazz ->
             elementsByAnnotation.asMap()[clazz]?.mapNotNull { RigProcessor.sDescriptorMap[it] }?.forEach {
-                it.groupId = asExecutable(it.element).getAnnotation(Group::class.java).value
+                it.group = it.element.getAnnotation(Group::class.java).value
             }
         }
         return java.util.HashSet()

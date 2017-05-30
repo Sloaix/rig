@@ -21,6 +21,6 @@ class RuleAnnotationDescriptor private constructor(val element: Element) {
 
     var rules: List<RigRule> = emptyList()
     var dependedName: String? = null
-    var groupId: Int = 0
+    var group: Int = 0
     var className: String by Delegates.notNull()
 }
