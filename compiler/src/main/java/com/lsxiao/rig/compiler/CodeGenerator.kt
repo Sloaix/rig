@@ -133,7 +133,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     fun variableOrMethod(element: Element): String {
         return if (element is ExecutableElement) {
             "${element.simpleName}()"
-        } else if (setOf("android.widget.EditText", "android.widget.TextView").contains(element.asType().toString())) {
+        } else if (setOf("android.widget.TextView").contains(element.asType().toString())) {
             "${element.simpleName}.getText().toString()"
         } else {
             "${element.simpleName}"
