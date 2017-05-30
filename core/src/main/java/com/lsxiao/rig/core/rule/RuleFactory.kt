@@ -1,9 +1,6 @@
 package com.lsxiao.rig.core.rule
 
-import com.lsxiao.rig.core.rule.depend.WhenBetweenRule
-import com.lsxiao.rig.core.rule.depend.WhenEqualRule
-import com.lsxiao.rig.core.rule.depend.WhenFilledRule
-import com.lsxiao.rig.core.rule.depend.WhenGreaterThanRule
+import com.lsxiao.rig.core.rule.depend.*
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.other.AcceptedRule
 import com.lsxiao.rig.core.rule.other.FilledRule
@@ -34,6 +31,7 @@ object RuleFactory {
         WhenEqualRule.name -> WhenEqualRule(parameters, dependValue)
         WhenFilledRule.name -> WhenFilledRule(parameters, dependValue)
         WhenGreaterThanRule.name -> WhenGreaterThanRule(parameters, dependValue)
+        WhenIntegerRule.name -> WhenIntegerRule(parameters, dependValue)
         else -> null
     }
 }
