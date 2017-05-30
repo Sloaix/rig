@@ -8,15 +8,15 @@ import com.lsxiao.loki.core.annotation.Rule;
 
 public class MainActivity extends BaseActivity {
     @Rule(value = "int|between:10,30", name = "age")
-    public String age = "20";
+    public String age = "5";
 
     @Rule("notnull|min:3|when_eq:age,18")
-    public String name;
-//
-//    @Rule("filled")
-//    public String getCity() {
-//        return "NewYork";
-//    }
+    public String name="abdc";
+
+    @Rule("filled")
+    public String getCity() {
+        return "NewYork";
+    }
 
     @Override
     void afterCreate(Bundle savedInstanceState) {

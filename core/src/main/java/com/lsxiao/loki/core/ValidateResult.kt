@@ -16,4 +16,9 @@ class ValidateResult(val errors: Map<String, List<LokiRule>> = emptyMap()) {
 
     val isPass: Boolean
         get() = errors.isEmpty()
+
+    override fun toString(): String {
+        return "ValidateResult(errors=$errors)"
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.lsxiao.loki.core.rule.size
 
 import com.lsxiao.loki.core.rule.ParameterLokiRule
+import com.lsxiao.loki.core.rule.numeric.NumericRule
 
 /**
  * write with LokiRule
@@ -20,6 +21,6 @@ class BetweenRule(override val params: Array<String>) : ParameterLokiRule {
     }
 
     override fun check(data: String?): Boolean {
-        return data != null && data.length >= params.min()!!.toInt() && data.length <= params.max()!!.toInt()
+        return NumericRule().check(data) && data!!.toInt() >= params.min()!!.toInt() && data.toInt() <= params.max()!!.toInt()
     }
 }
