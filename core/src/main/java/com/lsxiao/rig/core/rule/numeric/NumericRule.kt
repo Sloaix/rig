@@ -1,16 +1,17 @@
 package com.lsxiao.rig.core.rule.numeric
 
-import com.lsxiao.rig.core.rule.RigRule
+import com.lsxiao.rig.core.rule.Checkable
 
 /**
- * write with RigRule
+ * write with Checkable
  * author:lsxiao
  * date:2017-05-25 22:53
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
+ * 数字校验规则
  */
 
-class NumericRule : RigRule {
+class NumericRule : Checkable {
     companion object {
         val name = "numeric"
     }

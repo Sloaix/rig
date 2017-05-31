@@ -3,9 +3,9 @@ package com.lsxiao.rig.compiler
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
-import com.lsxiao.rig.core.rule.DependRigRule
-import com.lsxiao.rig.core.rule.ParameterRigRule
-import com.lsxiao.rig.core.rule.RigRule
+import com.lsxiao.rig.core.rule.Dependable
+import com.lsxiao.rig.core.rule.Paramable
+import com.lsxiao.rig.core.rule.Checkable
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
@@ -69,7 +69,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                 .returns(ValidateResult::class.java)
                 .addParameter(Object::class.java, VAR_OBJECT_NAME, Modifier.FINAL)
                 .addParameter(Int::class.java, VAR_GROUP_NAME, Modifier.FINAL)
-                .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, RigRule::class.java, HashMap::class.java, List::class.java, RigRule::class.java)
+                .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, Checkable::class.java, HashMap::class.java, List::class.java, Checkable::class.java)
 
         ruleAnnotationDescriptors.groupBy { it.className }.values.forEach {
             wrapByIf(builder, it.first(), ruleCodeForOneAnnotation(it))
@@ -78,6 +78,9 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
         return builder.addStatement("return new $CLASS($VAR_ERRORS_NAME)", ValidateResult::class.java).build()
     }
 
+    /**
+     *
+     */
     fun ruleCodeForOneAnnotation(ruleAnnotationDescriptors: List<RuleAnnotationDescriptor>): CodeBlock {
         val builder = CodeBlock.builder()
         ruleAnnotationDescriptors.groupBy {
@@ -89,27 +92,27 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                 val key = "\"${variableOrMethod(descriptor.element)}\""
                 builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                         ArrayList::class.java,
-                        RigRule::class.java)
+                        Checkable::class.java)
 
-                descriptor.rules
+                descriptor.mRules
                         //按照depend优先降序排列,depend优先级最高,以便遍历的时候先校验dependRule,如果dependRule没有校验通过则不再需要校验之后的规则
                         .sortedBy {
-                            it !is DependRigRule
+                            it !is Dependable
                         }
                         .forEach {
                             builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(new $CLASS(${params(it, ruleAnnotationDescriptors)}))",
                                     it.javaClass)
                         }
 
-                builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", RigRule::class.java)
+                builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", Checkable::class.java)
                         .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${variableOrMethod(descriptor.element)}))")
-                        .beginControlFlow("if(rule instanceof $CLASS)", DependRigRule::class.java)
+                        .beginControlFlow("if(rule instanceof $CLASS)", Dependable::class.java)
                         .addStatement("break")
                         .endControlFlow()
                         .beginControlFlow("if($VAR_ERRORS_NAME.get($key) == null)")
                         .addStatement("$VAR_ERRORS_NAME.put($key,new $CLASS<$CLASS>())",
                                 ArrayList::class.java,
-                                RigRule::class.java)
+                                Checkable::class.java)
                         .endControlFlow()
                         .addStatement("$VAR_ERRORS_NAME.get($key).add(rule)")
                         .endControlFlow()
@@ -121,24 +124,32 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
         return builder.build()
     }
 
-    fun params(rule: RigRule, collections: List<RuleAnnotationDescriptor>): CodeBlock = CodeBlock
+    /**
+     * 生成校验Rule的参数
+     */
+    fun params(rule: Checkable, collections: List<RuleAnnotationDescriptor>): CodeBlock = CodeBlock
             .builder()
-            .add(if (rule is DependRigRule) {
+            .add(if (rule is Dependable) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}},$VAR_TARGET_NAME.${dependValue(rule.params.first(), collections)}"
-            } else if (rule is ParameterRigRule) {
+            } else if (rule is Paramable) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}}"
             } else {
                 ""
             })
             .build()
 
+    /**
+     * 依赖校验的值
+     */
     fun dependValue(name: String, collections: List<RuleAnnotationDescriptor>): String {
         return collections.find {
             it.dependedName == name
         }?.element?.let { variableOrMethod(it) }.toString()
     }
 
-
+    /**
+     * 获取返回String值的方法或者属性
+     */
     fun variableOrMethod(element: Element): String {
         return if (element is ExecutableElement) {
             "${element.simpleName}()"
@@ -152,7 +163,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     /**
      *  if (object.getClass().getCanonicalName().equals(...)) {
      *      MainActivity target = ((MainActivity) object);
-     *      Map<String, List<RigRule>> ruleMap = new HashMap();
+     *      Map<String, List<Checkable>> ruleMap = new HashMap();
      *  ....
      *  }
      */
@@ -163,7 +174,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                         Map::class.java,
                         String::class.java,
                         List::class.java,
-                        RigRule::class.java,
+                        Checkable::class.java,
                         HashMap::class.java)
                 .addCode(codeBlock)
                 .endControlFlow()

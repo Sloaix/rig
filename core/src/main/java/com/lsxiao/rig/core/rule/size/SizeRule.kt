@@ -1,16 +1,17 @@
 package com.lsxiao.rig.core.rule.size
 
-import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.Paramable
 
 /**
- * write with RigRule
+ * write with Checkable
  * author:lsxiao
  * date:2017-05-25 22:54
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
+ * 字符串长度校验规则
  */
 
-class SizeRule(override val params: Array<String>) : ParameterRigRule {
+class SizeRule(override val params: Array<String>) : Paramable {
     companion object {
         val name = "size"
     }

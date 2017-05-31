@@ -1,16 +1,17 @@
 package com.lsxiao.rig.core.rule.other
 
-import com.lsxiao.rig.core.rule.RigRule
+import com.lsxiao.rig.core.rule.Checkable
 
 /**
- * write with RigRule
+ * write with Checkable
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
+ * NotEmpty校验规则
  */
 
-class FilledRule : RigRule {
+class FilledRule : Checkable {
     companion object {
         val name = "filled"
     }

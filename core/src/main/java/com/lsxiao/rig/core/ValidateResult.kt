@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core
 
-import com.lsxiao.rig.core.rule.RigRule
+import com.lsxiao.rig.core.rule.Checkable
 
 /**
  * write with Rig
@@ -10,7 +10,7 @@ import com.lsxiao.rig.core.rule.RigRule
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class ValidateResult(val errors: Map<String, List<RigRule>> = emptyMap()) {
+class ValidateResult(val errors: Map<String, List<Checkable>> = emptyMap()) {
 
     val isFail: Boolean
         get() = !isPass

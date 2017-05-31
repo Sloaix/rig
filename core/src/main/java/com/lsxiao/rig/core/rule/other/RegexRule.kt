@@ -1,16 +1,17 @@
 package com.lsxiao.rig.core.rule.other
 
-import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.Paramable
 
 /**
- * write with RigRule
+ * write with Checkable
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
+ * 正则表达式校验规则
  */
 
-class RegExpRule(override val params: Array<String>) : ParameterRigRule {
+class RegexRule(override val params: Array<String>) : Paramable {
     companion object {
         val name = "reg"
     }

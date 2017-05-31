@@ -1,17 +1,18 @@
 package com.lsxiao.rig.core.rule.size
 
-import com.lsxiao.rig.core.rule.ParameterRigRule
+import com.lsxiao.rig.core.rule.Paramable
 import com.lsxiao.rig.core.rule.numeric.NumericRule
 
 /**
- * write with RigRule
+ * write with Checkable
  * author:lsxiao
  * date:2017-05-25 22:54
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
+ * 区间校验规则
  */
 
-class BetweenRule(override val params: Array<String>) : ParameterRigRule {
+class BetweenRule(override val params: Array<String>) : Paramable {
     companion object {
         val name = "between"
     }
