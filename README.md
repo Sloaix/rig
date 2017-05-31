@@ -4,7 +4,7 @@ Inspired by the Laravel.
 
 This library is under development.
 
-# Development plan(tdd)
+# Development plan
 
 * implement core.
 * implement android extension.
