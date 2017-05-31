@@ -58,3 +58,5 @@ if (Rig.check(this,GROUP_USER).isPass()) {
 }
 ```
 
+# License
+Apache License, Version 2.0
