@@ -1,4 +1,4 @@
-# Human validator for Android
+# Best Human validator for Android (developing)
 
 Inspired by the Laravel.
 
@@ -9,7 +9,7 @@ This library is under development.
 * implement core.
 * implement android extension.
 
-# Usage(Developing)
+# Usage
 simple usage.
 ```java
 @Rule("int|between:10,30")
