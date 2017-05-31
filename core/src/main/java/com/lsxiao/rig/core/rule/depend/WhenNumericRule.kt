@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenNumericRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_numeric"
+        val names = setOf("when_numeric", "w_numeric")
     }
 
 

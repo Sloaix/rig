@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenFilledRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_filled"
+        val names = setOf("when_filled", "w_filled", "w_nonempty")
     }
 
     override fun checkParams() = params.size == 1

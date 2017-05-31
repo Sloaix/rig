@@ -14,7 +14,7 @@ public class MinRuleTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(MinRule.Companion.getName(), "min");
+        assertTrue(MinRule.Companion.getNames().contains("min"));
     }
 
     public void testParameters() throws Exception {

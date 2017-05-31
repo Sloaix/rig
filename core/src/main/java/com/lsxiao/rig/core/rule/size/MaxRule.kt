@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Paramable
 
 class MaxRule(override val params: Array<String>) : Paramable {
     companion object {
-        val name = "max"
+        val names = setOf("max")
     }
 
     override fun checkParams(): Boolean {

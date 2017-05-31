@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Paramable
 
 class MinRule(override val params: Array<String>) : Paramable {
     companion object {
-        val name = "min"
+        val names = setOf("min")
     }
 
     override fun checkParams(): Boolean {

@@ -13,7 +13,7 @@ public class NotNullTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(NotNullRule.Companion.getName(), "notnull");
+        assertTrue(NotNullRule.Companion.getNames().contains("notnull"));
     }
 
     public void testRule() throws Exception {

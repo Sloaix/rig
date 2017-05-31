@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Checkable
 
 class FilledRule : Checkable {
     companion object {
-        val name = "filled"
+        val names = setOf("filled", "nonempty")
     }
 
     override fun check(data: String?): Boolean {

@@ -21,7 +21,7 @@ public class AcceptedTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(AcceptedRule.Companion.getName(), "accepted");
+        assertTrue(AcceptedRule.Companion.getNames().contains("accepted"));
     }
 
     public void testRule() throws Exception {

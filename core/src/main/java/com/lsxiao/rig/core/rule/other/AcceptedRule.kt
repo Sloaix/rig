@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Checkable
 
 class AcceptedRule : Checkable {
     companion object {
-        val name = "accepted"
+        val names = setOf("accept")
     }
 
     val acceptable = listOf("yes", "on", "1", "true")

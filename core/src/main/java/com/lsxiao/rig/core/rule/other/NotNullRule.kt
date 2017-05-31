@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Checkable
 
 class NotNullRule : Checkable {
     companion object {
-        val name = "notnull"
+        val names = setOf("notnull")
     }
 
     override fun check(data: String?): Boolean {

@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Paramable
 
 class SizeRule(override val params: Array<String>) : Paramable {
     companion object {
-        val name = "size"
+        val names = setOf("size", "length")
     }
 
     override fun checkParams(): Boolean {

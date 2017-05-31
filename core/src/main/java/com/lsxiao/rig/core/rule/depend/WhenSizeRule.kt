@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenSizeRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_size"
+        val names = setOf("when_size", "when_length", "w_size", "w_length")
     }
 
     override fun checkParams() = params.size == 2

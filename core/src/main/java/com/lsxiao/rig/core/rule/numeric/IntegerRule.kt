@@ -13,8 +13,9 @@ import com.lsxiao.rig.core.rule.Checkable
 
 class IntegerRule : Checkable {
     companion object {
-        val name = "int"
+        val names = setOf("int", "integer")
 
     }
+
     override fun check(data: String?): Boolean = data?.toIntOrNull() != null
 }

@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenEqualRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_eq"
+        val names = setOf("when_eq", "w_eq")
     }
 
     override fun checkParams() = params.size == 2

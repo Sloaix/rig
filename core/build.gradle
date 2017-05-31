@@ -12,4 +12,7 @@ dependencies {
 
     def libs = parent.ext.libs;
     compile libs.kotlin
+
+    // https://mvnrepository.com/artifact/com.intellij/annotations
+//    compile group: 'com.intellij', names: 'annotations', version: '12.0'
 }

@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenNotNullRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_not_null"
+        val names = setOf("when_notnull", "w_notnull")
     }
 
     override fun checkParams() = params.size == 1

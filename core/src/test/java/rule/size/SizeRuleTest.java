@@ -13,7 +13,7 @@ public class SizeRuleTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(SizeRule.Companion.getName(), "size");
+        assertTrue(SizeRule.Companion.getNames().contains("size"));
     }
 
     public void testParameters() throws Exception {

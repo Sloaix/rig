@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenIntegerRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_int"
+        val names = setOf("when_int", "when_integer", "w_integer", "w_int")
     }
 
     override fun checkParams() = params.size == 1

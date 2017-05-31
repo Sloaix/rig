@@ -14,7 +14,7 @@ public class MaxRuleTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(MaxRule.Companion.getName(), "max");
+        assertTrue(MaxRule.Companion.getNames().contains("max"));
     }
 
     public void testParameters() throws Exception {

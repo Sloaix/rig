@@ -13,7 +13,7 @@ public class BetweenRuleTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertEquals(BetweenRule.Companion.getName(), "between");
+        assertTrue(BetweenRule.Companion.getNames().contains("between"));
     }
 
     public void testParameters() throws Exception {

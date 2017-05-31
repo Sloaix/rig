@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Dependable
 
 class WhenLessThanRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
     companion object {
-        val name = "when_lt"
+        val names = setOf("when_lt", "w_lt")
     }
 
     override fun checkParams() = params.size == 2

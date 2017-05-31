@@ -14,7 +14,7 @@ import com.lsxiao.rig.core.rule.numeric.NumericRule
 
 class BetweenRule(override val params: Array<String>) : Paramable {
     companion object {
-        val name = "between"
+        val names = setOf("between", "range")
     }
 
     override fun checkParams(): Boolean {
