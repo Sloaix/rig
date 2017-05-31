@@ -20,7 +20,6 @@ public class MainActivity extends BaseActivity {
     @Rule("notnull|min:3|when_eq:age,20")
     public String name = "fdf";
 
-
     @BindView(R.id.tv_message)
     public TextView mTvMessage;
 

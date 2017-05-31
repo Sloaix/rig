@@ -92,7 +92,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                         RigRule::class.java)
 
                 descriptor.rules
-                        //按照depend优先降序排列,depend优先级最高
+                        //按照depend优先降序排列,depend优先级最高,以便遍历的时候先校验dependRule,如果dependRule没有校验通过则不再需要校验之后的规则
                         .sortedBy {
                             it !is DependRigRule
                         }
