@@ -11,7 +11,7 @@ import com.lsxiao.rig.core.annotation.Rule;
  */
 
 public class Test {
-    @Rule(value = "int|between:20,40", name = "age")
+    @Rule(value = "int", name = "age")
     public String age;
 
     @Rule("notnull|min:6|when_eq:age,50")

@@ -1,5 +1,6 @@
 package com.lsxiao.rig.compiler
 
+import com.lsxiao.rig.core.MessageTemplate
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
@@ -69,7 +70,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                 .returns(ValidateResult::class.java)
                 .addParameter(Object::class.java, VAR_OBJECT_NAME, Modifier.FINAL)
                 .addParameter(Int::class.java, VAR_GROUP_NAME, Modifier.FINAL)
-                .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, Checkable::class.java, HashMap::class.java, List::class.java, Checkable::class.java)
+                .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, String::class.java, HashMap::class.java, List::class.java, String::class.java)
 
         rigDescriptors.groupBy { it.className }.values.forEach {
             wrapByIf(builder, it.first(), ruleCodeForOneAnnotation(it))
@@ -89,7 +90,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
             builder.beginControlFlow("if($VAR_GROUP_NAME==${groupDescriptors.first().group})")
 
             groupDescriptors.forEach { descriptor ->
-                val key = "\"${tag(descriptor.element)}\""
+                val key = "\"${ruleNameOrFieldName(descriptor)}\""
                 builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                         ArrayList::class.java,
                         Checkable::class.java)
@@ -112,9 +113,14 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                         .beginControlFlow("if($VAR_ERRORS_NAME.get($key) == null)")
                         .addStatement("$VAR_ERRORS_NAME.put($key,new $CLASS<$CLASS>())",
                                 ArrayList::class.java,
-                                Checkable::class.java)
+                                String::class.java)
                         .endControlFlow()
-                        .addStatement("$VAR_ERRORS_NAME.get($key).add(rule)")
+                        .addStatement("$CLASS[] args = new $CLASS[]{}", String::class.java, String::class.java)
+                        .beginControlFlow("if(rule instanceof $CLASS)", Paramable::class.java)
+                        .addStatement("args = (($CLASS)rule).getParams()", Paramable::class.java)
+                        .endControlFlow()
+                        .addStatement("$CLASS rendered = $CLASS.INSTANCE.render(rule.getClass(),\"${ruleNameOrFieldName(descriptor)}\",args)", String::class.java, MessageTemplate::class.java)
+                        .addStatement("$VAR_ERRORS_NAME.get($key).add(rendered)")
                         .endControlFlow()
                         .endControlFlow()
             }
@@ -150,12 +156,12 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     /**
      *
      */
-    fun tag(element: Element): String {
-        return if (element is ExecutableElement) {
-            "${element.simpleName}()"
-        } else {
-            "${element.simpleName}"
-        }
+    fun ruleNameOrFieldName(descriptor: RigDescriptor): String = if (descriptor.name.isNotEmpty()) {
+        descriptor.name
+    } else if (descriptor.element is ExecutableElement) {
+        "${descriptor.element.simpleName}()"
+    } else {
+        "${descriptor.element.simpleName}"
     }
 
     /**

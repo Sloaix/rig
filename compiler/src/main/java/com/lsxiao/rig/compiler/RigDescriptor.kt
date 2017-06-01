@@ -20,7 +20,7 @@ class RigDescriptor private constructor(val element: Element) {
     }
 
     var rules: List<Checkable> = emptyList()
-    var name: String? = null
+    var name: String = ""
     var group: Int = 0
     var failTemplates: Array<String> = emptyArray()
     var className: String by Delegates.notNull()

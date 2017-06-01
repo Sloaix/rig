@@ -5,10 +5,9 @@ import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.other.AcceptedRule
 import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
-import com.lsxiao.rig.core.rule.size.BetweenRule
+import com.lsxiao.rig.core.rule.size.LengthRule
 import com.lsxiao.rig.core.rule.size.MaxRule
 import com.lsxiao.rig.core.rule.size.MinRule
-import com.lsxiao.rig.core.rule.size.LengthRule
 
 /**
  * write with Checkable
@@ -22,12 +21,10 @@ object RuleFactory {
         in LengthRule.names -> LengthRule(parameters)
         in MinRule.names -> MinRule(parameters)
         in MaxRule.names -> MaxRule(parameters)
-        in BetweenRule.names -> BetweenRule(parameters)
         in AcceptedRule.names -> AcceptedRule()
         in NotNullRule.names -> NotNullRule()
         in FilledRule.names -> FilledRule()
         in IntegerRule.names -> IntegerRule()
-        in WhenBetweenRule.names -> WhenBetweenRule(parameters, dependValue)
         in WhenEqualRule.names -> WhenEqualRule(parameters, dependValue)
         in WhenFilledRule.names -> WhenFilledRule(parameters, dependValue)
         in WhenGreaterThanRule.names -> WhenGreaterThanRule(parameters, dependValue)

@@ -15,10 +15,10 @@ import butterknife.OnClick;
 public class MainActivity extends BaseActivity {
 
     @Fail({":name不是整数", ":value必须小于:arg1,大于:arg2"})
-    @Rule(value = "int|between:10,30", name = "年龄")
+    @Rule(value = "int|max:30|min:10", name = "年龄")
     public String age = "20";
 
-    @Rule(value = "when_eq:age,20|notnull|min:3", name = "姓名")
+    @Rule(value = "when_eq:年龄,20|notnull|min:3", name = "姓名")
     public String name = "fdf";
 
     @BindView(R.id.tv_message)
