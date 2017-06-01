@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.Checkable
 
 class NumericRule : Checkable {
     companion object {
-        val name = "numeric"
+        val names = setOf("numeric")
     }
 
     override fun check(data: String?): Boolean = data?.toDoubleOrNull() != null

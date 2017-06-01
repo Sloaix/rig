@@ -12,15 +12,16 @@ import kotlin.properties.Delegates
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class RuleAnnotationDescriptor private constructor(val element: Element) {
+class RigDescriptor private constructor(val element: Element) {
     companion object {
-        fun newInstance(methodElement: Element): RuleAnnotationDescriptor {
-            return RuleAnnotationDescriptor(methodElement)
+        fun newInstance(methodElement: Element): RigDescriptor {
+            return RigDescriptor(methodElement)
         }
     }
 
-    var mRules: List<Checkable> = emptyList()
-    var dependedName: String? = null
+    var rules: List<Checkable> = emptyList()
+    var name: String? = null
     var group: Int = 0
+    var failTemplates: Array<String> = emptyArray()
     var className: String by Delegates.notNull()
 }

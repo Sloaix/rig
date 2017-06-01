@@ -8,7 +8,7 @@ import com.lsxiao.rig.core.rule.Dependable
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
- * 当对应的字段值小于提供的值的时候，才校验剩余的规则
+ * 当对应的字段值小于提供的值的时候，验证字段才是必须的
  */
 
 class WhenLessThanRule(override val params: Array<String>, override val dependValue: String?) : Dependable {

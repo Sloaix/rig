@@ -3,9 +3,9 @@ package com.lsxiao.rig.compiler
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
+import com.lsxiao.rig.core.rule.Checkable
 import com.lsxiao.rig.core.rule.Dependable
 import com.lsxiao.rig.core.rule.Paramable
-import com.lsxiao.rig.core.rule.Checkable
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
@@ -16,7 +16,7 @@ import javax.lang.model.element.Element
 import javax.lang.model.element.ExecutableElement
 import javax.lang.model.element.Modifier
 
-class CodeGenerator private constructor(private val ruleAnnotationDescriptors: ArrayList<RuleAnnotationDescriptor>, private val mFiler: Filer) {
+class CodeGenerator private constructor(private val rigDescriptors: ArrayList<RigDescriptor>, private val mFiler: Filer) {
 
     companion object {
         private val CLASS = "\$T"
@@ -28,7 +28,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
         private val VAR_TARGET_NAME = "target"
         private val VAR_RULE_MAP_NAME = "ruleMap"
 
-        fun create(ruleAnnotationDescriptors: ArrayList<RuleAnnotationDescriptor>, filer: Filer): CodeGenerator = CodeGenerator(ruleAnnotationDescriptors, filer)
+        fun create(rigDescriptors: ArrayList<RigDescriptor>, filer: Filer): CodeGenerator = CodeGenerator(rigDescriptors, filer)
     }
 
     fun generate() = createJavaFile()
@@ -71,7 +71,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
                 .addParameter(Int::class.java, VAR_GROUP_NAME, Modifier.FINAL)
                 .addStatement("$CLASS<String,$CLASS<$CLASS>> $VAR_ERRORS_NAME = new $CLASS<String,$CLASS<$CLASS>>()", Map::class.java, List::class.java, Checkable::class.java, HashMap::class.java, List::class.java, Checkable::class.java)
 
-        ruleAnnotationDescriptors.groupBy { it.className }.values.forEach {
+        rigDescriptors.groupBy { it.className }.values.forEach {
             wrapByIf(builder, it.first(), ruleCodeForOneAnnotation(it))
         }
 
@@ -81,31 +81,31 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     /**
      *
      */
-    fun ruleCodeForOneAnnotation(ruleAnnotationDescriptors: List<RuleAnnotationDescriptor>): CodeBlock {
+    fun ruleCodeForOneAnnotation(rigDescriptors: List<RigDescriptor>): CodeBlock {
         val builder = CodeBlock.builder()
-        ruleAnnotationDescriptors.groupBy {
+        rigDescriptors.groupBy {
             it.group
         }.values.forEach { groupDescriptors ->
             builder.beginControlFlow("if($VAR_GROUP_NAME==${groupDescriptors.first().group})")
 
             groupDescriptors.forEach { descriptor ->
-                val key = "\"${variableOrMethod(descriptor.element)}\""
+                val key = "\"${tag(descriptor.element)}\""
                 builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                         ArrayList::class.java,
                         Checkable::class.java)
 
-                descriptor.mRules
+                descriptor.rules
                         //按照depend优先降序排列,depend优先级最高,以便遍历的时候先校验dependRule,如果dependRule没有校验通过则不再需要校验之后的规则
                         .sortedBy {
                             it !is Dependable
                         }
                         .forEach {
-                            builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(new $CLASS(${params(it, ruleAnnotationDescriptors)}))",
+                            builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(new $CLASS(${params(it, rigDescriptors)}))",
                                     it.javaClass)
                         }
 
                 builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", Checkable::class.java)
-                        .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${variableOrMethod(descriptor.element)}))")
+                        .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${textTobeValidate(descriptor.element)}))")
                         .beginControlFlow("if(rule instanceof $CLASS)", Dependable::class.java)
                         .addStatement("break")
                         .endControlFlow()
@@ -127,7 +127,7 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     /**
      * 生成校验Rule的参数
      */
-    fun params(rule: Checkable, collections: List<RuleAnnotationDescriptor>): CodeBlock = CodeBlock
+    fun params(rule: Checkable, collections: List<RigDescriptor>): CodeBlock = CodeBlock
             .builder()
             .add(if (rule is Dependable) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}},$VAR_TARGET_NAME.${dependValue(rule.params.first(), collections)}"
@@ -141,16 +141,27 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
     /**
      * 依赖校验的值
      */
-    fun dependValue(name: String, collections: List<RuleAnnotationDescriptor>): String {
+    fun dependValue(name: String, collections: List<RigDescriptor>): String {
         return collections.find {
-            it.dependedName == name
-        }?.element?.let { variableOrMethod(it) }.toString()
+            it.name == name
+        }?.element?.let { textTobeValidate(it) }.toString()
+    }
+
+    /**
+     *
+     */
+    fun tag(element: Element): String {
+        return if (element is ExecutableElement) {
+            "${element.simpleName}()"
+        } else {
+            "${element.simpleName}"
+        }
     }
 
     /**
      * 获取返回String值的方法或者属性
      */
-    fun variableOrMethod(element: Element): String {
+    fun textTobeValidate(element: Element): String {
         return if (element is ExecutableElement) {
             "${element.simpleName}()"
         } else if (setOf("android.widget.TextView", "android.widget.EditText").contains(element.asType().toString())) {
@@ -167,9 +178,9 @@ class CodeGenerator private constructor(private val ruleAnnotationDescriptors: A
      *  ....
      *  }
      */
-    fun wrapByIf(builder: MethodSpec.Builder, annotationDescriptor: RuleAnnotationDescriptor, codeBlock: CodeBlock) {
-        builder.beginControlFlow("if($VAR_OBJECT_NAME.getClass().getCanonicalName().equals(\"${annotationDescriptor.className}\"))")
-                .addStatement("${annotationDescriptor.className} $VAR_TARGET_NAME = (${annotationDescriptor.className})$VAR_OBJECT_NAME")
+    fun wrapByIf(builder: MethodSpec.Builder, descriptor: RigDescriptor, codeBlock: CodeBlock) {
+        builder.beginControlFlow("if($VAR_OBJECT_NAME.getClass().getCanonicalName().equals(\"${descriptor.className}\"))")
+                .addStatement("${descriptor.className} $VAR_TARGET_NAME = (${descriptor.className})$VAR_OBJECT_NAME")
                 .addStatement("$CLASS<$CLASS,$CLASS<$CLASS>> ruleMap = new $CLASS()",
                         Map::class.java,
                         String::class.java,

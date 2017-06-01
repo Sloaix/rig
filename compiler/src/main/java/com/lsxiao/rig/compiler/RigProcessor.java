@@ -3,6 +3,7 @@ package com.lsxiao.rig.compiler;
 import com.google.auto.common.BasicAnnotationProcessor;
 import com.google.auto.service.AutoService;
 import com.google.common.collect.ImmutableSet;
+import com.lsxiao.rig.compiler.step.FailStep;
 import com.lsxiao.rig.compiler.step.GroupStep;
 import com.lsxiao.rig.compiler.step.RuleStep;
 
@@ -18,13 +19,14 @@ import javax.lang.model.element.Element;
 
 @AutoService(Processor.class)
 public class RigProcessor extends BasicAnnotationProcessor {
-    public static Map<Element, RuleAnnotationDescriptor> sDescriptorMap = new HashMap<>();
+    public static Map<Element, RigDescriptor> sDescriptorMap = new HashMap<>();
     private boolean mGenerated = false;
 
     @Override
     protected Iterable<? extends ProcessingStep> initSteps() {
         return ImmutableSet.of(
                 new RuleStep(),
+                new FailStep(),
                 new GroupStep()
         );
     }

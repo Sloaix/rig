@@ -11,7 +11,7 @@ import com.lsxiao.rig.core.rule.Paramable
  * 字符串长度校验规则
  */
 
-class SizeRule(override val params: Array<String>) : Paramable {
+class LengthRule(override val params: Array<String>) : Paramable {
     companion object {
         val names = setOf("size", "length")
     }
