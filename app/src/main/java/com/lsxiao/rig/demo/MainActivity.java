@@ -19,7 +19,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.tv_message)
     public TextView mTvMessage;
 
-    @Rule(value = "when_filled:密码|length:6", name = "确认密码")
+    @Rule(value = "when_filled:密码|int|length:6", name = "确认密码")
     @BindView(R.id.edit_address)
     public EditText mEditContent;
 
