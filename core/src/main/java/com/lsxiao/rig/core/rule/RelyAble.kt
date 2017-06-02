@@ -10,6 +10,6 @@ package com.lsxiao.rig.core.rule
  * 依赖某一个字段
  */
 interface RelyAble {
-    val relyValue: String?
     val relyName: String?
+    val relyValue: String?
 }

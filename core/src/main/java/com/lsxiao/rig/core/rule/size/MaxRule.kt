@@ -12,16 +12,17 @@ import com.lsxiao.rig.core.rule.ParamAble
  * 最大值校验规则
  */
 
-class MaxRule(override val params: Array<String>) : BaseRule,  ParamAble {
+class MaxRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("max")
     }
 
     override fun checkParams(): Boolean {
-        return params.size == 1 && params.first().toIntOrNull() != null
+        return params.size == 1 && params.first().toDoubleOrNull() != null
     }
 
     override fun check(data: String?): Boolean {
-        return data != null && data.length <= params.first().toInt()
+        return data != null && data.toDouble() <= params.first().toDouble()
     }
+
 }

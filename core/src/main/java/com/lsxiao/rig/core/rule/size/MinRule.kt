@@ -18,10 +18,10 @@ class MinRule(override val params: Array<String>) : BaseRule, ParamAble {
     }
 
     override fun checkParams(): Boolean {
-        return params.size == 1 && params.first().toIntOrNull() != null
+        return params.size == 1 && params.first().toDoubleOrNull() != null
     }
 
     override fun check(data: String?): Boolean {
-        return data != null && data.length >= params.first().toInt()
+        return data != null && data.toDouble() >= params.first().toDouble()
     }
 }

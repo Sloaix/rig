@@ -14,7 +14,7 @@ import com.lsxiao.rig.core.rule.ParamAble
 
 class LengthRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
-        val names = setOf("size", "length")
+        val names = setOf("length", "len")
     }
 
     override fun checkParams(): Boolean {

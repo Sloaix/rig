@@ -2,6 +2,7 @@ package com.lsxiao.rig.core.rule.size
 
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
+import com.lsxiao.rig.core.rule.RelyAble
 
 /**
  * write with Rig
@@ -12,9 +13,9 @@ import com.lsxiao.rig.core.rule.ParamAble
  *
  */
 
-class SameRule(override val params: Array<String>) : BaseRule, ParamAble {
+class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, ParamAble, RelyAble {
     companion object {
-        val names = setOf("min")
+        val names = setOf("same", "eq")
     }
 
     override fun checkParams(): Boolean {
@@ -22,6 +23,6 @@ class SameRule(override val params: Array<String>) : BaseRule, ParamAble {
     }
 
     override fun check(data: String?): Boolean {
-        return data != null && data.length >= params.first().toInt()
+        return data != null && data.toDouble() == params.first().toDouble()
     }
 }
