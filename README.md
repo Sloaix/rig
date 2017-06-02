@@ -12,7 +12,7 @@ This library is under development.
 # Usage
 simple usage.
 ```java
-@Rule("int|between:10,30")
+@Rule("int||min:10|max:30")
 public String age = "20";
 
 if (Rig.check(this).isPass()) {
@@ -22,7 +22,7 @@ if (Rig.check(this).isPass()) {
 
 depend usage,depend on age value.
 ```java
-@Rule(value = "int|between:10,30", name = "age")
+@Rule(value = "int|min:10|max:30", name = "age")
 public String age = "20";
 
 @Rule("when_gt:age,18|size:18")
@@ -50,7 +50,7 @@ group
 final int GROUP_USER=5;
 
 @Group(GROUP_USER)
-@Rule("int|between:10,30")
+@Rule("int||min:10|max:30")
 public String age = "20";
 
 if (Rig.check(this,GROUP_USER).isPass()) {
