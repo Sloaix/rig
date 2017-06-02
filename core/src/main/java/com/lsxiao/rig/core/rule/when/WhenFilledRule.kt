@@ -1,9 +1,9 @@
-package com.lsxiao.rig.core.rule.depend
+package com.lsxiao.rig.core.rule.`when`
 
-import com.lsxiao.rig.core.rule.Dependable
+import com.lsxiao.rig.core.rule.WhenAble
 
 /**
- * write with Checkable
+ * write with CheckAble
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
@@ -11,12 +11,12 @@ import com.lsxiao.rig.core.rule.Dependable
  * 当对应的字段不为null且notEmpty的时候,验证字段才是必须的
  */
 
-class WhenFilledRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
+class WhenFilledRule(override val params: Array<String>, override val relyValue: String?) : WhenAble {
     companion object {
         val names = setOf("when_filled", "w_filled", "w_nonempty")
     }
 
     override fun checkParams() = params.size == 1
 
-    override fun check(data: String?): Boolean = dependValue != null && dependValue.isNotEmpty()
+    override fun check(data: String?): Boolean = relyValue != null && relyValue.isNotEmpty()
 }

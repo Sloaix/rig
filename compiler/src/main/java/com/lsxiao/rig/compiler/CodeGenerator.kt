@@ -4,9 +4,9 @@ import com.lsxiao.rig.core.FailTemplate
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
-import com.lsxiao.rig.core.rule.Checkable
-import com.lsxiao.rig.core.rule.Dependable
-import com.lsxiao.rig.core.rule.Paramable
+import com.lsxiao.rig.core.rule.CheckAble
+import com.lsxiao.rig.core.rule.WhenAble
+import com.lsxiao.rig.core.rule.ParamAble
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
@@ -93,21 +93,21 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                 val key = "\"${ruleNameOrFieldName(descriptor)}\""
                 builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                         ArrayList::class.java,
-                        Checkable::class.java)
+                        CheckAble::class.java)
 
-                descriptor.rules
+                descriptor.mRules
                         //按照depend优先降序排列,depend优先级最高,以便遍历的时候先校验dependRule,如果dependRule没有校验通过则不再需要校验之后的规则
                         .sortedBy {
-                            it !is Dependable
+                            it !is WhenAble
                         }
                         .forEach {
                             builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(new $CLASS(${params(it, rigDescriptors)}))",
                                     it.javaClass)
                         }
 
-                builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", Checkable::class.java)
+                builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", CheckAble::class.java)
                         .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${textTobeValidate(descriptor.element)}))")
-                        .beginControlFlow("if(rule instanceof $CLASS)", Dependable::class.java)
+                        .beginControlFlow("if(rule instanceof $CLASS)", WhenAble::class.java)
                         .addStatement("break")
                         .endControlFlow()
                         .beginControlFlow("if($VAR_ERRORS_NAME.get($key) == null)")
@@ -116,8 +116,8 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                                 String::class.java)
                         .endControlFlow()
                         .addStatement("$CLASS[] args = new $CLASS[]{}", String::class.java, String::class.java)
-                        .beginControlFlow("if(rule instanceof $CLASS)", Paramable::class.java)
-                        .addStatement("args = (($CLASS)rule).getParams()", Paramable::class.java)
+                        .beginControlFlow("if(rule instanceof $CLASS)", ParamAble::class.java)
+                        .addStatement("args = (($CLASS)rule).getParams()", ParamAble::class.java)
                         .endControlFlow()
                         .addStatement(renderTemplate(getFailTemplate(descriptor), ruleNameOrFieldName(descriptor)))
                         .addStatement("$VAR_ERRORS_NAME.get($key).add(rendered)")
@@ -143,11 +143,11 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     /**
      * 生成校验Rule的参数
      */
-    fun params(rule: Checkable, collections: List<RigDescriptor>): CodeBlock = CodeBlock
+    fun params(rule: CheckAble, collections: List<RigDescriptor>): CodeBlock = CodeBlock
             .builder()
-            .add(if (rule is Dependable) {
+            .add(if (rule is WhenAble) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}},$VAR_TARGET_NAME.${dependValue(rule.params.first(), collections)}"
-            } else if (rule is Paramable) {
+            } else if (rule is ParamAble) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}}"
             } else {
                 ""
@@ -190,7 +190,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     /**
      *  if (object.getClass().getCanonicalName().equals(...)) {
      *      MainActivity target = ((MainActivity) object);
-     *      Map<String, List<Checkable>> ruleMap = new HashMap();
+     *      Map<String, List<CheckAble>> ruleMap = new HashMap();
      *  ....
      *  }
      */
@@ -201,7 +201,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                         Map::class.java,
                         String::class.java,
                         List::class.java,
-                        Checkable::class.java,
+                        CheckAble::class.java,
                         HashMap::class.java)
                 .addCode(codeBlock)
                 .endControlFlow()

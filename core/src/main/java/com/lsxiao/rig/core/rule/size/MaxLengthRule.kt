@@ -3,17 +3,16 @@ package com.lsxiao.rig.core.rule.size
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with CheckAble
+ * write with Rig
  * author:lsxiao
- * date:2017-05-25 22:54
+ * date:2017-06-02 14:57
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
- * 最小值校验规则
  */
 
-class MinRule(override val params: Array<String>) : ParamAble {
+class MaxLengthRule(override val params: Array<String>) : ParamAble {
     companion object {
-        val names = setOf("min")
+        val names = setOf("max_length", "max_len")
     }
 
     override fun checkParams(): Boolean {

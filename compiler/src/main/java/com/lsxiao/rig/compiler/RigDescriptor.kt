@@ -1,6 +1,6 @@
 package com.lsxiao.rig.compiler
 
-import com.lsxiao.rig.core.rule.Checkable
+import com.lsxiao.rig.core.rule.CheckAble
 import javax.lang.model.element.Element
 import kotlin.properties.Delegates
 
@@ -19,7 +19,7 @@ class RigDescriptor private constructor(val element: Element) {
         }
     }
 
-    var rules: List<Checkable> = emptyList()
+    var mRules: List<CheckAble> = emptyList()
     var name: String = ""
     var group: Int = 0
     var failTemplates: Array<String> = emptyArray()

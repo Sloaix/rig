@@ -1,9 +1,9 @@
 package com.lsxiao.rig.core.rule.other
 
-import com.lsxiao.rig.core.rule.Checkable
+import com.lsxiao.rig.core.rule.CheckAble
 
 /**
- * write with Checkable
+ * write with CheckAble
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
@@ -11,7 +11,7 @@ import com.lsxiao.rig.core.rule.Checkable
  * 不为NUll校验规则
  */
 
-class NotNullRule : Checkable {
+class NotNullRule : CheckAble {
     companion object {
         val names = setOf("notnull")
     }

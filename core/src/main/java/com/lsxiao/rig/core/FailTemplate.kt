@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core
 
-import com.lsxiao.rig.core.rule.Checkable
+import com.lsxiao.rig.core.rule.CheckAble
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
 import com.lsxiao.rig.core.rule.other.FilledRule
@@ -31,7 +31,7 @@ object FailTemplate {
         return template?.replace(NAME, name)?.replace(VALUE, name)?.replace(ARG, ARG1)?.replace(ARG1, "%1\$s")?.replace(ARG2, "%2\$s")?.format(*args)
     }
 
-    fun get(clazz: Class<out Checkable>): String? {
+    fun get(clazz: Class<out CheckAble>): String? {
         return i18n.get(LOCALE)?.get(clazz)
     }
 

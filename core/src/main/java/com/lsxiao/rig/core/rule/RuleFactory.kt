@@ -1,6 +1,6 @@
 package com.lsxiao.rig.core.rule
 
-import com.lsxiao.rig.core.rule.depend.*
+import com.lsxiao.rig.core.rule.`when`.*
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.other.AcceptedRule
 import com.lsxiao.rig.core.rule.other.FilledRule
@@ -10,14 +10,14 @@ import com.lsxiao.rig.core.rule.size.MaxRule
 import com.lsxiao.rig.core.rule.size.MinRule
 
 /**
- * write with Checkable
+ * write with CheckAble
  * author:lsxiao
  * date:2017-05-26 16:45
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
 object RuleFactory {
-    fun create(name: String, parameters: Array<String> = emptyArray(), dependValue: String? = null): Checkable? = when (name) {
+    fun create(name: String, parameters: Array<String> = emptyArray(), dependValue: String? = null): CheckAble? = when (name) {
         in LengthRule.names -> LengthRule(parameters)
         in MinRule.names -> MinRule(parameters)
         in MaxRule.names -> MaxRule(parameters)

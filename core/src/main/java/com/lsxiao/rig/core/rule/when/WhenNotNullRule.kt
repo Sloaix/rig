@@ -1,9 +1,9 @@
-package com.lsxiao.rig.core.rule.depend
+package com.lsxiao.rig.core.rule.`when`
 
-import com.lsxiao.rig.core.rule.Dependable
+import com.lsxiao.rig.core.rule.WhenAble
 
 /**
- * write with Checkable
+ * write with CheckAble
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
@@ -11,12 +11,12 @@ import com.lsxiao.rig.core.rule.Dependable
  * 当对应的字段值不为null的时候，验证字段才是必须的
  */
 
-class WhenNotNullRule(override val params: Array<String>, override val dependValue: String?) : Dependable {
+class WhenNotNullRule(override val params: Array<String>, override val relyValue: String?) : WhenAble {
     companion object {
         val names = setOf("when_notnull", "w_notnull")
     }
 
     override fun checkParams() = params.size == 1
 
-    override fun check(data: String?): Boolean = dependValue != null
+    override fun check(data: String?): Boolean = relyValue != null
 }

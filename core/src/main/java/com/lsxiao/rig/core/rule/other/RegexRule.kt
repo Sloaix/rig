@@ -1,9 +1,9 @@
 package com.lsxiao.rig.core.rule.other
 
-import com.lsxiao.rig.core.rule.Paramable
+import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with Checkable
+ * write with CheckAble
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
@@ -11,7 +11,7 @@ import com.lsxiao.rig.core.rule.Paramable
  * 正则表达式校验规则
  */
 
-class RegexRule(override val params: Array<String>) : Paramable {
+class RegexRule(override val params: Array<String>) : ParamAble {
     companion object {
         val name = "reg"
     }
