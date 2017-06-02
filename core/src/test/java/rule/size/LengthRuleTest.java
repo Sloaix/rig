@@ -1,6 +1,6 @@
 package rule.size;
 
-import com.lsxiao.rig.core.rule.size.LengthRule;
+import com.lsxiao.rig.core.rule.size.length.LengthRule;
 
 import junit.framework.TestCase;
 

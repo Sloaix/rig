@@ -1,6 +1,4 @@
-package com.lsxiao.rig.core.rule.size
-
-import com.lsxiao.rig.core.rule.ParamAble
+package com.lsxiao.rig.core.rule.size.length
 
 /**
  * write with Rig
@@ -9,7 +7,7 @@ import com.lsxiao.rig.core.rule.ParamAble
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
  */
-class MinLengthRule(override val params: Array<String>) : ParamAble {
+class MinLengthRule(override val params: Array<String>) : com.lsxiao.rig.core.rule.ParamAble {
     companion object {
         val names = setOf("min_length", "min_len")
     }

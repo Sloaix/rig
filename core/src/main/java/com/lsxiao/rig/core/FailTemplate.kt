@@ -5,7 +5,7 @@ import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
 import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
-import com.lsxiao.rig.core.rule.size.LengthRule
+import com.lsxiao.rig.core.rule.size.length.LengthRule
 import com.lsxiao.rig.core.rule.size.MaxRule
 import com.lsxiao.rig.core.rule.size.MinRule
 

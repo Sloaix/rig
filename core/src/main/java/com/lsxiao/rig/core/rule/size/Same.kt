@@ -3,17 +3,17 @@ package com.lsxiao.rig.core.rule.size
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with CheckAble
+ * write with Rig
  * author:lsxiao
- * date:2017-05-25 22:54
+ * date:2017-06-02 15:05
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
- * 字符串长度校验规则
+ *
  */
 
-class LengthRule(override val params: Array<String>) : ParamAble {
+class SameRule(override val params: Array<String>) : ParamAble {
     companion object {
-        val names = setOf("size", "length")
+        val names = setOf("min")
     }
 
     override fun checkParams(): Boolean {
@@ -21,6 +21,6 @@ class LengthRule(override val params: Array<String>) : ParamAble {
     }
 
     override fun check(data: String?): Boolean {
-        return data != null && data.length == params.first().toInt()
+        return data != null && data.length >= params.first().toInt()
     }
 }
