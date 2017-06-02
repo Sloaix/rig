@@ -18,7 +18,7 @@ class AcceptedRule : BaseRule {
 
     val acceptable = listOf("yes", "on", "1", "true")
 
-    override fun check(data: String?): Boolean {
-        return acceptable.contains(data)
+    override fun check(checkedFiled: String?): Boolean {
+        return acceptable.contains(checkedFiled)
     }
 }

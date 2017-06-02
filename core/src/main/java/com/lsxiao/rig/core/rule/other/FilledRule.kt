@@ -16,7 +16,7 @@ class FilledRule : BaseRule {
         val names = setOf("filled", "nonempty")
     }
 
-    override fun check(data: String?): Boolean {
-        return data != null && data.isNotEmpty()
+    override fun check(checkedFiled: String?): Boolean {
+        return checkedFiled != null && checkedFiled.isNotEmpty()
     }
 }

@@ -21,5 +21,5 @@ class WhenEqualRule(override val params: Array<String>, override val relyName: S
 
     override fun checkParams() = params.size == 2
 
-    override fun check(data: String?): Boolean = relyValue == params.last()
+    override fun check(checkedFiled: String?): Boolean = relyValue == params.last()
 }

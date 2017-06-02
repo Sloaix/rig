@@ -21,8 +21,8 @@ class MaxRule(override val params: Array<String>) : BaseRule, ParamAble {
         return params.size == 1 && params.first().toDoubleOrNull() != null
     }
 
-    override fun check(data: String?): Boolean {
-        return data != null && data.toDouble() <= params.first().toDouble()
+    override fun check(checkedFiled: String?): Boolean {
+        return checkedFiled != null && checkedFiled.toDouble() <= params.first().toDouble()
     }
 
 }

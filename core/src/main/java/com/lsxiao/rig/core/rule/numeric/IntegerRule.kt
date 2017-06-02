@@ -17,5 +17,5 @@ class IntegerRule : BaseRule {
 
     }
 
-    override fun check(data: String?): Boolean = data?.toIntOrNull() != null
+    override fun check(checkedFiled: String?): Boolean = checkedFiled?.toIntOrNull() != null
 }

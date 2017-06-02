@@ -16,7 +16,7 @@ class NotNullRule : BaseRule {
         val names = setOf("notnull")
     }
 
-    override fun check(data: String?): Boolean {
-        return data != null
+    override fun check(checkedFiled: String?): Boolean {
+        return checkedFiled != null
     }
 }

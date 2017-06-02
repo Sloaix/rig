@@ -22,7 +22,7 @@ class SameRule(override val params: Array<String>, override val relyName: String
         return params.size == 1 && params.first().toIntOrNull() != null
     }
 
-    override fun check(data: String?): Boolean {
-        return data != null && data.toDouble() == params.first().toDouble()
+    override fun check(checkedFiled: String?): Boolean {
+        return checkedFiled != null && checkedFiled.toDouble() == params.first().toDouble()
     }
 }

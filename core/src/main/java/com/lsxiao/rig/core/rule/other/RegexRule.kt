@@ -21,7 +21,7 @@ class RegexRule(override val params: Array<String>) : BaseRule, ParamAble {
         return params.size == 1
     }
 
-    override fun check(data: String?): Boolean {
-        return data != null
+    override fun check(checkedFiled: String?): Boolean {
+        return checkedFiled != null
     }
 }

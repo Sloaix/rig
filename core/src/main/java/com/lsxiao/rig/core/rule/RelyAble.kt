@@ -10,6 +10,13 @@ package com.lsxiao.rig.core.rule
  * 依赖某一个字段
  */
 interface RelyAble {
+    /**
+     * 依赖的@Rule的name属性
+     */
     val relyName: String?
+
+    /**
+     * 依赖的@Rule标记字段的值
+     */
     val relyValue: String?
 }

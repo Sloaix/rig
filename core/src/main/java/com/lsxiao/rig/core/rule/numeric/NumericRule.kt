@@ -16,5 +16,5 @@ class NumericRule : BaseRule {
         val names = setOf("numeric")
     }
 
-    override fun check(data: String?): Boolean = data?.toDoubleOrNull() != null
+    override fun check(checkedFiled: String?): Boolean = checkedFiled?.toDoubleOrNull() != null
 }

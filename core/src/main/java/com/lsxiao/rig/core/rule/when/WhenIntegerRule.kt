@@ -21,5 +21,5 @@ class WhenIntegerRule(override val params: Array<String>, override val relyName:
 
     override fun checkParams() = params.size == 1
 
-    override fun check(data: String?): Boolean = relyValue?.toIntOrNull() != null
+    override fun check(checkedFiled: String?): Boolean = relyValue?.toIntOrNull() != null
 }

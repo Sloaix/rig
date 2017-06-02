@@ -21,5 +21,5 @@ class WhenSizeRule(override val params: Array<String>, override val relyName: St
 
     override fun checkParams() = params.size == 2
 
-    override fun check(data: String?): Boolean = relyValue?.length == params.last().toIntOrNull()
+    override fun check(checkedFiled: String?): Boolean = relyValue?.length == params.last().toIntOrNull()
 }

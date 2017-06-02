@@ -19,7 +19,7 @@ class MinLengthRule(override val params: Array<String>) : BaseRule, ParamAble {
         return params.size == 1 && params.first().toIntOrNull() != null
     }
 
-    override fun check(data: String?): Boolean {
-        return data != null && data.length >= params.first().toInt()
+    override fun check(checkedFiled: String?): Boolean {
+        return checkedFiled != null && checkedFiled.length >= params.first().toInt()
     }
 }
