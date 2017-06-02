@@ -9,6 +9,7 @@ package com.lsxiao.rig.core.rule
  * 基础规则
  */
 interface BaseRule {
+
     /**
      * 实现校验规则，如果校验成功，返回true
      */

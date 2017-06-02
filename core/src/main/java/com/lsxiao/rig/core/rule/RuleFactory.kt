@@ -7,7 +7,10 @@ import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
 import com.lsxiao.rig.core.rule.size.MaxRule
 import com.lsxiao.rig.core.rule.size.MinRule
+import com.lsxiao.rig.core.rule.size.SameRule
 import com.lsxiao.rig.core.rule.size.length.LengthRule
+import com.lsxiao.rig.core.rule.size.length.MaxLengthRule
+import com.lsxiao.rig.core.rule.size.length.MinLengthRule
 
 /**
  * write with BaseRule
@@ -19,8 +22,11 @@ import com.lsxiao.rig.core.rule.size.length.LengthRule
 object RuleFactory {
     fun create(name: String, parameters: Array<String> = emptyArray(), relyValue: String? = null, relyName: String? = null): BaseRule? = when (name) {
         in LengthRule.names -> LengthRule(parameters)
+        in MinLengthRule.names -> MinLengthRule(parameters)
+        in MaxLengthRule.names -> MaxLengthRule(parameters)
         in MinRule.names -> MinRule(parameters)
         in MaxRule.names -> MaxRule(parameters)
+        in SameRule.names -> SameRule(parameters, relyValue, relyName)
         in AcceptedRule.names -> AcceptedRule()
         in NotNullRule.names -> NotNullRule()
         in FilledRule.names -> FilledRule()

@@ -19,10 +19,16 @@ class SameRule(override val params: Array<String>, override val relyName: String
     }
 
     override fun checkParams(): Boolean {
-        return params.size == 1 && params.first().toIntOrNull() != null
+        return isDirect() || isRely()
     }
 
-    override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null && checkedFiled.toDouble() == params.first().toDouble()
+    fun isDirect(): Boolean = params.size == 1
+
+    fun isRely(): Boolean = params.size == 2 && !relyName.isNullOrBlank()
+
+    override fun check(checkedFiled: String?): Boolean = when {
+        isDirect() -> checkedFiled == params.first()
+        isRely() -> checkedFiled == relyValue
+        else -> false
     }
 }
