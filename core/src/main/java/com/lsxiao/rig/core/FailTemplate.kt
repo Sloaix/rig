@@ -15,9 +15,11 @@ import com.lsxiao.rig.core.rule.size.MinRule
  * date:2017-06-01 17:26
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
+ *
+ * 失败消息模板
  */
 
-object MessageTemplate {
+object FailTemplate {
     val NAME = ":name"
     val VALUE = ":value"
     val ARG = ":arg"
@@ -25,12 +27,11 @@ object MessageTemplate {
     val ARG2 = "${ARG}2"
     var LOCALE = "zh-CN"
 
-    fun render(clazz: Class<out Checkable>, name: String, args: Array<String>): String? {
-        val template = get(clazz)
+    fun render(name: String, args: Array<String>, template: String?): String? {
         return template?.replace(NAME, name)?.replace(VALUE, name)?.replace(ARG, ARG1)?.replace(ARG1, "%1\$s")?.replace(ARG2, "%2\$s")?.format(*args)
     }
 
-    private fun get(clazz: Class<out Checkable>): String? {
+    fun get(clazz: Class<out Checkable>): String? {
         return i18n.get(LOCALE)?.get(clazz)
     }
 

@@ -10,4 +10,4 @@ package com.lsxiao.rig.core.annotation
 
 @Target(AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.SOURCE)
-annotation class Fail(val value: Array<String> = emptyArray())
+annotation class Fail(val value: String)

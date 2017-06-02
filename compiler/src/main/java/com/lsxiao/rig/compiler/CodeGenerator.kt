@@ -1,6 +1,6 @@
 package com.lsxiao.rig.compiler
 
-import com.lsxiao.rig.core.MessageTemplate
+import com.lsxiao.rig.core.FailTemplate
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
@@ -119,7 +119,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                         .beginControlFlow("if(rule instanceof $CLASS)", Paramable::class.java)
                         .addStatement("args = (($CLASS)rule).getParams()", Paramable::class.java)
                         .endControlFlow()
-                        .addStatement("$CLASS rendered = $CLASS.INSTANCE.render(rule.getClass(),\"${ruleNameOrFieldName(descriptor)}\",args)", String::class.java, MessageTemplate::class.java)
+                        .addStatement(renderTemplate(getFailTemplate(descriptor), ruleNameOrFieldName(descriptor)))
                         .addStatement("$VAR_ERRORS_NAME.get($key).add(rendered)")
                         .endControlFlow()
                         .endControlFlow()
@@ -128,6 +128,16 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
         }
 
         return builder.build()
+    }
+
+    fun renderTemplate(template: String, fieldName: String): String = CodeBlock.of("$CLASS rendered = $CLASS.INSTANCE.render(\"$fieldName\",args,$template)", String::class.java, FailTemplate::class.java).toBuilder().build().toString()
+
+    fun getFailTemplate(descriptor: RigDescriptor): String {
+        return CodeBlock
+                .builder()
+                .add("$CLASS.INSTANCE.get(rule.getClass())", FailTemplate::class.java)
+                .build()
+                .toString()
     }
 
     /**
