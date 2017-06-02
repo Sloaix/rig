@@ -1,9 +1,10 @@
 package com.lsxiao.rig.core.rule.other
 
+import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with CheckAble
+ * write with BaseRule
  * author:lsxiao
  * date:2017-05-25 22:48
  * github:https://github.com/lsxiao
@@ -11,7 +12,7 @@ import com.lsxiao.rig.core.rule.ParamAble
  * 正则表达式校验规则
  */
 
-class RegexRule(override val params: Array<String>) : ParamAble {
+class RegexRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val name = "reg"
     }

@@ -4,7 +4,7 @@ import com.lsxiao.rig.core.FailTemplate
 import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
-import com.lsxiao.rig.core.rule.CheckAble
+import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.WhenAble
 import com.lsxiao.rig.core.rule.ParamAble
 import com.squareup.javapoet.CodeBlock
@@ -93,7 +93,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                 val key = "\"${ruleNameOrFieldName(descriptor)}\""
                 builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                         ArrayList::class.java,
-                        CheckAble::class.java)
+                        BaseRule::class.java)
 
                 descriptor.mRules
                         //按照depend优先降序排列,depend优先级最高,以便遍历的时候先校验dependRule,如果dependRule没有校验通过则不再需要校验之后的规则
@@ -105,7 +105,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                                     it.javaClass)
                         }
 
-                builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", CheckAble::class.java)
+                builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", BaseRule::class.java)
                         .beginControlFlow("if(!rule.check($VAR_TARGET_NAME.${textTobeValidate(descriptor.element)}))")
                         .beginControlFlow("if(rule instanceof $CLASS)", WhenAble::class.java)
                         .addStatement("break")
@@ -143,7 +143,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     /**
      * 生成校验Rule的参数
      */
-    fun params(rule: CheckAble, collections: List<RigDescriptor>): CodeBlock = CodeBlock
+    fun params(rule: BaseRule, collections: List<RigDescriptor>): CodeBlock = CodeBlock
             .builder()
             .add(if (rule is WhenAble) {
                 "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}},$VAR_TARGET_NAME.${dependValue(rule.params.first(), collections)}"
@@ -190,7 +190,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     /**
      *  if (object.getClass().getCanonicalName().equals(...)) {
      *      MainActivity target = ((MainActivity) object);
-     *      Map<String, List<CheckAble>> ruleMap = new HashMap();
+     *      Map<String, List<BaseRule>> ruleMap = new HashMap();
      *  ....
      *  }
      */
@@ -201,7 +201,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                         Map::class.java,
                         String::class.java,
                         List::class.java,
-                        CheckAble::class.java,
+                        BaseRule::class.java,
                         HashMap::class.java)
                 .addCode(codeBlock)
                 .endControlFlow()

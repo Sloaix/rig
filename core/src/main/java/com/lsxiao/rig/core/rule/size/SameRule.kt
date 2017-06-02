@@ -1,5 +1,6 @@
 package com.lsxiao.rig.core.rule.size
 
+import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
@@ -11,7 +12,7 @@ import com.lsxiao.rig.core.rule.ParamAble
  *
  */
 
-class SameRule(override val params: Array<String>) : ParamAble {
+class SameRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("min")
     }

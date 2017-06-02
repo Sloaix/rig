@@ -1,5 +1,8 @@
 package com.lsxiao.rig.core.rule.size.length
 
+import com.lsxiao.rig.core.rule.BaseRule
+import com.lsxiao.rig.core.rule.ParamAble
+
 /**
  * write with Rig
  * author:lsxiao
@@ -8,7 +11,7 @@ package com.lsxiao.rig.core.rule.size.length
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-class MaxLengthRule(override val params: Array<String>) : com.lsxiao.rig.core.rule.ParamAble {
+class MaxLengthRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("max_length", "max_len")
     }

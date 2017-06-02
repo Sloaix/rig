@@ -1,9 +1,10 @@
 package com.lsxiao.rig.core.rule.size
 
+import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with CheckAble
+ * write with BaseRule
  * author:lsxiao
  * date:2017-05-25 22:54
  * github:https://github.com/lsxiao
@@ -11,7 +12,7 @@ import com.lsxiao.rig.core.rule.ParamAble
  * 最小值校验规则
  */
 
-class MinRule(override val params: Array<String>) : ParamAble {
+class MinRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("min")
     }

@@ -1,10 +1,10 @@
 package com.lsxiao.rig.core
 
-import com.lsxiao.rig.core.rule.CheckAble
+import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.RuleFactory
 
 /**
- * write with CheckAble
+ * write with BaseRule
  * author:lsxiao
  * date:2017-05-25 21:56
  * github:https://github.com/lsxiao
@@ -21,7 +21,7 @@ object RuleParser {
     /**
      * 解析一个单元规则between:1,2  包括规则名和参数,返回一个RigRule对象
      */
-    private fun parseSingleRule(stringRule: String): CheckAble {
+    private fun parseSingleRule(stringRule: String): BaseRule {
         val temp = stringRule.split(":")
         //分离出规则名称和参数列表 between:1,2
         val name = temp.first()

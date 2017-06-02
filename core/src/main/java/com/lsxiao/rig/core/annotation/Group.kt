@@ -1,7 +1,7 @@
 package com.lsxiao.rig.core.annotation
 
 /**
- * write with CheckAble
+ * write with BaseRule
  * author:lsxiao
  * date:2017-05-26 18:10
  * github:https://github.com/lsxiao

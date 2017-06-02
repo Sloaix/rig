@@ -1,9 +1,10 @@
 package com.lsxiao.rig.core.rule.size.length
 
+import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with CheckAble
+ * write with BaseRule
  * author:lsxiao
  * date:2017-05-25 22:54
  * github:https://github.com/lsxiao
@@ -11,7 +12,7 @@ import com.lsxiao.rig.core.rule.ParamAble
  * 字符串长度校验规则
  */
 
-class LengthRule(override val params: Array<String>) : ParamAble {
+class LengthRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("size", "length")
     }
