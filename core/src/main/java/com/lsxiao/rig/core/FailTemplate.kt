@@ -40,7 +40,7 @@ object FailTemplate {
             FilledRule::class.java to "$NAME 不能为空字符串",
             IntegerRule::class.java to "$NAME 必须是整数",
             NumericRule::class.java to "$NAME 必须是数字",
-            LengthRule::class.java to "$NAME 长度必须大于 $ARG1 小于 $ARG2",
+            LengthRule::class.java to "$NAME 长度必须等于$ARG",
             MinRule::class.java to "$NAME 不能小于 $ARG",
             MaxRule::class.java to "$NAME 不能大于 $ARG"
     )
@@ -50,7 +50,7 @@ object FailTemplate {
             FilledRule::class.java to "$NAME 不能為空字符串",
             IntegerRule::class.java to "$NAME 必須是整數",
             NumericRule::class.java to "$NAME 必須是數字",
-            LengthRule::class.java to "$NAME 長度必須大於 $ARG1 小於 $ARG2",
+            LengthRule::class.java to "$NAME 長度必須等於$ARG",
             MinRule::class.java to "$NAME 不能小於 $ARG",
             MaxRule::class.java to "$NAME 不能大於 $ARG"
     )
@@ -61,7 +61,7 @@ object FailTemplate {
             FilledRule::class.java to "$NAME can't be empty",
             IntegerRule::class.java to "$NAME must be integer",
             NumericRule::class.java to "$NAME must be numeric",
-            LengthRule::class.java to "$NAME must greater than $ARG1 and less than $ARG2",
+            LengthRule::class.java to "$NAME must equal $ARG",
             MinRule::class.java to "$NAME can't less than $ARG",
             MaxRule::class.java to "$NAME can't greater than $ARG"
     )

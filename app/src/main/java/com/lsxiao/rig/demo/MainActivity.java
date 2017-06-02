@@ -13,16 +13,13 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-    @Rule(value = "int|max:30|min:10", name = "年龄")
-    public String age = "20";
-
-    @Rule(value = "when_eq:年龄,20|notnull|min:3", name = "姓名")
-    public String name = "fdf";
+    @Rule(value = "int|length:6", name = "密码")
+    public String password = "123456";
 
     @BindView(R.id.tv_message)
     public TextView mTvMessage;
 
-    @Rule(value = "filled|max:2|when_filled:年龄,2", name = "地址")
+    @Rule(value = "when_filled:密码|length:6", name = "确认密码")
     @BindView(R.id.edit_address)
     public EditText mEditContent;
 
