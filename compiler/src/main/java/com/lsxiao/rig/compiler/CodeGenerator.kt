@@ -119,7 +119,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                         .beginControlFlow("if(rule instanceof $CLASS)", ParamAble::class.java)
                         .addStatement("args = (($CLASS)rule).getParams()", ParamAble::class.java)
                         .endControlFlow()
-                        .addStatement(renderTemplate(getFailTemplate(descriptor), ruleNameOrFieldName(descriptor)))
+                        .addStatement(renderTemplate(getFailTemplate(), ruleNameOrFieldName(descriptor)))
                         .addStatement("$VAR_ERRORS_NAME.get($key).add(rendered)")
                         .endControlFlow()
                         .endControlFlow()
@@ -142,7 +142,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
 
     fun renderTemplate(template: String, fieldName: String): String = CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",args,$template)""", String::class.java, FailTemplate::class.java).toBuilder().build().toString()
 
-    fun getFailTemplate(descriptor: RigDescriptor): String {
+    fun getFailTemplate(): String {
         return CodeBlock
                 .builder()
                 .add("$CLASS.INSTANCE.get(rule.getClass())", FailTemplate::class.java)

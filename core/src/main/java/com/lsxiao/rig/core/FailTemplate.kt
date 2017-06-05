@@ -25,8 +25,7 @@ object FailTemplate {
     val ARG = ":arg"
     val ARG1 = "${ARG}1"
     val ARG2 = "${ARG}2"
-    val LOCALE: String
-        get() = i18n.keys.last()
+    val LOCALE = "en"
 
     fun render(name: String, args: Array<String>, template: String?): String? {
         return template?.replace(NAME, name)?.replace(VALUE, name)?.replace(ARG, ARG1)?.replace(ARG1, "%1\$s")?.replace(ARG2, "%2\$s")?.format(*args)
@@ -62,9 +61,9 @@ object FailTemplate {
             FilledRule::class.java to "can't be empty",
             IntegerRule::class.java to "must be integer",
             NumericRule::class.java to "must be numeric",
-            LengthRule::class.java to "length must equal$ARG",
-            MinRule::class.java to "can't less than$ARG",
-            MaxRule::class.java to "can't greater than$ARG"
+            LengthRule::class.java to "length must equal $ARG",
+            MinRule::class.java to "can't less than $ARG",
+            MaxRule::class.java to "can't greater than $ARG"
     )
 
 

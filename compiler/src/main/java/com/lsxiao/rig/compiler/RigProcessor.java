@@ -3,7 +3,6 @@ package com.lsxiao.rig.compiler;
 import com.google.auto.common.BasicAnnotationProcessor;
 import com.google.auto.service.AutoService;
 import com.google.common.collect.ImmutableSet;
-import com.lsxiao.rig.compiler.step.FailStep;
 import com.lsxiao.rig.compiler.step.GroupStep;
 import com.lsxiao.rig.compiler.step.RuleStep;
 
@@ -26,7 +25,6 @@ public class RigProcessor extends BasicAnnotationProcessor {
     protected Iterable<? extends ProcessingStep> initSteps() {
         return ImmutableSet.of(
                 new RuleStep(),
-                new FailStep(),
                 new GroupStep()
         );
     }
