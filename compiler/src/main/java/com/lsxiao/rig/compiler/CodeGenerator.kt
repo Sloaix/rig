@@ -5,8 +5,9 @@ import com.lsxiao.rig.core.Rig
 import com.lsxiao.rig.core.ValidateResult
 import com.lsxiao.rig.core.Validator
 import com.lsxiao.rig.core.rule.BaseRule
-import com.lsxiao.rig.core.rule.WhenAble
 import com.lsxiao.rig.core.rule.ParamAble
+import com.lsxiao.rig.core.rule.RelyAble
+import com.lsxiao.rig.core.rule.WhenAble
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
@@ -90,19 +91,18 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
             builder.beginControlFlow("if($VAR_GROUP_NAME==${groupDescriptors.first().group})")
 
             groupDescriptors.forEach { descriptor ->
-                val key = "\"${ruleNameOrFieldName(descriptor)}\""
+                val key = toRaw(ruleNameOrFieldName(descriptor))
                 builder.addStatement("$VAR_RULE_MAP_NAME.put($key,new $CLASS<$CLASS>())",
                         ArrayList::class.java,
                         BaseRule::class.java)
 
-                descriptor.mRules
+                descriptor.rules
                         //按照depend优先降序排列,depend优先级最高,以便遍历的时候先校验dependRule,如果dependRule没有校验通过则不再需要校验之后的规则
                         .sortedBy {
                             it !is WhenAble
                         }
                         .forEach {
-                            builder.addStatement("$VAR_RULE_MAP_NAME.get($key).add(new $CLASS(${params(it, rigDescriptors)}))",
-                                    it.javaClass)
+                            builder.add(addRuleToMap(key, getRuleInstance(it, descriptor)))
                         }
 
                 builder.beginControlFlow("for($CLASS rule:$VAR_RULE_MAP_NAME.get($key))", BaseRule::class.java)
@@ -130,7 +130,17 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
         return builder.build()
     }
 
-    fun renderTemplate(template: String, fieldName: String): String = CodeBlock.of("$CLASS rendered = $CLASS.INSTANCE.render(\"$fieldName\",args,$template)", String::class.java, FailTemplate::class.java).toBuilder().build().toString()
+    fun addRuleToMap(key: String, ruleInstance: CodeBlock): CodeBlock {
+        return CodeBlock.builder()
+                .addStatement("$VAR_RULE_MAP_NAME.get($key).add($ruleInstance)")
+                .build()
+    }
+
+    fun getRuleInstance(rule: BaseRule, descriptor: RigDescriptor): CodeBlock {
+        return CodeBlock.of("new $CLASS(${ruleParams(rule, rigDescriptors, descriptor)})", rule.javaClass)
+    }
+
+    fun renderTemplate(template: String, fieldName: String): String = CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",args,$template)""", String::class.java, FailTemplate::class.java).toBuilder().build().toString()
 
     fun getFailTemplate(descriptor: RigDescriptor): String {
         return CodeBlock
@@ -141,23 +151,29 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     }
 
     /**
-     * 生成校验Rule的参数
+     * 实例化Rule的参数
+     *
+     * IntegerRule rule = new Rule(...)
+     *
      */
-    fun params(rule: BaseRule, collections: List<RigDescriptor>): CodeBlock = CodeBlock
+    fun ruleParams(rule: BaseRule, collections: List<RigDescriptor>, descriptor: RigDescriptor): CodeBlock = CodeBlock
             .builder()
-            .add(if (rule is WhenAble) {
-                "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}},$VAR_TARGET_NAME.${dependValue(rule.params.first(), collections)}"
-            } else if (rule is ParamAble) {
-                "new String[]{${rule.params.map { "\"$it\"" }.joinToString(",")}}"
-            } else {
-                ""
+            .add(when (rule) {
+                is RelyAble -> "new String[]{${rule.params.map { """"$it"""" }.joinToString(",")}},${toRaw(descriptor.name)},$VAR_TARGET_NAME.${relyValue(rule.params.first(), collections)}"
+                is ParamAble -> "new String[]{${rule.params.map { """"$it"""" }.joinToString(",")}}"
+                else -> ""
             })
             .build()
 
+    fun toRaw(string: String): String {
+        return """"$string""""
+    }
+
     /**
-     * 依赖校验的值
+     * 根据依赖的name获取依赖校验的值
+     *
      */
-    fun dependValue(name: String, collections: List<RigDescriptor>): String {
+    fun relyValue(name: String, collections: List<RigDescriptor>): String {
         return collections.find {
             it.name == name
         }?.element?.let { textTobeValidate(it) }.toString()
@@ -195,7 +211,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
      *  }
      */
     fun wrapByIf(builder: MethodSpec.Builder, descriptor: RigDescriptor, codeBlock: CodeBlock) {
-        builder.beginControlFlow("if($VAR_OBJECT_NAME.getClass().getCanonicalName().equals(\"${descriptor.className}\"))")
+        builder.beginControlFlow("""if($VAR_OBJECT_NAME.getClass().getCanonicalName().equals("${descriptor.className}"))""")
                 .addStatement("${descriptor.className} $VAR_TARGET_NAME = (${descriptor.className})$VAR_OBJECT_NAME")
                 .addStatement("$CLASS<$CLASS,$CLASS<$CLASS>> ruleMap = new $CLASS()",
                         Map::class.java,

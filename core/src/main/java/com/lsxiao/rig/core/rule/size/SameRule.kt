@@ -1,7 +1,6 @@
 package com.lsxiao.rig.core.rule.size
 
 import com.lsxiao.rig.core.rule.BaseRule
-import com.lsxiao.rig.core.rule.ParamAble
 import com.lsxiao.rig.core.rule.RelyAble
 
 /**
@@ -13,7 +12,7 @@ import com.lsxiao.rig.core.rule.RelyAble
  *
  */
 
-class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, ParamAble, RelyAble {
+class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, RelyAble {
     companion object {
         val names = setOf("same", "eq")
     }

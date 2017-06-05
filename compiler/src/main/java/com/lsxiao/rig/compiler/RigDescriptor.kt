@@ -19,7 +19,7 @@ class RigDescriptor private constructor(val element: Element) {
         }
     }
 
-    var mRules: List<BaseRule> = emptyList()
+    var rules: List<BaseRule> = emptyList()
     var name: String = ""
     var group: Int = 0
     var failTemplates: Array<String> = emptyArray()

@@ -5,9 +5,9 @@ import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
 import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
-import com.lsxiao.rig.core.rule.size.length.LengthRule
 import com.lsxiao.rig.core.rule.size.MaxRule
 import com.lsxiao.rig.core.rule.size.MinRule
+import com.lsxiao.rig.core.rule.size.length.LengthRule
 
 /**
  * write with Rig
@@ -25,7 +25,8 @@ object FailTemplate {
     val ARG = ":arg"
     val ARG1 = "${ARG}1"
     val ARG2 = "${ARG}2"
-    var LOCALE = "zh-CN"
+    val LOCALE: String
+        get() = i18n.keys.last()
 
     fun render(name: String, args: Array<String>, template: String?): String? {
         return template?.replace(NAME, name)?.replace(VALUE, name)?.replace(ARG, ARG1)?.replace(ARG1, "%1\$s")?.replace(ARG2, "%2\$s")?.format(*args)

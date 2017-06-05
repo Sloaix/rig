@@ -3,7 +3,6 @@ package com.lsxiao.rig.core.rule.`when`
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
 import com.lsxiao.rig.core.rule.RelyAble
-import com.lsxiao.rig.core.rule.WhenAble
 
 /**
  * write with BaseRule
@@ -14,7 +13,7 @@ import com.lsxiao.rig.core.rule.WhenAble
  * 当对应的字段不为null且notEmpty的时候,验证字段才是必须的
  */
 
-class WhenFilledRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, ParamAble, RelyAble {
+class WhenFilledRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, ParamAble, RelyAble {
     companion object {
         val names = setOf("when_filled", "w_filled", "w_nonempty")
     }
