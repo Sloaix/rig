@@ -26,7 +26,7 @@ class RuleStep : BasicAnnotationProcessor.ProcessingStep {
                 val descriptor = RigDescriptor.Companion.newInstance(element)
                 val name = element.getAnnotation(Rule::class.java).name
                 descriptor.name = name
-                descriptor.rules = RuleParser.parse(element.getAnnotation(Rule::class.java).value)
+                descriptor.parseResults = RuleParser.parse(element.getAnnotation(Rule::class.java).value)
                 descriptor.className = MoreElements.asType(element.enclosingElement).qualifiedName.toString()
                 sDescriptorMap.put(element, descriptor)
             }

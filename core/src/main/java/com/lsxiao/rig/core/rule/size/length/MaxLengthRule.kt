@@ -21,6 +21,6 @@ class MaxLengthRule(override val params: Array<String>) : BaseRule, ParamAble {
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null && checkedFiled.length >= params.first().toInt()
+        return checkedFiled != null && checkedFiled.length <= params.first().toInt()
     }
 }

@@ -7,7 +7,10 @@ import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
 import com.lsxiao.rig.core.rule.size.MaxRule
 import com.lsxiao.rig.core.rule.size.MinRule
+import com.lsxiao.rig.core.rule.size.SameRule
 import com.lsxiao.rig.core.rule.size.length.LengthRule
+import com.lsxiao.rig.core.rule.size.length.MaxLengthRule
+import com.lsxiao.rig.core.rule.size.length.MinLengthRule
 
 /**
  * write with Rig
@@ -25,7 +28,7 @@ object FailTemplate {
     val ARG = ":arg"
     val ARG1 = "${ARG}1"
     val ARG2 = "${ARG}2"
-    val LOCALE = "en"
+    val LOCALE = "zh-CN"
 
     fun render(name: String, args: Array<String>, template: String?): String? {
         return template?.replace(NAME, name)?.replace(VALUE, name)?.replace(ARG, ARG1)?.replace(ARG1, "%1\$s")?.replace(ARG2, "%2\$s")?.format(*args)
@@ -41,6 +44,9 @@ object FailTemplate {
             IntegerRule::class.java to "必须是整数",
             NumericRule::class.java to "必须是数字",
             LengthRule::class.java to "长度必须等于$ARG",
+            MaxLengthRule::class.java to "长度必须小于$ARG",
+            SameRule::class.java to "值必须等于$ARG",
+            MinLengthRule::class.java to "长度必须大于$ARG",
             MinRule::class.java to "不能小于 $ARG",
             MaxRule::class.java to "不能大于 $ARG"
     )

@@ -20,9 +20,9 @@ public class AcceptedTest extends TestCase {
         accepted = new AcceptedRule();
     }
 
-    public void testName() throws Exception {
-        assertTrue(AcceptedRule.Companion.getNames().contains("accepted"));
-    }
+//    public void testName() throws Exception {
+//        assertTrue(AcceptedRule.Companion.getNames().contains("accepted"));
+//    }
 
     public void testRule() throws Exception {
         assertTrue(accepted.check("yes"));

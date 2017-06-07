@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.WhenAble
  * 当对应的字段值大于指定的值的时候，验证字段才是必须的
  */
 
-class WhenGreaterThanRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
+class WhenGreaterThanRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?, override val isRely: Boolean = true) : BaseRule, WhenAble, RelyAble {
     companion object {
         val names = setOf("when_gt", "w_gt")
     }

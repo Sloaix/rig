@@ -1,7 +1,6 @@
 package com.lsxiao.rig.core.rule.`when`
 
 import com.lsxiao.rig.core.rule.BaseRule
-import com.lsxiao.rig.core.rule.ParamAble
 import com.lsxiao.rig.core.rule.RelyAble
 import com.lsxiao.rig.core.rule.WhenAble
 
@@ -14,7 +13,7 @@ import com.lsxiao.rig.core.rule.WhenAble
  * 当对应的字段值的长度等于指定值的时候，验证字段才是必须的
  */
 
-class WhenSizeRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
+class WhenSizeRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?, override val isRely: Boolean = true) : BaseRule, WhenAble, RelyAble {
     companion object {
         val names = setOf("when_size", "when_length", "w_size", "w_length")
     }

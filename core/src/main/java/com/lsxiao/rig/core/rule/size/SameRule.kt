@@ -12,22 +12,17 @@ import com.lsxiao.rig.core.rule.RelyAble
  *
  */
 
-class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, RelyAble {
+class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?, override val isRely: Boolean) : BaseRule, RelyAble {
     companion object {
         val names = setOf("same", "eq")
     }
 
     override fun checkParams(): Boolean {
-        return isDirect() || isRely()
+        return params.size == 1
     }
 
-    fun isDirect(): Boolean = params.size == 1
-
-    fun isRely(): Boolean = params.size == 2 && !relyName.isNullOrBlank()
-
     override fun check(checkedFiled: String?): Boolean = when {
-        isDirect() -> checkedFiled == params.first()
-        isRely() -> checkedFiled == relyValue
-        else -> false
+        isRely -> checkedFiled == relyValue
+        else -> checkedFiled == params.first()
     }
 }
