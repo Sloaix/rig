@@ -13,7 +13,7 @@ import com.lsxiao.rig.core.rule.WhenAble
  * 当对应的字段等于提供的值的时候,验证字段才是必须的
  */
 
-class WhenEqualRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?, override val isRely: Boolean = true) : BaseRule, WhenAble, RelyAble {
+class WhenEqualRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
     companion object {
         val names = setOf("when_eq", "w_eq")
     }

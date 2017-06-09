@@ -1,4 +1,4 @@
-package com.lsxiao.rig.core.rule.size
+package com.lsxiao.rig.core.rule.numeric
 
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble

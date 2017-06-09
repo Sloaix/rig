@@ -1,4 +1,4 @@
-package com.lsxiao.rig.core.rule.size
+package com.lsxiao.rig.core.rule.value
 
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.RelyAble
@@ -12,7 +12,7 @@ import com.lsxiao.rig.core.rule.RelyAble
  *
  */
 
-class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?, override val isRely: Boolean) : BaseRule, RelyAble {
+class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, RelyAble {
     companion object {
         val names = setOf("same", "eq")
     }
@@ -21,8 +21,5 @@ class SameRule(override val params: Array<String>, override val relyName: String
         return params.size == 1
     }
 
-    override fun check(checkedFiled: String?): Boolean = when {
-        isRely -> checkedFiled == relyValue
-        else -> checkedFiled == params.first()
-    }
+    override fun check(checkedFiled: String?): Boolean = checkedFiled == params.first()
 }

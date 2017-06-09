@@ -1,16 +1,17 @@
 package com.lsxiao.rig.core
 
 import com.lsxiao.rig.core.rule.BaseRule
+import com.lsxiao.rig.core.rule.length.LengthRule
+import com.lsxiao.rig.core.rule.length.MaxLengthRule
+import com.lsxiao.rig.core.rule.length.MinLengthRule
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
+import com.lsxiao.rig.core.rule.numeric.MaxRule
+import com.lsxiao.rig.core.rule.numeric.MinRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
 import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
-import com.lsxiao.rig.core.rule.size.MaxRule
-import com.lsxiao.rig.core.rule.size.MinRule
-import com.lsxiao.rig.core.rule.size.SameRule
-import com.lsxiao.rig.core.rule.size.length.LengthRule
-import com.lsxiao.rig.core.rule.size.length.MaxLengthRule
-import com.lsxiao.rig.core.rule.size.length.MinLengthRule
+import com.lsxiao.rig.core.rule.value.SameAsRule
+import com.lsxiao.rig.core.rule.value.SameRule
 
 /**
  * write with Rig
@@ -44,32 +45,39 @@ object FailTemplate {
             IntegerRule::class.java to "必须是整数",
             NumericRule::class.java to "必须是数字",
             LengthRule::class.java to "长度必须等于$ARG",
-            MaxLengthRule::class.java to "长度必须小于$ARG",
+            MaxLengthRule::class.java to "长度不能大于$ARG",
             SameRule::class.java to "值必须等于$ARG",
-            MinLengthRule::class.java to "长度必须大于$ARG",
+            SameAsRule::class.java to "值必须等于$ARG",
+            MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
             MaxRule::class.java to "不能大于 $ARG"
     )
 
     val zhTW = hashMapOf(
-            NotNullRule::class.java to "不能為null",
-            FilledRule::class.java to "不能為空字符串",
-            IntegerRule::class.java to "必須是整數",
-            NumericRule::class.java to "必須是數字",
-            LengthRule::class.java to "長度必須等於$ARG",
-            MinRule::class.java to "不能小於$ARG",
-            MaxRule::class.java to "不能大於$ARG"
+            NotNullRule::class.java to "不能为null",
+            FilledRule::class.java to "不能为空字符串",
+            IntegerRule::class.java to "必须是整数",
+            NumericRule::class.java to "必须是数字",
+            LengthRule::class.java to "长度必须等于$ARG",
+            MaxLengthRule::class.java to "长度不能大于$ARG",
+            SameRule::class.java to "值必须等于$ARG",
+            MinLengthRule::class.java to "长度不能小于$ARG",
+            MinRule::class.java to "不能小于 $ARG",
+            MaxRule::class.java to "不能大于 $ARG"
     )
 
 
     val en = hashMapOf(
-            NotNullRule::class.java to "can't be null",
-            FilledRule::class.java to "can't be empty",
-            IntegerRule::class.java to "must be integer",
-            NumericRule::class.java to "must be numeric",
-            LengthRule::class.java to "length must equal $ARG",
-            MinRule::class.java to "can't less than $ARG",
-            MaxRule::class.java to "can't greater than $ARG"
+            NotNullRule::class.java to "不能为null",
+            FilledRule::class.java to "不能为空字符串",
+            IntegerRule::class.java to "必须是整数",
+            NumericRule::class.java to "必须是数字",
+            LengthRule::class.java to "长度必须等于$ARG",
+            MaxLengthRule::class.java to "长度不能大于$ARG",
+            SameRule::class.java to "值必须等于$ARG",
+            MinLengthRule::class.java to "长度不能小于$ARG",
+            MinRule::class.java to "不能小于 $ARG",
+            MaxRule::class.java to "不能大于 $ARG"
     )
 
 

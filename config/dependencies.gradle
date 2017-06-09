@@ -24,7 +24,7 @@ ext {
     javapoet = "1.8.0"
     autoService = "1.0-rc3"
     autoCommon = "0.8"
-    kotlin = "1.1.2"
+    kotlin = "1.1.2-3"
 
     libs = [
             supportV4        : "com.android.support:support-v4:$support",

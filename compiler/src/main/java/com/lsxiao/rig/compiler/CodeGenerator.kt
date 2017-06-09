@@ -180,9 +180,9 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
         val isRelyEnable = isRelyNameExist(relyName, collections)
 
         return if (isRelyEnable) {
-            "new String[]{$relyValue},$ruleName,$relyValue,true"
+            "new String[]{$relyValue},$ruleName,$relyValue"
         } else {
-            "new String[]{$params},$ruleName,null,false"
+            throw IllegalArgumentException("找不到依赖字段(cant' find rely field name)")
         }
     }
 

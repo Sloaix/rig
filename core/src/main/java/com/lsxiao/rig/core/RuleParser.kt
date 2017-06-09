@@ -2,16 +2,17 @@ package com.lsxiao.rig.core
 
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.`when`.*
+import com.lsxiao.rig.core.rule.length.LengthRule
+import com.lsxiao.rig.core.rule.length.MaxLengthRule
+import com.lsxiao.rig.core.rule.length.MinLengthRule
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
+import com.lsxiao.rig.core.rule.numeric.MaxRule
+import com.lsxiao.rig.core.rule.numeric.MinRule
 import com.lsxiao.rig.core.rule.other.AcceptedRule
 import com.lsxiao.rig.core.rule.other.FilledRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
-import com.lsxiao.rig.core.rule.size.MaxRule
-import com.lsxiao.rig.core.rule.size.MinRule
-import com.lsxiao.rig.core.rule.size.SameRule
-import com.lsxiao.rig.core.rule.size.length.LengthRule
-import com.lsxiao.rig.core.rule.size.length.MaxLengthRule
-import com.lsxiao.rig.core.rule.size.length.MinLengthRule
+import com.lsxiao.rig.core.rule.value.SameAsRule
+import com.lsxiao.rig.core.rule.value.SameRule
 
 /**
  * write with BaseRule
@@ -46,13 +47,18 @@ object RuleParser {
         in LengthRule.names -> LengthRule::class.java
         in MinLengthRule.names -> MinLengthRule::class.java
         in MaxLengthRule.names -> MaxLengthRule::class.java
+
         in MinRule.names -> MinRule::class.java
         in MaxRule.names -> MaxRule::class.java
-        in SameRule.names -> SameRule::class.java
+        in IntegerRule.names -> IntegerRule::class.java
+
         in AcceptedRule.names -> AcceptedRule::class.java
         in NotNullRule.names -> NotNullRule::class.java
         in FilledRule.names -> FilledRule::class.java
-        in IntegerRule.names -> IntegerRule::class.java
+
+        in SameRule.names -> SameRule::class.java
+        in SameAsRule.names -> SameAsRule::class.java
+
         in WhenEqualRule.names -> WhenEqualRule::class.java
         in WhenFilledRule.names -> WhenFilledRule::class.java
         in WhenGreaterThanRule.names -> WhenGreaterThanRule::class.java

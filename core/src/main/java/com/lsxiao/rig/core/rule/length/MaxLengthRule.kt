@@ -1,20 +1,19 @@
-package com.lsxiao.rig.core.rule.size.length
+package com.lsxiao.rig.core.rule.length
 
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
 
 /**
- * write with BaseRule
+ * write with Rig
  * author:lsxiao
- * date:2017-05-25 22:54
+ * date:2017-06-02 14:57
  * github:https://github.com/lsxiao
  * zhihu:https://zhihu.com/people/lsxiao
- * 字符串长度校验规则
  */
 
-class LengthRule(override val params: Array<String>) : BaseRule, ParamAble {
+class MaxLengthRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
-        val names = setOf("length", "len")
+        val names = setOf("max_length", "max_len")
     }
 
     override fun checkParams(): Boolean {
@@ -22,6 +21,6 @@ class LengthRule(override val params: Array<String>) : BaseRule, ParamAble {
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null && checkedFiled.length == params.first().toInt()
+        return checkedFiled != null && checkedFiled.length <= params.first().toInt()
     }
 }
