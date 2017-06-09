@@ -19,12 +19,17 @@ public class SimpleRuleActivity extends BaseActivity {
     @BindView(R.id.et_name)
     public EditText mEtName;
 
-    @Rule("integer|length:11")
+    @Rule("mobile")
     @BindView(R.id.mobile)
     public EditText mMobile;
 
+    @Rule("email")
+    @BindView(R.id.email)
+    public EditText mEmail;
+
     @BindView(R.id.tv_content)
     TextView mTvContent;
+
 
     @Override
     int getLayoutId() {

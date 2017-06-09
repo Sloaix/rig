@@ -8,7 +8,9 @@ import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.numeric.MaxRule
 import com.lsxiao.rig.core.rule.numeric.MinRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
+import com.lsxiao.rig.core.rule.other.EmailRule
 import com.lsxiao.rig.core.rule.other.FilledRule
+import com.lsxiao.rig.core.rule.other.MobileRule
 import com.lsxiao.rig.core.rule.other.NotNullRule
 import com.lsxiao.rig.core.rule.value.SameAsRule
 import com.lsxiao.rig.core.rule.value.SameRule
@@ -31,23 +33,7 @@ object FailTemplate {
     val ARG2 = "${ARG}2"
     val RELY_VALUE = ":rely_value"
     val RELY_NAME = ":rely_name"
-    val LOCALE = "zh-CN"
 
-    fun render(name: String, args: Array<String>, relyName: String, relyValue: String, template: String?): String? {
-        return template
-                ?.replace(NAME, name)
-                ?.replace(VALUE, name)
-                ?.replace(RELY_NAME, relyName)
-                ?.replace(RELY_VALUE, relyValue)
-                ?.replace(ARG, ARG1)
-                ?.replace(ARG1, "%1\$s")
-                ?.replace(ARG2, "%2\$s")
-                ?.format(*args)
-    }
-
-    fun get(clazz: Class<out BaseRule>): String? {
-        return i18n.get(LOCALE)?.get(clazz)
-    }
 
     val zhCN = hashMapOf(
             NotNullRule::class.java to "不能为null",
@@ -60,7 +46,9 @@ object FailTemplate {
             SameAsRule::class.java to "值必须与字段 '${RELY_NAME}' 相等",
             MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
-            MaxRule::class.java to "不能大于 $ARG"
+            MaxRule::class.java to "不能大于 $ARG",
+            MobileRule::class.java to "不是有效的手机格式",
+            EmailRule::class.java to "不是有效的邮箱格式"
     )
 
     val zhTW = hashMapOf(
@@ -93,9 +81,27 @@ object FailTemplate {
     )
 
 
-    val i18n = hashMapOf(
+    val i18n = linkedMapOf(
             "zh-CN" to zhCN,
             "zh-TW" to zhTW,
             "en" to en
     )
+
+
+    fun render(name: String, args: Array<String>, relyName: String, relyValue: String, template: String?): String? {
+        return template
+                ?.replace(NAME, name)
+                ?.replace(VALUE, name)
+                ?.replace(RELY_NAME, relyName)
+                ?.replace(RELY_VALUE, relyValue)
+                ?.replace(ARG, ARG1)
+                ?.replace(ARG1, "%1\$s")
+                ?.replace(ARG2, "%2\$s")
+                ?.format(*args)
+    }
+
+    fun get(clazz: Class<out BaseRule>): String? {
+        return i18n.values.first().get(clazz)
+    }
+
 }
