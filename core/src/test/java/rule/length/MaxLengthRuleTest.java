@@ -1,5 +1,7 @@
 package rule.length;
 
+import com.lsxiao.rig.core.rule.BaseRule;
+import com.lsxiao.rig.core.rule.ParamAble;
 import com.lsxiao.rig.core.rule.length.MaxLengthRule;
 
 import junit.framework.TestCase;
@@ -15,6 +17,11 @@ public class MaxLengthRuleTest extends TestCase {
     public void testName() throws Exception {
         assertTrue(MaxLengthRule.Companion.getNames().contains("max_length"));
         assertTrue(MaxLengthRule.Companion.getNames().contains("max_len"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(MaxLengthRule.class));
+        assertTrue(ParamAble.class.isAssignableFrom(MaxLengthRule.class));
     }
 
     public void testParameters() throws Exception {

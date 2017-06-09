@@ -1,5 +1,6 @@
 package rule.other;
 
+import com.lsxiao.rig.core.rule.BaseRule;
 import com.lsxiao.rig.core.rule.other.FilledRule;
 
 import junit.framework.TestCase;
@@ -18,6 +19,10 @@ public class FilledTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         mFilled = new FilledRule();
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(FilledRule.class));
     }
 
     public void testName() throws Exception {

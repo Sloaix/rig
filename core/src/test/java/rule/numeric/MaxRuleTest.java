@@ -1,5 +1,7 @@
 package rule.numeric;
 
+import com.lsxiao.rig.core.rule.BaseRule;
+import com.lsxiao.rig.core.rule.ParamAble;
 import com.lsxiao.rig.core.rule.numeric.MaxRule;
 
 import junit.framework.TestCase;
@@ -14,6 +16,11 @@ public class MaxRuleTest extends TestCase {
 
     public void testName() throws Exception {
         assertTrue(MaxRule.Companion.getNames().contains("max"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(MaxRule.class));
+        assertTrue(ParamAble.class.isAssignableFrom(MaxRule.class));
     }
 
     public void testParameters() throws Exception {

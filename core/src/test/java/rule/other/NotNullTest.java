@@ -1,5 +1,6 @@
 package rule.other;
 
+import com.lsxiao.rig.core.rule.BaseRule;
 import com.lsxiao.rig.core.rule.other.NotNullRule;
 
 import junit.framework.TestCase;
@@ -11,6 +12,10 @@ public class NotNullTest extends TestCase {
     public void setUp() throws Exception {
         mNotNull = new NotNullRule();
     }
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(NotNullRule.class));
+    }
+
 
     public void testName() throws Exception {
         assertTrue(NotNullRule.Companion.getNames().contains("notnull"));

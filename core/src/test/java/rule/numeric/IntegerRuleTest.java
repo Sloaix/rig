@@ -1,5 +1,6 @@
 package rule.numeric;
 
+import com.lsxiao.rig.core.rule.BaseRule;
 import com.lsxiao.rig.core.rule.numeric.IntegerRule;
 
 import junit.framework.TestCase;
@@ -18,6 +19,10 @@ public class IntegerRuleTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         mIntegerRule = new IntegerRule();
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(IntegerRule.class));
     }
 
     public void testName() throws Exception {

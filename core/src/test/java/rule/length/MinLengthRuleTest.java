@@ -1,5 +1,7 @@
 package rule.length;
 
+import com.lsxiao.rig.core.rule.BaseRule;
+import com.lsxiao.rig.core.rule.ParamAble;
 import com.lsxiao.rig.core.rule.length.MinLengthRule;
 
 import junit.framework.TestCase;
@@ -15,6 +17,11 @@ public class MinLengthRuleTest extends TestCase {
     public void testName() throws Exception {
         assertTrue(MinLengthRule.Companion.getNames().contains("min_length"));
         assertTrue(MinLengthRule.Companion.getNames().contains("min_len"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(MinLengthRule.class));
+        assertTrue(ParamAble.class.isAssignableFrom(MinLengthRule.class));
     }
 
     public void testParameters() throws Exception {

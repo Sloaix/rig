@@ -1,5 +1,8 @@
 package rule.value;
 
+import com.lsxiao.rig.core.rule.BaseRule;
+import com.lsxiao.rig.core.rule.RelyAble;
+import com.lsxiao.rig.core.rule.value.SameAsRule;
 import com.lsxiao.rig.core.rule.value.SameRule;
 
 import junit.framework.TestCase;
@@ -16,6 +19,11 @@ public class SameRuleTest extends TestCase {
 
     public void testName() throws Exception {
         assertTrue(SameRule.Companion.getNames().contains("same"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(SameAsRule.class));
+        assertTrue(RelyAble.class.isAssignableFrom(SameAsRule.class));
     }
 
     public void testParams() throws Exception {

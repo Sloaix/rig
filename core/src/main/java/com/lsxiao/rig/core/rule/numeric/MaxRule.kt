@@ -1,5 +1,8 @@
 package com.lsxiao.rig.core.rule.numeric
 
+import com.lsxiao.rig.core.rule.BaseRule
+import com.lsxiao.rig.core.rule.ParamAble
+
 /**
  * write with BaseRule
  * author:lsxiao
@@ -9,7 +12,7 @@ package com.lsxiao.rig.core.rule.numeric
  * 最大值校验规则
  */
 
-class MaxRule(override val params: Array<String>) : com.lsxiao.rig.core.rule.BaseRule, com.lsxiao.rig.core.rule.ParamAble {
+class MaxRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("max")
     }

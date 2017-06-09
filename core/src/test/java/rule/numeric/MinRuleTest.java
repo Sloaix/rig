@@ -1,5 +1,7 @@
 package rule.numeric;
 
+import com.lsxiao.rig.core.rule.BaseRule;
+import com.lsxiao.rig.core.rule.ParamAble;
 import com.lsxiao.rig.core.rule.numeric.MinRule;
 
 import junit.framework.TestCase;
@@ -14,6 +16,11 @@ public class MinRuleTest extends TestCase {
 
     public void testName() throws Exception {
         assertTrue(MinRule.Companion.getNames().contains("min"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(MinRule.class));
+        assertTrue(ParamAble.class.isAssignableFrom(MinRule.class));
     }
 
     public void testParameters() throws Exception {

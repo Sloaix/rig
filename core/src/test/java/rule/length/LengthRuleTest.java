@@ -1,5 +1,7 @@
 package rule.length;
 
+import com.lsxiao.rig.core.rule.BaseRule;
+import com.lsxiao.rig.core.rule.ParamAble;
 import com.lsxiao.rig.core.rule.length.LengthRule;
 
 import junit.framework.TestCase;
@@ -14,6 +16,11 @@ public class LengthRuleTest extends TestCase {
 
     public void testName() throws Exception {
         assertTrue(LengthRule.Companion.getNames().contains("length"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(LengthRule.class));
+        assertTrue(ParamAble.class.isAssignableFrom(LengthRule.class));
     }
 
     public void testParameters() throws Exception {
