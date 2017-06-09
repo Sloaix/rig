@@ -55,6 +55,7 @@ public class GroupRuleActivity extends BaseActivity {
     @OnClick(R.id.btn_group_1)
     public void onClick1() {
         ValidateResult result = Rig.check(this, GROUP_1);
+        mTvContent.setText("");
         if (result.isFail()) {
             mTvContent.setTextColor(Color.RED);
             mTvContent.setText(result.formatErrors());
@@ -67,6 +68,7 @@ public class GroupRuleActivity extends BaseActivity {
     @OnClick(R.id.btn_group_2)
     public void onClick2() {
         ValidateResult result = Rig.check(this, GROUP_2);
+        mTvContent.setText("");
         if (result.isFail()) {
             mTvContent.setTextColor(Color.RED);
             mTvContent.setText(result.formatErrors());

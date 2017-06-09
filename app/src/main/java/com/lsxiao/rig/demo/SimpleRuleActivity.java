@@ -22,7 +22,7 @@ public class SimpleRuleActivity extends BaseActivity {
     @Rule("integer|length:11")
     @BindView(R.id.mobile)
     public EditText mMobile;
-    
+
     @BindView(R.id.tv_content)
     TextView mTvContent;
 
@@ -41,6 +41,7 @@ public class SimpleRuleActivity extends BaseActivity {
     @OnClick(R.id.btn_validate)
     public void onClick() {
         ValidateResult result = Rig.check(this);
+        mTvContent.setText("");
         if (result.isFail()) {
             mTvContent.setTextColor(Color.RED);
             mTvContent.setText(result.formatErrors());
