@@ -28,7 +28,7 @@ depend usage,depend on age value.
 @Rule(value = "int|min:10|max:30", name = "age")
 public String age = "20";
 
-@Rule("when_gt:age,18|size:18")
+@Rule("when_gt:age,18|length:18")
 public String idNumber = "500224199204852295";
 
 if (Rig.check(this).isPass()) {
