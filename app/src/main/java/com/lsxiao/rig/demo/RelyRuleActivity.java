@@ -14,18 +14,6 @@ import butterknife.OnClick;
 
 public class RelyRuleActivity extends BaseActivity {
 
-    @Rule("min_length:2")
-    @BindView(R.id.et_name)
-    public EditText mEtName;
-
-    @Rule("filled")
-    @BindView(R.id.email)
-    public EditText mEmail;
-
-    @Rule("length:11")
-    @BindView(R.id.mobile)
-    public EditText mMobile;
-
     @Rule(value = "min_length:6", name = "密码")
     @BindView(R.id.password)
     public EditText mPassword;
@@ -45,7 +33,7 @@ public class RelyRuleActivity extends BaseActivity {
     @Override
     void afterCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("复杂表单");
+        getSupportActionBar().setTitle("依赖表单");
     }
 
     @OnClick(R.id.btn_validate)

@@ -24,52 +24,6 @@
                     style="@style/SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="姓名"/>
-
-                <EditText
-                    android:id="@+id/et_name"
-                    style="@style/MineEdit"
-                    android:hint="至少2个字"
-                    />
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutItem">
-
-                <TextView
-                    style="@style/SubTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="邮箱"/>
-
-                <EditText
-                    android:id="@+id/email"
-                    style="@style/MineEdit"
-                    android:hint="不能为空"
-                    android:inputType="textEmailAddress"
-                    />
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutItem">
-
-                <TextView
-                    style="@style/SubTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="手机"/>
-
-                <EditText
-                    android:id="@+id/mobile"
-                    style="@style/MineEdit"
-                    android:hint="可选"
-                    />
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutItem">
-
-                <TextView
-                    style="@style/SubTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="密码"/>
 
                 <EditText
@@ -92,30 +46,6 @@
                     style="@style/MineEdit"
                     android:hint="不能为空"
                     />
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutItem">
-
-                <TextView
-                    style="@style/SubTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="爱好"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="吃饭"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="睡觉"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="打豆豆"/>
             </LinearLayout>
 
         </LinearLayout>
