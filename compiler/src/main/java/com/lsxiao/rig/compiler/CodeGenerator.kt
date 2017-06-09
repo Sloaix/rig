@@ -153,7 +153,7 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
      * String rendered = FailTemplate.INSTANCE.render(...)
      */
     fun renderTemplate(template: String, fieldName: String): String =
-            CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",argsrelyName,relyValue,$template)""", String::class.java, FailTemplate::class.java)
+            CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",args,relyName,relyValue,$template)""", String::class.java, FailTemplate::class.java)
                     .toBuilder()
                     .build()
                     .toString()

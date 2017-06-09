@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SimpleRuleActivity">
-        </activity>
+        <activity android:name=".SimpleRuleActivity"/>
+        <activity android:name=".RelyRuleActivity"/>
     </application>
 
 </manifest>

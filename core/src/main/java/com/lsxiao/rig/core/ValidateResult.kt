@@ -17,7 +17,7 @@ class ValidateResult(val errors: Map<String, List<String>> = emptyMap()) {
         get() = errors.values.all { it.isEmpty() }
 
     override fun toString(): String {
-        return "ValidateResult(errors=$errors)"
+        return "$errors"
     }
 
 }

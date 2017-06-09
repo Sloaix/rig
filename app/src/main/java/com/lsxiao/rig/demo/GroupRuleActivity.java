@@ -2,16 +2,16 @@ package com.lsxiao.rig.demo;
 
 import android.os.Bundle;
 
-public class SimpleRuleActivity extends BaseActivity {
+public class GroupRuleActivity extends BaseActivity {
 
     @Override
     int getLayoutId() {
-        return R.layout.activity_simple_rule;
+        return R.layout.activity_rely_rule;
     }
 
     @Override
     void afterCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("简单");
+        getSupportActionBar().setTitle("复杂表单");
     }
 }

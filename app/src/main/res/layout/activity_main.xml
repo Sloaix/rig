@@ -6,21 +6,18 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        style="@style/MineText"
-        android:text="@string/simple"/>
-
     <Button
         android:id="@+id/btn_simple_form"
         style="@style/MineButton"
         android:text="简单表单"/>
 
-    <TextView
-        style="@style/MineText"
-        android:text="@string/rely"/>
+    <Button
+        android:id="@+id/btn_rely_form"
+        style="@style/MineButton"
+        android:text="依赖表单"/>
 
     <Button
-        android:id="@+id/btn_complex_form"
+        android:id="@+id/btn_group_form"
         style="@style/MineButton"
-        android:text="复杂表单"/>
+        android:text="分组表单"/>
 </LinearLayout>
