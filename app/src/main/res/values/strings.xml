@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Rig</string>
+    <string name="simple">简单</string>
+    <string name="rely">依赖</string>
 </resources>

@@ -20,10 +20,16 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton:butterknife:8.6.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    def libs = parent.ext.libs
+    compile libs.supportV4
+    compile libs.appcompat
+    compile libs.recyclerView
+    compile libs.cardView
+    compile libs.supportDesign
+
     compile project(":core");
     annotationProcessor project(":compiler")
+    compile 'com.jakewharton:butterknife:8.6.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 }
