@@ -29,22 +29,7 @@
                 <EditText
                     android:id="@+id/et_name"
                     style="@style/MineEdit"
-                    android:hint="不能为空"
-                    />
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutItem">
-
-                <TextView
-                    style="@style/SubTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="邮箱"/>
-
-                <EditText
-                    android:id="@+id/email"
-                    style="@style/MineEdit"
-                    android:hint="不能为空"
+                    android:hint="大于2个字"
                     />
             </LinearLayout>
 
@@ -59,7 +44,7 @@
                 <EditText
                     android:id="@+id/mobile"
                     style="@style/MineEdit"
-                    android:hint="可选"
+                    android:hint="请输入11位手机"
                     />
             </LinearLayout>
 
@@ -73,4 +58,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="验证"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"/>
 </LinearLayout>

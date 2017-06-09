@@ -20,4 +20,10 @@ class ValidateResult(val errors: Map<String, List<String>> = emptyMap()) {
         return "$errors"
     }
 
+    fun formatErrors(): String {
+        return errors.keys.joinToString("") {
+            "$it : ${errors[it]?.joinToString { it }}\n"
+        }
+    }
+
 }

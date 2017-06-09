@@ -18,4 +18,7 @@ object Rig {
 
     @JvmStatic
     fun check(any: Any): ValidateResult = validator.check(any)
+
+    @JvmStatic
+    fun check(any: Any, group: Int): ValidateResult = validator.check(any, group)
 }

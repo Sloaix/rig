@@ -17,5 +17,7 @@ class IntegerRule : BaseRule {
 
     }
 
-    override fun check(checkedFiled: String?): Boolean = checkedFiled?.toIntOrNull() != null
+    override fun check(checkedFiled: String?): Boolean = !checkedFiled.isNullOrEmpty() && checkedFiled!!.all {
+        it in "0123456789"
+    }
 }

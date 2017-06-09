@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".SimpleRuleActivity"/>
         <activity android:name=".RelyRuleActivity"/>
+        <activity android:name=".GroupRuleActivity"/>
     </application>
 
 </manifest>

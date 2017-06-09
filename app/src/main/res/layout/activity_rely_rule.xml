@@ -29,7 +29,7 @@
                 <EditText
                     android:id="@+id/password"
                     style="@style/MineEdit"
-                    android:hint="不能为空"
+                    android:hint="请输入不小于6位的密码"
                     />
             </LinearLayout>
 
@@ -44,7 +44,7 @@
                 <EditText
                     android:id="@+id/password_confirm"
                     style="@style/MineEdit"
-                    android:hint="不能为空"
+                    android:hint="请再次输入密码"
                     />
             </LinearLayout>
 

@@ -39,5 +39,6 @@ public class IntegerRuleTest extends TestCase {
         assertTrue(mIntegerRule.check("2"));
         assertTrue(mIntegerRule.check("3"));
         assertTrue(mIntegerRule.check("12"));
+        assertTrue(mIntegerRule.check("111111111111111111111111111111"));
     }
 }

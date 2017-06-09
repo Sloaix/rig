@@ -30,5 +30,9 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-
+    @OnClick(R.id.btn_group_form)
+    void nav2GroupForm() {
+        Intent intent = new Intent(this, GroupRuleActivity.class);
+        startActivity(intent);
+    }
 }
