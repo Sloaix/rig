@@ -16,7 +16,7 @@ import butterknife.OnClick;
 public class RelyRuleActivity2 extends BaseActivity {
 
 
-    @Rule(value = "filled|han|min_length:2", name = "真实姓名")
+    @Rule(value = "filled|min_length:2", name = "真实姓名")
     @BindView(R.id.name)
     public EditText mName;
 
