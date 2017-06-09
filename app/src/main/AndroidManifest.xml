@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SimpleRuleActivity"/>
-        <activity android:name=".RelyRuleActivity"/>
+        <activity android:name=".RelyRuleActivity1"/>
+        <activity android:name=".RelyRuleActivity2"/>
         <activity android:name=".GroupRuleActivity"/>
     </application>
 

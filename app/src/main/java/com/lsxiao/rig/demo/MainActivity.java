@@ -24,9 +24,16 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.btn_rely_form)
-    void nav2RelyForm() {
-        Intent intent = new Intent(this, RelyRuleActivity.class);
+    @OnClick(R.id.btn_rely_form_1)
+    void nav2Rely1Form() {
+        Intent intent = new Intent(this, RelyRuleActivity1.class);
+        startActivity(intent);
+    }
+
+
+    @OnClick(R.id.btn_rely_form_2)
+    void nav2Rely2Form() {
+        Intent intent = new Intent(this, RelyRuleActivity2.class);
         startActivity(intent);
     }
 

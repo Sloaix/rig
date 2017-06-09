@@ -9,15 +9,20 @@
     <Button
         android:id="@+id/btn_simple_form"
         style="@style/MineButton"
-        android:text="简单表单"/>
+        android:text="简单验证"/>
 
     <Button
-        android:id="@+id/btn_rely_form"
+        android:id="@+id/btn_rely_form_1"
         style="@style/MineButton"
-        android:text="依赖表单"/>
+        android:text="依赖验证1"/>
+
+    <Button
+        android:id="@+id/btn_rely_form_2"
+        style="@style/MineButton"
+        android:text="依赖验证2"/>
 
     <Button
         android:id="@+id/btn_group_form"
         style="@style/MineButton"
-        android:text="分组表单"/>
+        android:text="分组验证"/>
 </LinearLayout>

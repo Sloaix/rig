@@ -13,14 +13,14 @@ import com.lsxiao.rig.core.annotation.Rule;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RelyRuleActivity extends BaseActivity {
+public class RelyRuleActivity2 extends BaseActivity {
 
-    
+
     @Rule(value = "min_length:6", name = "用户密码")
     @BindView(R.id.password)
     public EditText mPassword;
 
-    @Rule(value = "filled|same_as:用户密码", name = "确认密码")
+    @Rule(value = "when_filled:用户密码|filled|same_as:用户密码", name = "确认密码")
     @BindView(R.id.password_confirm)
     public EditText mPasswordConfirm;
 
@@ -29,13 +29,13 @@ public class RelyRuleActivity extends BaseActivity {
 
     @Override
     int getLayoutId() {
-        return R.layout.activity_rely_rule;
+        return R.layout.activity_rely_rule_2;
     }
 
     @Override
     void afterCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("依赖表单");
+        getSupportActionBar().setTitle("依赖表单2");
     }
 
     @OnClick(R.id.btn_validate)
