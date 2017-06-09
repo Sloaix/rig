@@ -113,10 +113,19 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                                 String::class.java)
                         .endControlFlow()
                         .addStatement("$CLASS[] args = new $CLASS[]{}", String::class.java, String::class.java)
+                        .addStatement("$CLASS relyName=\"\"", String::class.java)
+                        .addStatement("$CLASS relyValue=\"\"", String::class.java)
                         .beginControlFlow("if(rule instanceof $CLASS)", ParamAble::class.java)
                         .addStatement("args = (($CLASS)rule).getParams()", ParamAble::class.java)
                         .endControlFlow()
-                        .addStatement(renderTemplate(getFailTemplate(), ruleNameOrFieldName(descriptor)))
+                        .beginControlFlow("if(rule instanceof $CLASS)", RelyAble::class.java)
+                        .addStatement("relyName = (($CLASS)rule).getRelyName()", RelyAble::class.java)
+                        .addStatement("relyValue = (($CLASS)rule).getRelyValue()", RelyAble::class.java)
+                        .endControlFlow()
+                        .addStatement(renderTemplate(
+                                getFailTemplate(),
+                                ruleNameOrFieldName(descriptor)
+                        ))
                         .addStatement("$VAR_ERRORS_NAME.get($key).add(rendered)")
                         .endControlFlow()
                         .endControlFlow()
@@ -137,7 +146,11 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
         return CodeBlock.of("new $CLASS(${ruleParams(result, rigDescriptors, descriptor)})", result.clazz)
     }
 
-    fun renderTemplate(template: String, fieldName: String): String = CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",args,$template)""", String::class.java, FailTemplate::class.java).toBuilder().build().toString()
+    fun renderTemplate(template: String, fieldName: String): String =
+            CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",args,relyName,relyValue,$template)""", String::class.java, FailTemplate::class.java)
+                    .toBuilder()
+                    .build()
+                    .toString()
 
     fun getFailTemplate(): String {
         return CodeBlock
@@ -170,7 +183,9 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     fun paramRulePrams(result: RuleParser.Result) = "new String[]{${result.params.map { """"$it"""" }.joinToString(",")}}"
 
     /**
+     * 返回一个依赖规则的参数
      *
+     * new String[]{target.age},"",target.age)
      */
     fun relyRuleParams(result: RuleParser.Result, collections: List<RigDescriptor>, descriptor: RigDescriptor): String {
         val relyName = result.params.first()

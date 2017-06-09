@@ -29,10 +29,20 @@ object FailTemplate {
     val ARG = ":arg"
     val ARG1 = "${ARG}1"
     val ARG2 = "${ARG}2"
+    val RELY_VALUE = ":rely_value"
+    val RELY_NAME = ":rely_name"
     val LOCALE = "zh-CN"
 
-    fun render(name: String, args: Array<String>, template: String?): String? {
-        return template?.replace(NAME, name)?.replace(VALUE, name)?.replace(ARG, ARG1)?.replace(ARG1, "%1\$s")?.replace(ARG2, "%2\$s")?.format(*args)
+    fun render(name: String, args: Array<String>, relyName: String, relyValue: String, template: String?): String? {
+        return template
+                ?.replace(NAME, name)
+                ?.replace(VALUE, name)
+                ?.replace(RELY_NAME, relyName)
+                ?.replace(RELY_VALUE, relyValue)
+                ?.replace(ARG, ARG1)
+                ?.replace(ARG1, "%1\$s")
+                ?.replace(ARG2, "%2\$s")
+                ?.format(*args)
     }
 
     fun get(clazz: Class<out BaseRule>): String? {
@@ -47,7 +57,7 @@ object FailTemplate {
             LengthRule::class.java to "长度必须等于$ARG",
             MaxLengthRule::class.java to "长度不能大于$ARG",
             SameRule::class.java to "值必须等于$ARG",
-            SameAsRule::class.java to "值必须等于$ARG",
+            SameAsRule::class.java to "值必须等于$RELY_VALUE",
             MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
             MaxRule::class.java to "不能大于 $ARG"
