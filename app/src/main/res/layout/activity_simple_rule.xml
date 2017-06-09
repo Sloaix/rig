@@ -24,12 +24,27 @@
                     style="@style/SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="账号"/>
+
+                <EditText
+                    android:id="@+id/et_username"
+                    style="@style/MineEdit"
+                    android:hint="请输入至少6位字母"
+                    />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutItem">
+
+                <TextView
+                    style="@style/SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="姓名"/>
 
                 <EditText
                     android:id="@+id/et_name"
                     style="@style/MineEdit"
-                    android:hint="大于2个字"
+                    android:hint="请输入至少两个汉字"
                     />
             </LinearLayout>
 

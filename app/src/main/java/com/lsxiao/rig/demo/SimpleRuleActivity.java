@@ -15,6 +15,10 @@ import butterknife.OnClick;
 
 public class SimpleRuleActivity extends BaseActivity {
 
+    @Rule("min_length:6|letter")
+    @BindView(R.id.et_username)
+    public EditText mEtUsername;
+
     @Rule("min_length:2|han")
     @BindView(R.id.et_name)
     public EditText mEtName;
