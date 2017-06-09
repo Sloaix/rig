@@ -71,6 +71,7 @@ object FailTemplate {
             LengthRule::class.java to "长度必须等于$ARG",
             MaxLengthRule::class.java to "长度不能大于$ARG",
             SameRule::class.java to "值必须等于$ARG",
+            SameAsRule::class.java to "值必须等于$RELY_VALUE",
             MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
             MaxRule::class.java to "不能大于 $ARG"
@@ -85,6 +86,7 @@ object FailTemplate {
             LengthRule::class.java to "长度必须等于$ARG",
             MaxLengthRule::class.java to "长度不能大于$ARG",
             SameRule::class.java to "值必须等于$ARG",
+            SameAsRule::class.java to "值必须等于$RELY_VALUE",
             MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
             MaxRule::class.java to "不能大于 $ARG"

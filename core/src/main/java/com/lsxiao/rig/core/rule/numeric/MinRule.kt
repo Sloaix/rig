@@ -22,6 +22,6 @@ class MinRule(override val params: Array<String>) : BaseRule, ParamAble {
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null && checkedFiled.toDouble() >= params.first().toDouble()
+        return checkedFiled != null && checkedFiled.isNotEmpty() && checkedFiled.toDoubleOrNull() != null && checkedFiled.toDouble() >= params.first().toDouble()
     }
 }

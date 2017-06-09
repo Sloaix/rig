@@ -19,7 +19,7 @@ class MaxRule(override val params: Array<String>) : com.lsxiao.rig.core.rule.Bas
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null && checkedFiled.toDouble() <= params.first().toDouble()
+        return checkedFiled != null && checkedFiled.isNotEmpty() && checkedFiled.toDoubleOrNull() != null && checkedFiled.toDouble() <= params.first().toDouble()
     }
 
 }

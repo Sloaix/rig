@@ -1,4 +1,4 @@
-package rule.size;
+package rule.numeric;
 
 import com.lsxiao.rig.core.rule.numeric.MaxRule;
 import com.lsxiao.rig.core.rule.numeric.MinRule;
@@ -13,9 +13,9 @@ public class MaxRuleTest extends TestCase {
         mMaxRule = new MaxRule(new String[]{"3"});
     }
 
-//    public void testName() throws Exception {
-//        assertTrue(MaxRule.Companion.getNames().contains("max"));
-//    }
+    public void testName() throws Exception {
+        assertTrue(MaxRule.Companion.getNames().contains("max"));
+    }
 
     public void testParameters() throws Exception {
         assertTrue(mMaxRule.getParams().length == 1);
@@ -28,14 +28,15 @@ public class MaxRuleTest extends TestCase {
         assertFalse(new MinRule(new String[]{""}).checkParams());
         assertFalse(new MinRule(new String[]{"abc"}).checkParams());
     }
-//
-//    public void testRule() throws Exception {
-//        assertTrue(mMaxRule.check(""));
-//        assertTrue(mMaxRule.check("a"));
-//        assertTrue(mMaxRule.check("ab"));
-//        assertTrue(mMaxRule.check("abc"));
-//        assertFalse(mMaxRule.check("abcd"));
-//        assertFalse(mMaxRule.check("abcde"));
-//        assertFalse(mMaxRule.check("abcdef"));
-//    }
+
+    public void testRule() throws Exception {
+        assertFalse(mMaxRule.check(""));
+        assertFalse(mMaxRule.check("a"));
+        assertFalse(mMaxRule.check("4"));
+        assertFalse(mMaxRule.check("100"));
+        assertTrue(mMaxRule.check("0"));
+        assertTrue(mMaxRule.check("1"));
+        assertTrue(mMaxRule.check("2"));
+        assertTrue(mMaxRule.check("3"));
+    }
 }

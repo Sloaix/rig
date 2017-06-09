@@ -1,4 +1,4 @@
-package rule.size;
+package rule.length;
 
 import com.lsxiao.rig.core.rule.length.LengthRule;
 
@@ -12,9 +12,9 @@ public class LengthRuleTest extends TestCase {
         mLengthRule = new LengthRule(new String[]{"3"});
     }
 
-//    public void testName() throws Exception {
-//        assertTrue(LengthRule.Companion.getNames().contains("size"));
-//    }
+    public void testName() throws Exception {
+        assertTrue(LengthRule.Companion.getNames().contains("length"));
+    }
 
     public void testParameters() throws Exception {
         assertTrue(mLengthRule.getParams().length == 1);
