@@ -8,10 +8,7 @@ import com.lsxiao.rig.core.rule.length.MinLengthRule
 import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.numeric.MaxRule
 import com.lsxiao.rig.core.rule.numeric.MinRule
-import com.lsxiao.rig.core.rule.other.EmailRule
-import com.lsxiao.rig.core.rule.other.FilledRule
-import com.lsxiao.rig.core.rule.other.MobileRule
-import com.lsxiao.rig.core.rule.other.NotNullRule
+import com.lsxiao.rig.core.rule.other.*
 import com.lsxiao.rig.core.rule.value.SameAsRule
 import com.lsxiao.rig.core.rule.value.SameRule
 
@@ -61,6 +58,7 @@ object RuleParser {
 
         in MobileRule.names -> MobileRule::class.java
         in EmailRule.names -> EmailRule::class.java
+        in LetterRule.names -> LetterRule::class.java
 
         in WhenEqualRule.names -> WhenEqualRule::class.java
         in WhenFilledRule.names -> WhenFilledRule::class.java

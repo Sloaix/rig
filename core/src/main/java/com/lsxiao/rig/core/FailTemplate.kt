@@ -8,10 +8,7 @@ import com.lsxiao.rig.core.rule.numeric.IntegerRule
 import com.lsxiao.rig.core.rule.numeric.MaxRule
 import com.lsxiao.rig.core.rule.numeric.MinRule
 import com.lsxiao.rig.core.rule.numeric.NumericRule
-import com.lsxiao.rig.core.rule.other.EmailRule
-import com.lsxiao.rig.core.rule.other.FilledRule
-import com.lsxiao.rig.core.rule.other.MobileRule
-import com.lsxiao.rig.core.rule.other.NotNullRule
+import com.lsxiao.rig.core.rule.other.*
 import com.lsxiao.rig.core.rule.value.SameAsRule
 import com.lsxiao.rig.core.rule.value.SameRule
 
@@ -48,7 +45,8 @@ object FailTemplate {
             MinRule::class.java to "不能小于 $ARG",
             MaxRule::class.java to "不能大于 $ARG",
             MobileRule::class.java to "不是有效的手机格式",
-            EmailRule::class.java to "不是有效的邮箱格式"
+            EmailRule::class.java to "不是有效的邮箱格式",
+            LetterRule::class.java to "必须是字母"
     )
 
     val zhTW = hashMapOf(

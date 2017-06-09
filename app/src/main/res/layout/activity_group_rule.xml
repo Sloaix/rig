@@ -53,6 +53,21 @@
                     />
             </LinearLayout>
 
+            <LinearLayout style="@style/LinearLayoutItem">
+
+                <TextView
+                    style="@style/SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邮箱"/>
+
+                <EditText
+                    android:id="@+id/email"
+                    style="@style/MineEdit"
+                    android:hint="请输入邮箱"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

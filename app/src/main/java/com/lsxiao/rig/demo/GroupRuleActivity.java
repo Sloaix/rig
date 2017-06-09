@@ -20,13 +20,19 @@ public class GroupRuleActivity extends BaseActivity {
     public static final int GROUP_2 = 2;
 
     @Group(GROUP_1)
-    @Rule("min_length:2")
+    @Rule("min_length:2|letter")
     @BindView(R.id.et_name)
     public EditText mEtName;
     @Group(GROUP_1)
-    @Rule("integer|length:11")
+    @Rule("mobile")
     @BindView(R.id.mobile)
     public EditText mMobile;
+
+    @Group(GROUP_1)
+    @Rule("email")
+    @BindView(R.id.email)
+    public EditText mEmail;
+
 
     @Group(GROUP_2)
     @Rule(value = "min_length:6", name = "用户密码")
