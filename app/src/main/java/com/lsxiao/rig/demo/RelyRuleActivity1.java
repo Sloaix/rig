@@ -29,7 +29,7 @@ public class RelyRuleActivity1 extends BaseActivity {
 
     @Override
     int getLayoutId() {
-        return R.layout.activity_rely_rule_2;
+        return R.layout.activity_rely_rule_1;
     }
 
     @Override

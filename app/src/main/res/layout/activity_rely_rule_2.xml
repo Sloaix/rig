@@ -24,12 +24,12 @@
                     style="@style/SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="密码"/>
+                    android:text="真实姓名"/>
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/name"
                     style="@style/MineEdit"
-                    android:hint="请输入不小于6位的密码"
+                    android:hint="请输入汉字"
                     />
             </LinearLayout>
 
@@ -39,12 +39,44 @@
                     style="@style/SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="确认"/>
+                    android:text="期望职位"/>
 
                 <EditText
-                    android:id="@+id/password_confirm"
+                    android:id="@+id/expect_work"
                     style="@style/MineEdit"
-                    android:hint="请再次输入密码"
+                    android:hint="程序员鼓励师:)"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutItem">
+
+                <TextView
+                    style="@style/SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="期望薪资"/>
+
+                <EditText
+                    android:id="@+id/expect_money"
+                    style="@style/MineEdit"
+                    android:hint="请输入数字"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutItem">
+
+                <TextView
+                    style="@style/SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Github    "/>
+
+                <EditText
+                    android:id="@+id/github"
+                    style="@style/MineEdit"
+                    android:hint="网址"
                     />
             </LinearLayout>
 

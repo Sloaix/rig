@@ -16,16 +16,25 @@ import butterknife.OnClick;
 public class RelyRuleActivity2 extends BaseActivity {
 
 
-    @Rule(value = "min_length:6", name = "用户密码")
-    @BindView(R.id.password)
-    public EditText mPassword;
+    @Rule(value = "filled|han|min_length:2", name = "真实姓名")
+    @BindView(R.id.name)
+    public EditText mName;
 
-    @Rule(value = "when_filled:用户密码|filled|same_as:用户密码", name = "确认密码")
-    @BindView(R.id.password_confirm)
-    public EditText mPasswordConfirm;
+    @Rule(value = "filled", name = "期望职位")
+    @BindView(R.id.expect_work)
+    public EditText mExpectWork;
+
+    @Rule(value = "when_filled:期望职位|numeric", name = "期望薪资")
+    @BindView(R.id.expect_money)
+    public EditText mExpectMoney;
+
+    @Rule(value = "when_filled:期望职位|url", name = "github")
+    @BindView(R.id.github)
+    public EditText mGithub;
+
 
     @BindView(R.id.tv_content)
-    TextView mTvContent;
+    public TextView mTvContent;
 
     @Override
     int getLayoutId() {

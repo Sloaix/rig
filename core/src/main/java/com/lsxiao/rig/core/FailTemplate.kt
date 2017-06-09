@@ -47,7 +47,8 @@ object FailTemplate {
             MobileRule::class.java to "不是有效的手机格式",
             EmailRule::class.java to "不是有效的邮箱格式",
             LetterRule::class.java to "必须是字母",
-            HanRule::class.java to "必须是汉字"
+            HanRule::class.java to "必须是汉字",
+            UrlRule::class.java to "不是有效的网址"
     )
 
     val zhTW = hashMapOf(
