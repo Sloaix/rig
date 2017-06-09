@@ -1,7 +1,7 @@
 package com.lsxiao.rig.core.rule.value
 
 import com.lsxiao.rig.core.rule.BaseRule
-import com.lsxiao.rig.core.rule.RelyAble
+import com.lsxiao.rig.core.rule.ParamAble
 
 /**
  * write with Rig
@@ -12,7 +12,7 @@ import com.lsxiao.rig.core.rule.RelyAble
  *
  */
 
-class SameRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, RelyAble {
+class SameRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
         val names = setOf("same", "eq")
     }
