@@ -2,6 +2,8 @@ package com.lsxiao.rig.core.rule.other
 
 import com.lsxiao.rig.core.rule.BaseRule
 import com.lsxiao.rig.core.rule.ParamAble
+import java.util.regex.Pattern
+import java.util.regex.PatternSyntaxException
 
 /**
  * write with BaseRule
@@ -14,7 +16,7 @@ import com.lsxiao.rig.core.rule.ParamAble
 
 class RegexRule(override val params: Array<String>) : BaseRule, ParamAble {
     companion object {
-        val name = "reg"
+        val names = setOf("regex")
     }
 
     override fun checkParams(): Boolean {
@@ -22,6 +24,13 @@ class RegexRule(override val params: Array<String>) : BaseRule, ParamAble {
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null
+        val regex = params.first()
+        try {
+            Pattern.compile(regex)
+        } catch (exception: PatternSyntaxException) {
+            return false
+        }
+
+        return Pattern.compile(regex).matcher(checkedFiled).matches()
     }
 }
