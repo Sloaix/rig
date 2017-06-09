@@ -1,7 +1,6 @@
 package rule.numeric;
 
 import com.lsxiao.rig.core.rule.numeric.IntegerRule;
-import com.lsxiao.rig.core.rule.numeric.MaxRule;
 
 import junit.framework.TestCase;
 
@@ -22,7 +21,7 @@ public class IntegerRuleTest extends TestCase {
     }
 
     public void testName() throws Exception {
-        assertTrue(MaxRule.Companion.getNames().contains("max"));
+        assertTrue(IntegerRule.Companion.getNames().contains("integer"));
     }
 
     public void testRule() throws Exception {

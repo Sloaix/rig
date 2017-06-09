@@ -1,7 +1,6 @@
 package rule.numeric;
 
 import com.lsxiao.rig.core.rule.numeric.MaxRule;
-import com.lsxiao.rig.core.rule.numeric.MinRule;
 
 import junit.framework.TestCase;
 
@@ -24,9 +23,9 @@ public class MaxRuleTest extends TestCase {
         assertTrue(mMaxRule.checkParams());
 
 
-        assertFalse(new MinRule(new String[]{}).checkParams());
-        assertFalse(new MinRule(new String[]{""}).checkParams());
-        assertFalse(new MinRule(new String[]{"abc"}).checkParams());
+        assertFalse(new MaxRule(new String[]{}).checkParams());
+        assertFalse(new MaxRule(new String[]{""}).checkParams());
+        assertFalse(new MaxRule(new String[]{"abc"}).checkParams());
     }
 
     public void testRule() throws Exception {
