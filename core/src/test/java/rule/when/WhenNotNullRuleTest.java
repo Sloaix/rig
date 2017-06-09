@@ -22,4 +22,8 @@ public class WhenNotNullRuleTest extends TestCase {
         assertTrue(WhenAble.class.isAssignableFrom(WhenNotNullRule.class));
         assertTrue(RelyAble.class.isAssignableFrom(WhenNotNullRule.class));
     }
+
+    public void testName() throws Exception {
+        assertTrue(WhenNotNullRule.Companion.getNames().contains("when_notnull"));
+    }
 }

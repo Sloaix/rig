@@ -22,4 +22,8 @@ public class WhenEqualRuleTest extends TestCase {
         assertTrue(WhenAble.class.isAssignableFrom(WhenEqualRule.class));
         assertTrue(RelyAble.class.isAssignableFrom(WhenEqualRule.class));
     }
+
+    public void testName() throws Exception {
+        assertTrue(WhenEqualRule.Companion.getNames().contains("when_eq"));
+    }
 }

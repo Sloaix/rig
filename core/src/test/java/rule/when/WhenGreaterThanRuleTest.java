@@ -22,4 +22,8 @@ public class WhenGreaterThanRuleTest extends TestCase {
         assertTrue(WhenAble.class.isAssignableFrom(WhenGreaterThanRule.class));
         assertTrue(RelyAble.class.isAssignableFrom(WhenGreaterThanRule.class));
     }
+
+    public void testName() throws Exception {
+        assertTrue(WhenGreaterThanRule.Companion.getNames().contains("when_gt"));
+    }
 }

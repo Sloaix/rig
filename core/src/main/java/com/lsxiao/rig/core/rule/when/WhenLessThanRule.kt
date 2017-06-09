@@ -15,7 +15,7 @@ import com.lsxiao.rig.core.rule.WhenAble
 
 class WhenLessThanRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
     companion object {
-        val names = setOf("when_lt", "w_lt")
+        val names = setOf("when_lt")
     }
 
     override fun checkParams() = params.size == 2

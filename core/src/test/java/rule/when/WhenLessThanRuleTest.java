@@ -22,4 +22,8 @@ public class WhenLessThanRuleTest extends TestCase {
         assertTrue(WhenAble.class.isAssignableFrom(WhenLessThanRule.class));
         assertTrue(RelyAble.class.isAssignableFrom(WhenLessThanRule.class));
     }
+
+    public void testName() throws Exception {
+        assertTrue(WhenLessThanRule.Companion.getNames().contains("when_lt"));
+    }
 }

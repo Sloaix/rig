@@ -22,4 +22,9 @@ public class WhenIntegerRuleTest extends TestCase {
         assertTrue(WhenAble.class.isAssignableFrom(WhenIntegerRule.class));
         assertTrue(RelyAble.class.isAssignableFrom(WhenIntegerRule.class));
     }
+
+    public void testName() throws Exception {
+        assertTrue(WhenIntegerRule.Companion.getNames().contains("when_int"));
+        assertTrue(WhenIntegerRule.Companion.getNames().contains("when_integer"));
+    }
 }

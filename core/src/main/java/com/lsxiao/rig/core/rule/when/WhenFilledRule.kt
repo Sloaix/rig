@@ -15,7 +15,7 @@ import com.lsxiao.rig.core.rule.WhenAble
 
 class WhenFilledRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
     companion object {
-        val names = setOf("when_filled", "w_filled", "w_nonempty")
+        val names = setOf("when_filled", "when_notempty")
     }
 
     override fun checkParams() = params.size == 1

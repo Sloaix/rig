@@ -15,7 +15,7 @@ import com.lsxiao.rig.core.rule.WhenAble
 
 class WhenNumericRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
     companion object {
-        val names = setOf("when_numeric", "w_numeric")
+        val names = setOf("when_numeric")
     }
 
 

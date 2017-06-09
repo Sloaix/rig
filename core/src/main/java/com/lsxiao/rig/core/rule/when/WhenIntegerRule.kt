@@ -15,7 +15,7 @@ import com.lsxiao.rig.core.rule.WhenAble
 
 class WhenIntegerRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
     companion object {
-        val names = setOf("when_int", "when_integer", "w_integer", "w_int")
+        val names = setOf("when_int", "when_integer")
     }
 
     override fun checkParams() = params.size == 1

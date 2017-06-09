@@ -15,7 +15,7 @@ import com.lsxiao.rig.core.rule.WhenAble
 
 class WhenNotNullRule(override val params: Array<String>, override val relyName: String?, override val relyValue: String?) : BaseRule, WhenAble, RelyAble {
     companion object {
-        val names = setOf("when_notnull", "w_notnull")
+        val names = setOf("when_notnull")
     }
 
     override fun checkParams() = params.size == 1

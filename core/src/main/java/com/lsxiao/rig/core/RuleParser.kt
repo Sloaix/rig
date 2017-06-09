@@ -64,7 +64,7 @@ object RuleParser {
         in WhenLessThanRule.names -> WhenLessThanRule::class.java
         in WhenNotNullRule.names -> WhenNotNullRule::class.java
         in WhenNumericRule.names -> WhenNumericRule::class.java
-        in WhenSizeRule.names -> WhenSizeRule::class.java
+        in WhenLengthRule.names -> WhenLengthRule::class.java
         else -> null!!
     }
 

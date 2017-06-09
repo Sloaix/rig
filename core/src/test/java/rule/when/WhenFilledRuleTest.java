@@ -22,4 +22,9 @@ public class WhenFilledRuleTest extends TestCase {
         assertTrue(WhenAble.class.isAssignableFrom(WhenFilledRule.class));
         assertTrue(RelyAble.class.isAssignableFrom(WhenFilledRule.class));
     }
+
+    public void testName() throws Exception {
+        assertTrue(WhenFilledRule.Companion.getNames().contains("when_filled"));
+        assertTrue(WhenFilledRule.Companion.getNames().contains("when_notempty"));
+    }
 }
