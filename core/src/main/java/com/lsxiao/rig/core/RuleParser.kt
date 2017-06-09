@@ -59,6 +59,7 @@ object RuleParser {
         in MobileRule.names -> MobileRule::class.java
         in EmailRule.names -> EmailRule::class.java
         in LetterRule.names -> LetterRule::class.java
+        in HanRule.names -> HanRule::class.java
 
         in WhenEqualRule.names -> WhenEqualRule::class.java
         in WhenFilledRule.names -> WhenFilledRule::class.java

@@ -46,7 +46,8 @@ object FailTemplate {
             MaxRule::class.java to "不能大于 $ARG",
             MobileRule::class.java to "不是有效的手机格式",
             EmailRule::class.java to "不是有效的邮箱格式",
-            LetterRule::class.java to "必须是字母"
+            LetterRule::class.java to "必须是字母",
+            HanRule::class.java to "必须是汉字"
     )
 
     val zhTW = hashMapOf(
