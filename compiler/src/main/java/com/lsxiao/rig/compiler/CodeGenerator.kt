@@ -142,16 +142,25 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
                 .build()
     }
 
+    /**
+     * new IntegerRule()
+     */
     fun newRule(result: RuleParser.Result, descriptor: RigDescriptor): CodeBlock {
         return CodeBlock.of("new $CLASS(${ruleParams(result, rigDescriptors, descriptor)})", result.clazz)
     }
 
+    /**
+     * String rendered = FailTemplate.INSTANCE.render(...)
+     */
     fun renderTemplate(template: String, fieldName: String): String =
             CodeBlock.of("""$CLASS rendered = $CLASS.INSTANCE.render("$fieldName",argsrelyName,relyValue,$template)""", String::class.java, FailTemplate::class.java)
                     .toBuilder()
                     .build()
                     .toString()
 
+    /**
+     *  FailTemplate.INSTANCE.get(...)
+     */
     fun getFailTemplate(): String {
         return CodeBlock
                 .builder()
@@ -201,6 +210,9 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
         }
     }
 
+    /**
+     * "..."
+     */
     fun toRaw(string: String): String {
         return """"$string""""
     }
