@@ -9,7 +9,7 @@ This library is under development.
 * implement core.
 * implement android extension.
 
-# Preview
+# Preview(still developing)
 ![gif](https://raw.githubusercontent.com/lsxiao/rig/master/demo.gif)
 
 # Usage
