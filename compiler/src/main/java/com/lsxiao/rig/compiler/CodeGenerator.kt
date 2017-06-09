@@ -234,7 +234,8 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     }
 
     /**
-     *
+     * age
+     * getAge()
      */
     fun ruleNameOrFieldName(descriptor: RigDescriptor): String = if (descriptor.name.isNotEmpty()) {
         descriptor.name
@@ -245,7 +246,8 @@ class CodeGenerator private constructor(private val rigDescriptors: ArrayList<Ri
     }
 
     /**
-     * 获取返回String值的方法或者属性
+     * age
+     * getAge()
      */
     fun textTobeValidate(element: Element): String {
         return if (element is ExecutableElement) {
