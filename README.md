@@ -74,7 +74,7 @@ if (Rig.check(this).isPass()) {
 
 
 
-## 现实情况
+## 实例
 same_as规则(校验某个字段的值，需与给定值相等)
 常用于密码确认字段
 ```java
