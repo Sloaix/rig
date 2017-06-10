@@ -5,7 +5,7 @@ import com.lsxiao.rig.core.rule.other.NotNullRule;
 
 import junit.framework.TestCase;
 
-public class NotNullTest extends TestCase {
+public class NotNullRuleTest extends TestCase {
     private NotNullRule mNotNull;
 
     @Override

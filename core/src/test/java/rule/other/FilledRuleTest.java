@@ -13,7 +13,7 @@ import junit.framework.TestCase;
  * zhihu:https://zhihu.com/people/lsxiao
  */
 
-public class FilledTest extends TestCase {
+public class FilledRuleTest extends TestCase {
     private FilledRule mFilled;
 
     @Override

@@ -17,6 +17,6 @@ class UrlRule : BaseRule {
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return Pattern.compile("""[a-zA-z]+://[^\s]*""").matcher(checkedFiled).matches()
+        return Pattern.compile("""https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)""").matcher(checkedFiled).matches()
     }
 }
