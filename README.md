@@ -15,7 +15,7 @@
 ## 常规用法
 校验String类型的成员变量
 ```java
-@Rule("int||min:10|max:30")
+@Rule("int|min:10|max:30")
 public String age = "20";
 
 if (Rig.check(this).isPass()) {
@@ -25,7 +25,7 @@ if (Rig.check(this).isPass()) {
 
 校验EditText类型的成员变量
 ```java
-@Rule("int||min:10|max:30")
+@Rule("int|min:10|max:30")
 public EditTextView mEtAge;
 
 if (Rig.check(this).isPass()) {
@@ -35,7 +35,7 @@ if (Rig.check(this).isPass()) {
 
 校验返回值为String类型的方法
 ```java
-@Rule("int||min:10|max:30")
+@Rule("int|min:10|max:30")
 public String getAge(){
     ...
 }
