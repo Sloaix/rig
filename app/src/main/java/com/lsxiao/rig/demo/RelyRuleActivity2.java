@@ -24,17 +24,25 @@ public class RelyRuleActivity2 extends BaseActivity {
     @BindView(R.id.expect_work)
     public EditText mExpectWork;
 
-    @Rule(value = "when_filled:期望职位|numeric", name = "期望薪资")
-    @BindView(R.id.expect_money)
-    public EditText mExpectMoney;
+    @Rule(value = "when_filled:期望职位|filled", name = "期望城市")
+    @BindView(R.id.expect_city)
+    public EditText mExpectCity;
 
     @Rule(value = "when_filled:期望职位|url", name = "github")
     @BindView(R.id.github)
     public EditText mGithub;
 
+    @Rule(value = "when_filled:期望职位|email", name = "邮箱")
+    @BindView(R.id.et_email)
+    public EditText mEtEmail;
+
+    @Rule(value = "when_filled:期望职位|url", name = "知乎个页")
+    @BindView(R.id.et_zhihu)
+    public EditText mEtZhihu;
 
     @BindView(R.id.tv_content)
     public TextView mTvContent;
+
 
     @Override
     int getLayoutId() {

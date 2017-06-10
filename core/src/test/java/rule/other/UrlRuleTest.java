@@ -1,5 +1,6 @@
 package rule.other;
 
+import com.lsxiao.rig.core.rule.BaseRule;
 import com.lsxiao.rig.core.rule.other.UrlRule;
 
 import junit.framework.TestCase;
@@ -15,6 +16,10 @@ import junit.framework.TestCase;
 public class UrlRuleTest extends TestCase {
     public void testName() throws Exception {
         assertTrue(UrlRule.Companion.getNames().contains("url"));
+    }
+
+    public void testClass() throws Exception {
+        assertTrue(BaseRule.class.isAssignableFrom(UrlRule.class));
     }
 
     public void testRule() throws Exception {

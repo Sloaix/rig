@@ -55,12 +55,12 @@
                     style="@style/SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="期望薪资"/>
+                    android:text="期望城市"/>
 
                 <EditText
-                    android:id="@+id/expect_money"
+                    android:id="@+id/expect_city"
                     style="@style/MineEdit"
-                    android:hint="请输入数字"
+                    android:hint="多个请用逗号隔开"
                     />
             </LinearLayout>
 
@@ -79,6 +79,37 @@
                     android:hint="网址"
                     />
             </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutItem">
+
+                <TextView
+                    style="@style/SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email      "/>
+
+                <EditText
+                    android:id="@+id/et_email"
+                    style="@style/MineEdit"
+                    android:hint="例如:test@test.test"
+                    />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutItem">
+
+                <TextView
+                    style="@style/SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="知乎个页"/>
+
+                <EditText
+                    android:id="@+id/et_zhihu"
+                    style="@style/MineEdit"
+                    android:hint="网址"
+                    />
+            </LinearLayout>
+
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
