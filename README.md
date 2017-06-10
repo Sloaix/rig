@@ -10,7 +10,8 @@
 # 效果预览
 ![gif](https://raw.githubusercontent.com/lsxiao/rig/master/demo.gif)
 
-# 用法(由于仍然处于开发中，以下用法可能会变，以最后发布版本为准)
+# 用法
+由于仍然处于开发中，以下用法可能会变，以最后发布版本为准
 
 ## 常规用法
 校验String类型的成员变量
