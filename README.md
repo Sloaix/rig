@@ -1,4 +1,6 @@
-# 最好的验证器,为Android而生,配合ButterKinfe食用,效果更佳
+# 最好的验证器,为Android而生
+
+配合ButterKinfe食用,效果更佳
 
 灵感来源于Laravel
 
