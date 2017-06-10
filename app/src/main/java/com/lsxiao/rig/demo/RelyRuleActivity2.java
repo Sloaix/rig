@@ -20,7 +20,7 @@ public class RelyRuleActivity2 extends BaseActivity {
     @BindView(R.id.name)
     public EditText mName;
 
-    @Rule(value = "filled", name = "期望职位")
+    @Rule(value = "notnull", name = "期望职位")
     @BindView(R.id.expect_work)
     public EditText mExpectWork;
 
