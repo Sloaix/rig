@@ -15,6 +15,6 @@ class LetterRule : BaseRule {
     }
 
     override fun check(checkedFiled: String?): Boolean {
-        return checkedFiled != null && checkedFiled.isNotEmpty() && checkedFiled in "abcdefghijklmnopqrstuvwxyz"
+        return checkedFiled != null && checkedFiled.isNotEmpty() && checkedFiled.all { "$it" in "abcdefghijklmnopqrstuvwxyz" }
     }
 }
