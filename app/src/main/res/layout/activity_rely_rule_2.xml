@@ -29,7 +29,7 @@
                 <EditText
                     android:id="@+id/name"
                     style="@style/MineEdit"
-                    android:hint="请输入汉字"
+                    android:hint="至少2个字符"
                     />
             </LinearLayout>
 
