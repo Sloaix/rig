@@ -59,10 +59,15 @@ object FailTemplate {
             LengthRule::class.java to "长度必须等于$ARG",
             MaxLengthRule::class.java to "长度不能大于$ARG",
             SameRule::class.java to "值必须等于$ARG",
-            SameAsRule::class.java to "值必须与字段${RELY_NAME}相等",
+            SameAsRule::class.java to "值必须与字段 '${RELY_NAME}' 相等",
             MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
-            MaxRule::class.java to "不能大于 $ARG"
+            MaxRule::class.java to "不能大于 $ARG",
+            MobileRule::class.java to "不是有效的手机格式",
+            EmailRule::class.java to "不是有效的邮箱格式",
+            LetterRule::class.java to "必须是字母",
+            HanRule::class.java to "必须是汉字",
+            UrlRule::class.java to "不是有效的网址"
     )
 
 
@@ -74,10 +79,15 @@ object FailTemplate {
             LengthRule::class.java to "长度必须等于$ARG",
             MaxLengthRule::class.java to "长度不能大于$ARG",
             SameRule::class.java to "值必须等于$ARG",
-            SameAsRule::class.java to "值必须与字段${RELY_NAME}相等",
+            SameAsRule::class.java to "值必须与字段 '${RELY_NAME}' 相等",
             MinLengthRule::class.java to "长度不能小于$ARG",
             MinRule::class.java to "不能小于 $ARG",
-            MaxRule::class.java to "不能大于 $ARG"
+            MaxRule::class.java to "不能大于 $ARG",
+            MobileRule::class.java to "不是有效的手机格式",
+            EmailRule::class.java to "不是有效的邮箱格式",
+            LetterRule::class.java to "必须是字母",
+            HanRule::class.java to "必须是汉字",
+            UrlRule::class.java to "不是有效的网址"
     )
 
 

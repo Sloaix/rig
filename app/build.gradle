@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
     defaultConfig {
         applicationId "com.lsxiao.rig.demo"
         minSdkVersion 14
@@ -27,9 +27,9 @@ dependencies {
     compile libs.cardView
     compile libs.supportDesign
 
-    compile project(":core");
+    compile project(":core")
     annotationProcessor project(":compiler")
-    compile 'com.jakewharton:butterknife:8.6.0'
+    compile 'com.jakewharton:butterknife:8.7.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 }
